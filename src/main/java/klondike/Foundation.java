@@ -24,7 +24,7 @@ public class Foundation {
         assert card != null;
         return card.getSuit() == this.suit &&
                 (card.getNumber() == Number.AS ||
-                        (!this.empty() && card.isNextNumberTo(this.peek())));
+                        (!this.empty() && card.isNextTo(this.peek())));
     }
 
     public boolean empty() {

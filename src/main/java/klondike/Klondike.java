@@ -23,17 +23,6 @@ public class Klondike {
         } while (!finished);
     }
 
-    private int readMove() {
-        IO.writeln("1. klondike.Stock to klondike.Waste");
-        IO.writeln("2. klondike.Waste to klondike.Stock");
-        IO.writeln("3. klondike.Waste to klondike.Foundation");
-        IO.writeln("4. klondike.Waste to klondike.Pile");
-        IO.writeln("5. klondike.Foundation to klondike.Pile");
-        IO.writeln("6. klondike.Pile to klondike.Foundation");
-        IO.writeln("7. klondike.Pile to klondike.Pile");
-        return IO.readPositiveInt("Choose an option: ");
-    }
-
     private void move() {
         int chosenMove = this.readMove();
         Suit suit;
@@ -72,6 +61,17 @@ public class Klondike {
             default:
                 break;
         }
+    }
+
+    private int readMove() {
+        IO.writeln("1. klondike.Stock to klondike.Waste");
+        IO.writeln("2. klondike.Waste to klondike.Stock");
+        IO.writeln("3. klondike.Waste to klondike.Foundation");
+        IO.writeln("4. klondike.Waste to klondike.Pile");
+        IO.writeln("5. klondike.Foundation to klondike.Pile");
+        IO.writeln("6. klondike.Pile to klondike.Foundation");
+        IO.writeln("7. klondike.Pile to klondike.Pile");
+        return IO.readPositiveInt("Choose an option: ");
     }
 
     private int readNumberOfCards() {

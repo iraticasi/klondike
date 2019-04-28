@@ -16,13 +16,15 @@ public class Pile {
         this.faceDownCards = new Stack<>();
         this.faceUpCards = new Stack<>();
         this.faceDownCards.addAll(cards);
-        flipFirstCard();
+        if (!this.faceDownCards.empty()){
+            flipFirstCard();
+        }
     }
 
     public boolean fitsIn(Card card) {
         assert card != null;
         return (this.faceUpCards.empty() && card.getNumber() == Number.KING) ||
-                (!this.faceUpCards.empty() && this.faceUpCards.peek().isNextNumberTo(card) && this.faceUpCards.peek().getColor() != card.getColor());
+                (!this.faceUpCards.empty() && this.faceUpCards.peek().isNextTo(card) && this.faceUpCards.peek().getColor() != card.getColor());
     }
 
     private void flipFirstCard() {

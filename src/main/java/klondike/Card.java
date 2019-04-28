@@ -15,7 +15,7 @@ public class Card {
         this.number = number;
     }
 
-    public boolean isNextNumberTo(Card card) {
+    public boolean isNextTo(Card card) {
         return (this.getNumber().getValue() - 1) == card.getNumber().getValue();
     }
 
