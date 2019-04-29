@@ -33,7 +33,7 @@ public class Waste {
         if (this.empty()) {
             IO.writeln("empty");
         } else {
-            IO.writeln("no empty");
+            this.peek().writeln();
         }
     }
 }

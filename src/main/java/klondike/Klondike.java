@@ -64,13 +64,13 @@ public class Klondike {
     }
 
     private int readMove() {
-        IO.writeln("1. klondike.Stock to klondike.Waste");
-        IO.writeln("2. klondike.Waste to klondike.Stock");
-        IO.writeln("3. klondike.Waste to klondike.Foundation");
-        IO.writeln("4. klondike.Waste to klondike.Pile");
-        IO.writeln("5. klondike.Foundation to klondike.Pile");
-        IO.writeln("6. klondike.Pile to klondike.Foundation");
-        IO.writeln("7. klondike.Pile to klondike.Pile");
+        IO.writeln("1. Move from Stock to Waste");
+        IO.writeln("2. Move from Waste to Stock");
+        IO.writeln("3. Move from Waste to Foundation");
+        IO.writeln("4. Move from Waste to Pile");
+        IO.writeln("5. Move from Foundation to Pile");
+        IO.writeln("6. Move from Pile to Foundation");
+        IO.writeln("7. Move from Pile to Pile");
         return IO.readPositiveInt("Choose an option: ");
     }
 

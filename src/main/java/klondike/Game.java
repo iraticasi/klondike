@@ -101,9 +101,14 @@ public class Game {
         assert suit != null;
         Pile pile = this.piles.get(pileIndex);
         Foundation foundation = this.foundations.get(suit);
-        if (pile.empty()) return;
+        if (pile.empty()) {
+            return;
+        }
         Card card = pile.getTop(1).get(0);
-        if (foundation.fitsIn(card)) foundation.push(pile.getTop(1).get(0));
+        if (foundation.fitsIn(card)){
+            foundation.push(card);
+            pile.removeTop(1);
+        }
     }
 
     public void moveFromPileToPile(int originIndex, int destinationIndex, int numberOfCards) {
