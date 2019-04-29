@@ -23,19 +23,29 @@ public class IO {
         return input;
     }
 
-    public static int readPositiveInt(String title) {
-        return readPositiveInt(title, Integer.MAX_VALUE);
-    }
-
-    public static int readPositiveInt(String title, int max) {
+    public static int readInt(String title) {
         int input = 0;
         boolean ok = false;
         do {
             try {
                 input = Integer.parseInt(readString(title));
-                ok = (0 < input) && (input <= max);
+                ok = true;
             } catch (Exception ex) {
-                writeError("entero");
+                writeError("integer");
+            }
+        } while (!ok);
+        return input;
+    }
+
+    public static int readInt(String title, ClosedInterval closedInterval) {
+        int input = 0;
+        boolean ok = false;
+        do {
+            try {
+                input = Integer.parseInt(readString(title));
+                ok = closedInterval.includes(input);
+            } catch (Exception ex) {
+                writeError("integer");
             }
         } while (!ok);
         return input;

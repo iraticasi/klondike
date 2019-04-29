@@ -105,7 +105,7 @@ public class Game {
             return;
         }
         Card card = pile.getTop(1).get(0);
-        if (foundation.fitsIn(card)){
+        if (foundation.fitsIn(card)) {
             foundation.push(card);
             pile.removeTop(1);
         }
@@ -131,6 +131,7 @@ public class Game {
     }
 
     public void writeln() {
+        IO.writeln("*********************KLONDIKE*********************");
         IO.write("STOCK: ");
         this.stock.writeln();
         IO.write("WASTE: ");

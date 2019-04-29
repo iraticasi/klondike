@@ -16,7 +16,7 @@ public class Pile {
         this.faceDownCards = new Stack<>();
         this.faceUpCards = new Stack<>();
         this.faceDownCards.addAll(cards);
-        if (!this.faceDownCards.empty()){
+        if (!this.faceDownCards.empty()) {
             flipFirstCard();
         }
     }
