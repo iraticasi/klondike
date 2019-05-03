@@ -1,6 +1,7 @@
 package klondike;
 
 import klondike.utils.IO;
+import klondike.utils.YesNoDialog;
 
 public class Klondike {
 
@@ -21,6 +22,10 @@ public class Klondike {
             this.move();
             finished = game.isFinished();
         } while (!finished);
+        boolean resume = new YesNoDialog().read("Do you want to resume?");
+        if (resume) {
+            new Klondike().play();
+        }
     }
 
     private void move() {

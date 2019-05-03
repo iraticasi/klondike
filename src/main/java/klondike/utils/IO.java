@@ -41,6 +41,21 @@ public class IO {
         return input;
     }
 
+    public static char readChar(String title) {
+        char charValue = ' ';
+        boolean ok = false;
+        do {
+            String input = readString(title);
+            if (input.length() != 1) {
+                writeError("caracter");
+            } else {
+                charValue = input.charAt(0);
+                ok = true;
+            }
+        } while (!ok);
+        return charValue;
+    }
+
     public static char readChar(String title, char[] options) {
         char charValue = ' ';
         boolean ok = false;
