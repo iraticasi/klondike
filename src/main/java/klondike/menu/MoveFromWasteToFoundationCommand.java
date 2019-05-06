@@ -11,7 +11,7 @@ public class MoveFromWasteToFoundationCommand extends Command {
 
     @Override
     protected void execute() {
-        Suit suit = MenuIO.readSuit();
+        Suit suit = Suit.read();
         this.game.moveFromWasteToFoundation(suit);
     }
 }

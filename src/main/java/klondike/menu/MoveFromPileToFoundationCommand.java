@@ -1,6 +1,7 @@
 package klondike.menu;
 
 import klondike.Game;
+import klondike.Pile;
 import klondike.Suit;
 
 public class MoveFromPileToFoundationCommand extends Command {
@@ -11,8 +12,8 @@ public class MoveFromPileToFoundationCommand extends Command {
 
     @Override
     protected void execute() {
-        int pileIndex = MenuIO.readPileIndex(true);
-        Suit suit = MenuIO.readSuit();
+        int pileIndex = Pile.readIndex(true);
+        Suit suit = Suit.read();
         this.game.moveFromPileToFoundation(pileIndex, suit);
     }
 }

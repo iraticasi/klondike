@@ -8,6 +8,12 @@ public class Game {
 
     private static final int NUMBER_OF_PILES = 7;
 
+    private static final String GAME_TITLE = "*********************KLONDIKE*********************";
+    private static final String STOCK_TITLE = "STOCK: ";
+    private static final String WASTE_TITLE = "WASTE: ";
+    private static final String FOUNDATIONS_TITLE = "FOUNDATIONS: ";
+    private static final String PILE_TITLE = "PILE #";
+
     private Stock stock;
 
     private Waste waste;
@@ -17,10 +23,10 @@ public class Game {
     private List<Pile> piles;
 
     public Game() {
-        this.distribute();
+        this.clear();
     }
 
-    private void distribute() {
+    public void clear() {
         this.stock = new Stock();
         this.waste = new Waste();
         this.foundations = new HashMap<>();
@@ -131,17 +137,17 @@ public class Game {
     }
 
     public void writeln() {
-        IO.writeln("*********************KLONDIKE*********************");
-        IO.write("STOCK: ");
+        IO.writeln(GAME_TITLE);
+        IO.write(STOCK_TITLE);
         this.stock.writeln();
-        IO.write("WASTE: ");
+        IO.write(WASTE_TITLE);
         this.waste.writeln();
-        IO.writeln("FOUNDATIONS: ");
+        IO.writeln(FOUNDATIONS_TITLE);
         for (Suit suit : Suit.values()) {
             this.foundations.get(suit).writeln();
         }
         for (int i = 0; i < NUMBER_OF_PILES; i++) {
-            IO.write("PILE #" + (i + 1) + ": ");
+            IO.write(PILE_TITLE + (i + 1) + ": ");
             this.piles.get(i).writeln();
         }
     }

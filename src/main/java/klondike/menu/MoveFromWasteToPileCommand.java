@@ -1,6 +1,7 @@
 package klondike.menu;
 
 import klondike.Game;
+import klondike.Pile;
 
 public class MoveFromWasteToPileCommand extends Command {
 
@@ -10,7 +11,7 @@ public class MoveFromWasteToPileCommand extends Command {
 
     @Override
     protected void execute() {
-        int pileIndex = MenuIO.readPileIndex(false);
+        int pileIndex = Pile.readIndex(false);
         this.game.moveFromWasteToPile(pileIndex);
     }
 }

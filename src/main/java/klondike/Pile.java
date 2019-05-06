@@ -1,5 +1,6 @@
 package klondike;
 
+import klondike.utils.ClosedInterval;
 import klondike.utils.IO;
 
 import java.util.ArrayList;
@@ -21,10 +22,9 @@ public class Pile {
         }
     }
 
-    public boolean fitsIn(Card card) {
-        assert card != null;
-        return (this.faceUpCards.empty() && card.getNumber() == Number.KING) ||
-                (!this.faceUpCards.empty() && this.faceUpCards.peek().isNextTo(card) && this.faceUpCards.peek().getColor() != card.getColor());
+    public static int readIndex(boolean isOrigin) {
+        String pileTitle = isOrigin ? "origin" : "destination";
+        return IO.readInt("Choose the " + pileTitle + " pile number(1-7): ", new ClosedInterval(1, 7)) - 1;
     }
 
     private void flipFirstCard() {
@@ -32,8 +32,10 @@ public class Pile {
         this.faceUpCards.push(this.faceDownCards.pop());
     }
 
-    public int numberOfFaceUpCards() {
-        return this.faceUpCards.size();
+    public boolean fitsIn(Card card) {
+        assert card != null;
+        return (this.faceUpCards.empty() && card.getNumber() == Number.KING) ||
+                (!this.faceUpCards.empty() && this.faceUpCards.peek().isNextTo(card) && this.faceUpCards.peek().getColor() != card.getColor());
     }
 
     public List<Card> getTop(int numberOfCards) {
@@ -56,6 +58,10 @@ public class Pile {
         }
     }
 
+    public int numberOfFaceUpCards() {
+        return this.faceUpCards.size();
+    }
+
     public boolean empty() {
         return this.faceUpCards.empty();
     }
@@ -65,13 +71,13 @@ public class Pile {
             IO.writeln("empty");
         } else {
             IO.writeln();
-            if (!this.faceDownCards.empty()) {
+            for (Card card : this.faceDownCards) {
                 IO.writetab();
-                IO.writeln(this.faceDownCards.size() + " face down cards");
+                card.writeln(false);
             }
             for (Card card : this.faceUpCards) {
                 IO.writetab();
-                card.writeln();
+                card.writeln(true);
             }
         }
     }

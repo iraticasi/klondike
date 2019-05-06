@@ -16,16 +16,19 @@ public class Klondike {
     }
 
     public void play() {
-        boolean finished;
+        boolean resume;
         do {
-            game.writeln();
-            new PlayMenu(game).execute();
-            finished = game.isFinished();
-        } while (!finished);
-        boolean resume = new YesNoDialog().read("Do you want to resume?");
-        if (resume) {
-            new Klondike().play();
-        }
+            boolean finished;
+            do {
+                game.writeln();
+                new PlayMenu(game).execute();
+                finished = game.isFinished();
+            } while (!finished);
+            resume = new YesNoDialog().read("Do you want to resume?");
+            if (resume) {
+                game.clear();
+            }
+        } while (resume);
     }
 }
 
