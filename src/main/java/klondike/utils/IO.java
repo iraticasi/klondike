@@ -17,7 +17,7 @@ public class IO {
                 input = bufferedReader.readLine();
                 ok = true;
             } catch (Exception ex) {
-                writeError("de cadena de caracteres");
+                writeFormatError("de cadena de caracteres");
             }
         } while (!ok);
         return input;
@@ -31,7 +31,7 @@ public class IO {
                 input = Integer.parseInt(readString(title));
                 ok = true;
             } catch (Exception ex) {
-                writeError("integer");
+                writeFormatError("integer");
             }
         } while (!ok);
         return input;
@@ -45,7 +45,7 @@ public class IO {
                 input = Integer.parseInt(readString(title));
                 ok = closedInterval.includes(input);
             } catch (Exception ex) {
-                writeError("integer");
+                writeFormatError("integer");
             }
         } while (!ok);
         return input;
@@ -57,7 +57,7 @@ public class IO {
         do {
             String input = readString(title);
             if (input.length() != 1) {
-                writeError("caracter");
+                writeFormatError("caracter");
             } else {
                 charValue = input.charAt(0);
                 ok = true;
@@ -72,7 +72,7 @@ public class IO {
         do {
             String input = readString(title);
             if (input.length() != 1) {
-                writeError("caracter");
+                writeFormatError("caracter");
             } else {
                 charValue = input.charAt(0);
                 ok = (new String(options).indexOf(charValue) != -1);
@@ -97,7 +97,13 @@ public class IO {
         System.out.println(string);
     }
 
-    private static void writeError(String formato) {
+    public static void writeError(String title, String msg) {
+        writeln("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        writeln("! " + title.toUpperCase() + ": " + msg);
+        writeln("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    }
+
+    private static void writeFormatError(String formato) {
         System.out.println("ERROR DE FORMATO! "
                 + "Introduzca un valor con formato " + formato + ".");
     }

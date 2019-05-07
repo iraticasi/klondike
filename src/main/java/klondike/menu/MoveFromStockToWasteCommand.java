@@ -9,7 +9,7 @@ public class MoveFromStockToWasteCommand extends Command {
     }
 
     @Override
-    protected void execute() {
-        this.game.moveFromStockToWaste();
+    protected int execute() {
+        return this.game.moveFromStockToWaste();
     }
 }

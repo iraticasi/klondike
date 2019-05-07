@@ -10,8 +10,8 @@ public class MoveFromWasteToFoundationCommand extends Command {
     }
 
     @Override
-    protected void execute() {
+    protected int execute() {
         Suit suit = Suit.read();
-        this.game.moveFromWasteToFoundation(suit);
+        return this.game.moveFromWasteToFoundation(suit);
     }
 }

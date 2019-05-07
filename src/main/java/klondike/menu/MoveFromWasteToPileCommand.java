@@ -10,8 +10,8 @@ public class MoveFromWasteToPileCommand extends Command {
     }
 
     @Override
-    protected void execute() {
+    protected int execute() {
         int pileIndex = Pile.readIndex(false);
-        this.game.moveFromWasteToPile(pileIndex);
+        return this.game.moveFromWasteToPile(pileIndex);
     }
 }

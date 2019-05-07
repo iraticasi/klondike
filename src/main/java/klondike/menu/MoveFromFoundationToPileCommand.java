@@ -11,9 +11,9 @@ public class MoveFromFoundationToPileCommand extends Command {
     }
 
     @Override
-    protected void execute() {
+    protected int execute() {
         Suit suit = Suit.read();
         int pileIndex = Pile.readIndex(false);
-        this.game.moveFromFoundationToPile(suit, pileIndex);
+        return this.game.moveFromFoundationToPile(suit, pileIndex);
     }
 }

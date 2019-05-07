@@ -12,10 +12,10 @@ public class MoveFromPileToPileCommand extends Command {
     }
 
     @Override
-    protected void execute() {
+    protected int execute() {
         int originIndex = Pile.readIndex(true);
         int destinationIndex = Pile.readIndex(false);
         int numberOfCards = IO.readInt("How many cards do you want to move?: ", new ClosedInterval(1, 13));
-        this.game.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
+        return this.game.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
     }
 }
