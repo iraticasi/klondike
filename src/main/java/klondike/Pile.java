@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class Pile {
+public class Pile extends CardStack{
 
     private Stack<Card> faceDownCards;
 

@@ -11,7 +11,7 @@ public abstract class Menu {
         this.commandList = new ArrayList<Command>();
     }
 
-    public int execute() {
+    public void execute() {
         ArrayList<Command> commands = new ArrayList<Command>();
         for (int i = 0; i < this.commandList.size(); i++) {
             commands.add(this.commandList.get(i));
@@ -30,7 +30,7 @@ public abstract class Menu {
                 error = true;
             }
         } while (error);
-        return commands.get(option).execute();
+        commands.get(option).execute();
     }
 
     protected void addCommand(Command command) {

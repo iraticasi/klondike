@@ -1,5 +1,6 @@
 package klondike.menu;
 
+import klondike.Error;
 import klondike.Game;
 import klondike.Pile;
 
@@ -10,7 +11,7 @@ public class MoveFromWasteToPileCommand extends Command {
     }
 
     @Override
-    protected int execute() {
+    protected Error move() {
         int pileIndex = Pile.readIndex(false);
         return this.game.moveFromWasteToPile(pileIndex);
     }

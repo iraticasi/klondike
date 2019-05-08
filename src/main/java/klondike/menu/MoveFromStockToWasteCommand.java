@@ -1,5 +1,6 @@
 package klondike.menu;
 
+import klondike.Error;
 import klondike.Game;
 
 public class MoveFromStockToWasteCommand extends Command {
@@ -9,7 +10,7 @@ public class MoveFromStockToWasteCommand extends Command {
     }
 
     @Override
-    protected int execute() {
+    protected Error move() {
         return this.game.moveFromStockToWaste();
     }
 }

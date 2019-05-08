@@ -12,8 +12,6 @@ public enum Error {
     SAME_PILE("Same origin and destination pile index."),
     NO_ENOUGH_CARDS_PILE("There is no enough cards in the pile to move.");
 
-    public static final int NO_ERROR = -1;
-
     private String message;
 
     Error(String message) {

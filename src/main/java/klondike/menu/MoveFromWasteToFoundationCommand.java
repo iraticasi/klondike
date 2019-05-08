@@ -1,5 +1,6 @@
 package klondike.menu;
 
+import klondike.Error;
 import klondike.Game;
 import klondike.Suit;
 
@@ -10,7 +11,7 @@ public class MoveFromWasteToFoundationCommand extends Command {
     }
 
     @Override
-    protected int execute() {
+    protected Error move() {
         Suit suit = Suit.read();
         return this.game.moveFromWasteToFoundation(suit);
     }

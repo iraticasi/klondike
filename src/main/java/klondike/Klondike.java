@@ -8,12 +8,10 @@ public class Klondike {
 
     private static final String RESUME = "Do you want to resume?";
 
-    private static final String INVALID_MOVE = "Invalid move";
-
     private Game game;
 
     private Klondike() {
-        game = new Game();
+        this.game = new Game();
     }
 
     public static void main(String[] args) {
@@ -23,20 +21,16 @@ public class Klondike {
     public void play() {
         boolean resume;
         do {
-            game.writeln();
+            this.game.writeln();
             boolean finished;
             do {
-                int error = new PlayMenu(game).execute();
-                if (error != Error.NO_ERROR) {
-                    IO.writeError(INVALID_MOVE, Error.values()[error].getMessage());
-                } else {
-                    game.writeln();
-                }
-                finished = game.isFinished();
+                this.game.writeln();
+                new PlayMenu(this.game).execute();
+                finished = this.game.isFinished();
             } while (!finished);
-            resume = new YesNoDialog().read(RESUME);
+            resume = new YesNoDialog().read(Klondike.RESUME);
             if (resume) {
-                game.clear();
+                this.game.clear();
             }
         } while (resume);
     }

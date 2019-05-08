@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Stock extends CardStack {
 
+    private static final String TITLE = "STOCK: ";
+
     public Stock() {
         super();
         for (Suit suit : Suit.values()) {
@@ -26,6 +28,7 @@ public class Stock extends CardStack {
     }
 
     public void writeln() {
+        IO.writeln(Stock.TITLE);
         if (this.empty())
             IO.writeln("empty");
         else

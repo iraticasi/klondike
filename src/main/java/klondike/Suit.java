@@ -9,29 +9,29 @@ public enum Suit {
     CLOVERS(Color.BLACK),
     PIKES(Color.BLACK);
 
+    private static final char[] initials = new char[]{'H', 'D', 'C', 'P'};
+
     private final Color color;
 
     Suit(Color color) {
         this.color = color;
     }
 
-    public static Suit read() {
-        char suitInitial = IO.readChar("Choose a suit (H/D/C/P): ", new char[]{'H', 'D', 'C', 'P'});
-        switch (suitInitial) {
-            case 'H':
-                return Suit.HEARTS;
-            case 'D':
-                return Suit.DIAMONDS;
-            case 'C':
-                return Suit.CLOVERS;
-            case 'P':
-                return Suit.PIKES;
-        }
-        return null;
-    }
-
     public Color getColor() {
         return this.color;
+    }
+
+    public static Suit read() {
+        char initial = IO.readChar("Choose a suit (H/D/C/P): ", Suit.initials);
+        return Suit.find(initial);
+    }
+
+    private static Suit find(char initial) {
+        for (int i = 0; i < Suit.initials.length; i++)
+            if (initial==Suit.initials[i]) {
+                return Suit.values()[i];
+            }
+        return null;
     }
 
 }

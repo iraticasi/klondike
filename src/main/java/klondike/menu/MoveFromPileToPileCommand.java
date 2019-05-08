@@ -1,5 +1,6 @@
 package klondike.menu;
 
+import klondike.Error;
 import klondike.Game;
 import klondike.Pile;
 import klondike.utils.ClosedInterval;
@@ -12,7 +13,7 @@ public class MoveFromPileToPileCommand extends Command {
     }
 
     @Override
-    protected int execute() {
+    protected Error move() {
         int originIndex = Pile.readIndex(true);
         int destinationIndex = Pile.readIndex(false);
         int numberOfCards = IO.readInt("How many cards do you want to move?: ", new ClosedInterval(1, 13));

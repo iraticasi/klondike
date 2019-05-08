@@ -35,11 +35,10 @@ public class Card {
 
     public void writeln(boolean isFaceUp) {
         String output = isFaceUp ?
-                WRITE_FORMAT.replace("#number", this.number.toString().toLowerCase())
+                Card.WRITE_FORMAT.replace("#number", this.number.toString().toLowerCase())
                         .replace("#suit", this.suit.toString().toLowerCase()) :
-                WRITE_FORMAT.replace("#number", "XXXX")
+                Card.WRITE_FORMAT.replace("#number", "XXXX")
                         .replace("#suit", "XXXX");
-        ;
         IO.writeln(output);
     }
 }
