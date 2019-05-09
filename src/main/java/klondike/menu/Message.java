@@ -1,6 +1,7 @@
 package klondike.menu;
 
 public enum Message {
+
     STOCK2WASTE_COMMAND("Move from stock to waste"),
     WASTE2STOCK_COMMAND("Move from waste to stock"),
     WASTE2FOUNDATION_COMMAND("Move from waste to foundation"),

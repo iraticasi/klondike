@@ -8,10 +8,6 @@ public class Game {
 
     private static final int NUMBER_OF_PILES = 7;
 
-    private static final String GAME_TITLE = "*********************KLONDIKE*********************";
-    private static final String FOUNDATIONS_TITLE = "FOUNDATIONS: ";
-    private static final String PILE_TITLE = "PILE ##number: ";
-
     private Stock stock;
 
     private Waste waste;
@@ -151,15 +147,15 @@ public class Game {
 
     public void writeln() {
         IO.writeln();
-        IO.writeln(Game.GAME_TITLE);
+        IO.writeln(Message.GAME_TITLE);
         this.stock.writeln();
         this.waste.writeln();
-        IO.writeln(Game.FOUNDATIONS_TITLE);
+        IO.writeln(Message.FOUNDATIONS_TITLE);
         for (Suit suit : Suit.values()) {
             this.foundations.get(suit).writeln();
         }
         for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
-            IO.write(Game.PILE_TITLE.replace("#number", Integer.toString(i+1)));
+            IO.write(Message.PILE_TITLE.replace(Message.NUMBER_TAG, Integer.toString(i+1)));
             this.piles.get(i).writeln();
         }
     }

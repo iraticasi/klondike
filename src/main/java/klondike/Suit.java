@@ -22,7 +22,7 @@ public enum Suit {
     }
 
     public static Suit read() {
-        char initial = IO.readChar("Choose a suit (H/D/C/P): ", Suit.initials);
+        char initial = IO.readChar(Message.READ_SUIT, Suit.initials);
         return Suit.find(initial);
     }
 

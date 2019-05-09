@@ -20,8 +20,8 @@ public class Pile extends CardStack{
     }
 
     public static int readIndex(boolean isOrigin) {
-        String pileTitle = isOrigin ? "origin" : "destination";
-        return IO.readInt("Choose the " + pileTitle + " pile number(1-7): ", new ClosedInterval(1, 7)) - 1;
+        String pileTitle = isOrigin ? Message.ORIGIN : Message.DESTINATION;
+        return IO.readInt(Message.READ_PILE_INDEX.replace(Message.PILE_TAG, pileTitle), new ClosedInterval(1, 7)) - 1;
     }
 
     private void flipFirstCard() {
@@ -68,7 +68,7 @@ public class Pile extends CardStack{
 
     public void writeln() {
         if (this.cards.empty()) {
-            IO.writeln("empty");
+            IO.writeln(Message.EMPTY);
         } else {
             IO.writeln();
             for (Card card : this.cards) {

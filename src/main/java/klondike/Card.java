@@ -4,8 +4,6 @@ import klondike.utils.IO;
 
 public class Card {
 
-    private static final String WRITE_FORMAT = "#number of #suit";
-
     private Suit suit;
 
     private Number number;
@@ -37,11 +35,9 @@ public class Card {
     }
 
     public void writeln() {
-        String output = this.facedUp ?
-                Card.WRITE_FORMAT.replace("#number", this.number.toString().toLowerCase())
-                        .replace("#suit", this.suit.toString().toLowerCase()) :
-                Card.WRITE_FORMAT.replace("#number", "XXXX")
-                        .replace("#suit", "XXXX");
+        String number = this.facedUp? this.number.toString().toLowerCase() : Message.FACE_DOWN;
+        String suit = this.facedUp? this.suit.toString().toLowerCase() : Message.FACE_DOWN;
+        String output = Message.CARD_FORMAT.replace(Message.NUMBER_TAG, number).replace(Message.SUIT_TAG, suit);
         IO.writeln(output);
     }
 

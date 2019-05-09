@@ -5,8 +5,6 @@ import klondike.utils.YesNoDialog;
 
 public class Klondike {
 
-    private static final String RESUME = "Do you want to resume?";
-
     private Game game;
 
     private Klondike() {
@@ -26,7 +24,7 @@ public class Klondike {
                 playMenu.execute();
                 finished = this.game.isFinished();
             } while (!finished);
-            resume = new YesNoDialog().read(Klondike.RESUME);
+            resume = new YesNoDialog().read(Message.RESUME);
             if (resume) {
                 this.game.clear();
             }

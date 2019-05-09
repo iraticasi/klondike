@@ -26,9 +26,9 @@ public class Foundation extends CardStack {
         IO.writetab();
         IO.write(this.suit.toString().toLowerCase() + ": ");
         if (this.empty()) {
-            IO.write("empty");
+            IO.write(Message.EMPTY);
         } else {
-            IO.write("until " + this.peek().getNumber().toString().toLowerCase());
+            IO.write(Message.FOUNDATION_FORMAT.replace(Message.NUMBER_TAG, this.peek().getNumber().toString().toLowerCase()));
         }
         IO.writeln();
     }
