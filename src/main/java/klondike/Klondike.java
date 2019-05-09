@@ -1,7 +1,6 @@
 package klondike;
 
 import klondike.menu.PlayMenu;
-import klondike.utils.IO;
 import klondike.utils.YesNoDialog;
 
 public class Klondike {
@@ -19,13 +18,12 @@ public class Klondike {
     }
 
     public void play() {
+        PlayMenu playMenu = new PlayMenu(this.game);
         boolean resume;
         do {
-            this.game.writeln();
             boolean finished;
             do {
-                this.game.writeln();
-                new PlayMenu(this.game).execute();
+                playMenu.execute();
                 finished = this.game.isFinished();
             } while (!finished);
             resume = new YesNoDialog().read(Klondike.RESUME);
@@ -35,4 +33,3 @@ public class Klondike {
         } while (resume);
     }
 }
-

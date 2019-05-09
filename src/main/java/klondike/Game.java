@@ -64,7 +64,7 @@ public class Game {
         if (!foundation.fitsIn(card)) {
             return Error.NO_FIT_FOUNDATION;
         }
-        foundation.push(this.waste.pop());
+        foundation.push(this.waste.pop().flip());
         return null;
     }
 
@@ -76,7 +76,7 @@ public class Game {
             return Error.EMPTY_WASTE;
         }
         while (!this.waste.empty()) {
-            this.stock.push(this.waste.pop());
+            this.stock.push(this.waste.pop().flip());
         }
         return null;
     }

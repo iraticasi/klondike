@@ -28,7 +28,7 @@ public class Stock extends CardStack {
     }
 
     public void writeln() {
-        IO.writeln(Stock.TITLE);
+        IO.write(Stock.TITLE);
         if (this.empty())
             IO.writeln("empty");
         else

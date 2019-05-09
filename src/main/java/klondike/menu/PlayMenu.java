@@ -13,6 +13,7 @@ public class PlayMenu extends Menu {
         this.addCommand(new MoveFromFoundationToPileCommand(game));
         this.addCommand(new MoveFromPileToFoundationCommand(game));
         this.addCommand(new MoveFromPileToPileCommand(game));
+        game.writeln();
     }
 
 }

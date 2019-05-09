@@ -9,15 +9,12 @@ import java.util.Stack;
 
 public class Pile extends CardStack{
 
-    private Stack<Card> faceDownCards;
-
-    private Stack<Card> faceUpCards;
+    private int numberOfFaceUpCards;
 
     public Pile(List<Card> cards) {
-        this.faceDownCards = new Stack<>();
-        this.faceUpCards = new Stack<>();
-        this.faceDownCards.addAll(cards);
-        if (!this.faceDownCards.empty()) {
+        this.numberOfFaceUpCards = 0;
+        this.cards.addAll(cards);
+        if (!this.cards.empty()) {
             flipFirstCard();
         }
     }
@@ -28,56 +25,55 @@ public class Pile extends CardStack{
     }
 
     private void flipFirstCard() {
-        assert this.faceUpCards.empty() && !this.faceDownCards.empty();
-        this.faceUpCards.push(this.faceDownCards.pop());
+        assert !this.cards.empty() && this.numberOfFaceUpCards==0 && this.cards.peek().isFacedUp();
+        this.cards.peek().flip();
+        numberOfFaceUpCards++;
     }
 
     public boolean fitsIn(Card card) {
         assert card != null;
-        return (this.faceUpCards.empty() && card.getNumber() == Number.KING) ||
-                (!this.faceUpCards.empty() && this.faceUpCards.peek().isNextTo(card) && this.faceUpCards.peek().getColor() != card.getColor());
+        return (this.cards.empty() && card.getNumber() == Number.KING) ||
+                (!this.cards.empty() && this.cards.peek().isNextTo(card) && this.cards.peek().getColor() != card.getColor());
     }
 
     public List<Card> getTop(int numberOfCards) {
-        assert numberOfCards <= this.faceUpCards.size();
-        return new ArrayList<>(this.faceUpCards.subList(this.faceUpCards.size() - numberOfCards, this.faceUpCards.size()));
+        assert numberOfCards <= this.numberOfFaceUpCards;
+        return new ArrayList<>(this.cards.subList(this.cards.size() - numberOfCards, this.cards.size()));
     }
 
     public void addToTop(List<Card> cards) {
         assert cards != null;
-        this.faceUpCards.addAll(cards);
+        this.cards.addAll(cards);
+        numberOfFaceUpCards+= cards.size();
     }
 
     public void removeTop(int numberOfCards) {
-        assert numberOfCards <= this.faceUpCards.size();
+        assert numberOfCards <= this.numberOfFaceUpCards;
         for (int i = 0; i < numberOfCards; i++) {
-            this.faceUpCards.pop();
-            if (this.faceUpCards.empty() && !this.faceDownCards.empty()) {
-                flipFirstCard();
-            }
+            this.cards.pop();
+            numberOfFaceUpCards--;
+        }
+        if (this.numberOfFaceUpCards==0 && !this.cards.empty()) {
+            flipFirstCard();
         }
     }
 
     public int numberOfFaceUpCards() {
-        return this.faceUpCards.size();
+        return this.numberOfFaceUpCards;
     }
 
     public boolean empty() {
-        return this.faceUpCards.empty();
+        return this.cards.empty();
     }
 
     public void writeln() {
-        if (this.faceUpCards.empty()) {
+        if (this.cards.empty()) {
             IO.writeln("empty");
         } else {
             IO.writeln();
-            for (Card card : this.faceDownCards) {
+            for (Card card : this.cards) {
                 IO.writetab();
-                card.writeln(false);
-            }
-            for (Card card : this.faceUpCards) {
-                IO.writetab();
-                card.writeln(true);
+                card.writeln();
             }
         }
     }

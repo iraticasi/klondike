@@ -10,11 +10,14 @@ public class Card {
 
     private Number number;
 
+    private boolean facedUp;
+
     public Card(Suit suit, Number number) {
         assert suit != null;
         assert number != null;
         this.suit = suit;
         this.number = number;
+        this.facedUp = false;
     }
 
     public boolean isNextTo(Card card) {
@@ -33,12 +36,22 @@ public class Card {
         return this.suit.getColor();
     }
 
-    public void writeln(boolean isFaceUp) {
-        String output = isFaceUp ?
+    public void writeln() {
+        String output = this.facedUp ?
                 Card.WRITE_FORMAT.replace("#number", this.number.toString().toLowerCase())
                         .replace("#suit", this.suit.toString().toLowerCase()) :
                 Card.WRITE_FORMAT.replace("#number", "XXXX")
                         .replace("#suit", "XXXX");
         IO.writeln(output);
     }
+
+    public Card flip() {
+        this.facedUp = !this.facedUp;
+        return this;
+    }
+
+    public boolean isFacedUp() {
+        return facedUp;
+    }
+
 }
