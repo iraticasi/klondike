@@ -18,6 +18,15 @@ public class Card {
         this.facedUp = false;
     }
 
+    public Card flip() {
+        this.facedUp = !this.facedUp;
+        return this;
+    }
+
+    public boolean isFacedUp() {
+        return facedUp;
+    }
+
     public boolean isNextTo(Card card) {
         return (this.getNumber().getValue() - 1) == card.getNumber().getValue();
     }
@@ -40,14 +49,4 @@ public class Card {
         String output = Message.CARD_FORMAT.replace(Message.NUMBER_TAG, number).replace(Message.SUIT_TAG, suit);
         IO.writeln(output);
     }
-
-    public Card flip() {
-        this.facedUp = !this.facedUp;
-        return this;
-    }
-
-    public boolean isFacedUp() {
-        return facedUp;
-    }
-
 }

@@ -46,7 +46,7 @@ public class Game {
         if (this.stock.empty()) {
             return Error.EMPTY_STOCK;
         }
-        this.waste.push(this.stock.pop());
+        this.waste.push(this.stock.pop().flip());
         return null;
     }
 
@@ -60,7 +60,7 @@ public class Game {
         if (!foundation.fitsIn(card)) {
             return Error.NO_FIT_FOUNDATION;
         }
-        foundation.push(this.waste.pop().flip());
+        foundation.push(this.waste.pop());
         return null;
     }
 
@@ -155,7 +155,7 @@ public class Game {
             this.foundations.get(suit).writeln();
         }
         for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
-            IO.write(Message.PILE_TITLE.replace(Message.NUMBER_TAG, Integer.toString(i+1)));
+            IO.write(Message.PILE_TITLE.replace(Message.PILE_TAG, Integer.toString(i+1)));
             this.piles.get(i).writeln();
         }
     }

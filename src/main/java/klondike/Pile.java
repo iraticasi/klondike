@@ -19,11 +19,6 @@ public class Pile extends CardStack{
         }
     }
 
-    public static int readIndex(boolean isOrigin) {
-        String pileTitle = isOrigin ? Message.ORIGIN : Message.DESTINATION;
-        return IO.readInt(Message.READ_PILE_INDEX.replace(Message.PILE_TAG, pileTitle), new ClosedInterval(1, 7)) - 1;
-    }
-
     private void flipFirstCard() {
         assert !this.cards.empty() && this.numberOfFaceUpCards==0 && this.cards.peek().isFacedUp();
         this.cards.peek().flip();
@@ -76,5 +71,10 @@ public class Pile extends CardStack{
                 card.writeln();
             }
         }
+    }
+
+    public static int readIndex(boolean isOrigin) {
+        String pileTitle = isOrigin ? Message.ORIGIN : Message.DESTINATION;
+        return IO.readInt(Message.READ_PILE_INDEX.replace(Message.PILE_TAG, pileTitle), new ClosedInterval(1, 7)) - 1;
     }
 }
