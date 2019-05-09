@@ -1,8 +1,8 @@
-package klondike;
+package klondike.models;
 
 import java.util.Stack;
 
-public abstract class CardStack {
+public class CardStack {
 
     protected Stack<Card> cards;
 

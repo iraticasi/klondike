@@ -1,14 +1,16 @@
 package klondike;
 
-import klondike.menu.PlayMenu;
-import klondike.utils.YesNoDialog;
+import klondike.models.Game;
+import klondike.views.View;
 
 public class Klondike {
 
+    private View view;
     private Game game;
 
     private Klondike() {
         this.game = new Game();
+        this.view = new View(this.game);
     }
 
     public static void main(String[] args) {
@@ -16,18 +18,6 @@ public class Klondike {
     }
 
     public void play() {
-        PlayMenu playMenu = new PlayMenu(this.game);
-        boolean resume;
-        do {
-            boolean finished;
-            do {
-                playMenu.execute();
-                finished = this.game.isFinished();
-            } while (!finished);
-            resume = new YesNoDialog().read(Message.RESUME);
-            if (resume) {
-                this.game.clear();
-            }
-        } while (resume);
+        view.interact();
     }
 }

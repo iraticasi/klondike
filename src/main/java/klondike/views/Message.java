@@ -1,4 +1,4 @@
-package klondike;
+package klondike.views;
 
 public class Message {
 
@@ -17,13 +17,13 @@ public class Message {
 
     public static final String FACE_DOWN = "XXXX";
     public static final String CARD_FORMAT = NUMBER_TAG + " of " + SUIT_TAG;
-    public static final String FOUNDATION_FORMAT = "until " + NUMBER_TAG ;
+    public static final String FOUNDATION_FORMAT = "until " + NUMBER_TAG;
 
     public static final String INVALID_MOVE = "Invalid move";
     public static final String RESUME = "Do you want to resume?";
     public static final String READ_NUMBER_OF_CARDS = "How many cards do you want to move?: ";
     public static final String READ_SUIT = "Choose a suit (H/D/C/P): ";
-    public static final String READ_PILE_INDEX = "Choose the "+ PILE_TAG +" pile number(1-7): ";
+    public static final String READ_PILE_INDEX = "Choose the " + PILE_TAG + " pile number(1-7): ";
     public static final String DESTINATION = "destination";
     public static final String ORIGIN = "origin";
 }

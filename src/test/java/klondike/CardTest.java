@@ -1,5 +1,8 @@
 package klondike;
 
+import klondike.models.Card;
+import klondike.models.Number;
+import klondike.models.Suit;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

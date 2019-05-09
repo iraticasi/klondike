@@ -1,6 +1,4 @@
-package klondike;
-
-import klondike.utils.IO;
+package klondike.models;
 
 public class Card {
 
@@ -18,8 +16,17 @@ public class Card {
         this.facedUp = false;
     }
 
+    public Card flip() {
+        this.facedUp = !this.facedUp;
+        return this;
+    }
+
     public boolean isNextTo(Card card) {
         return (this.getNumber().getValue() - 1) == card.getNumber().getValue();
+    }
+
+    public boolean isFacedUp() {
+        return facedUp;
     }
 
     public Number getNumber() {
@@ -32,22 +39,6 @@ public class Card {
 
     public Color getColor() {
         return this.suit.getColor();
-    }
-
-    public void writeln() {
-        String number = this.facedUp? this.number.toString().toLowerCase() : Message.FACE_DOWN;
-        String suit = this.facedUp? this.suit.toString().toLowerCase() : Message.FACE_DOWN;
-        String output = Message.CARD_FORMAT.replace(Message.NUMBER_TAG, number).replace(Message.SUIT_TAG, suit);
-        IO.writeln(output);
-    }
-
-    public Card flip() {
-        this.facedUp = !this.facedUp;
-        return this;
-    }
-
-    public boolean isFacedUp() {
-        return facedUp;
     }
 
 }

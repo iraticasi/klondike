@@ -1,16 +1,14 @@
-package klondike;
-
-import klondike.utils.IO;
+package klondike.models;
 
 import java.util.*;
 
 public class Game {
 
-    private static final int NUMBER_OF_PILES = 7;
+    public static final int NUMBER_OF_PILES = 7;
 
     private Stock stock;
 
-    private Waste waste;
+    private CardStack waste;
 
     private Map<Suit, Foundation> foundations;
 
@@ -22,7 +20,7 @@ public class Game {
 
     public void clear() {
         this.stock = new Stock();
-        this.waste = new Waste();
+        this.waste = new CardStack();
         this.foundations = new HashMap<>();
         for (Suit suit : Suit.values()) {
             this.foundations.put(suit, new Foundation(suit));
@@ -46,7 +44,7 @@ public class Game {
         if (this.stock.empty()) {
             return Error.EMPTY_STOCK;
         }
-        this.waste.push(this.stock.pop());
+        this.waste.push(this.stock.pop().flip());
         return null;
     }
 
@@ -60,7 +58,7 @@ public class Game {
         if (!foundation.fitsIn(card)) {
             return Error.NO_FIT_FOUNDATION;
         }
-        foundation.push(this.waste.pop().flip());
+        foundation.push(this.waste.pop());
         return null;
     }
 
@@ -145,20 +143,20 @@ public class Game {
         return null;
     }
 
-    public void writeln() {
-        IO.writeln();
-        IO.writeln(Message.GAME_TITLE);
-        this.stock.writeln();
-        this.waste.writeln();
-        IO.writeln(Message.FOUNDATIONS_TITLE);
-        for (Suit suit : Suit.values()) {
-            this.foundations.get(suit).writeln();
-        }
-        for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
-            IO.write(Message.PILE_TITLE.replace(Message.NUMBER_TAG, Integer.toString(i+1)));
-            this.piles.get(i).writeln();
-        }
+
+    public Stock getStock() {
+        return this.stock;
     }
 
+    public CardStack getWaste() {
+        return this.waste;
+    }
 
+    public Map<Suit, Foundation> getFoundations() {
+        return foundations;
+    }
+
+    public List<Pile> getPiles() {
+        return piles;
+    }
 }

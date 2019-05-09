@@ -1,8 +1,10 @@
-package klondike.menu;
+package klondike.views.menu;
 
-import klondike.Error;
-import klondike.Game;
+import klondike.models.Error;
+import klondike.models.Game;
 import klondike.utils.IO;
+import klondike.views.GameView;
+import klondike.views.Message;
 
 public abstract class Command extends klondike.utils.Command {
 
@@ -16,10 +18,10 @@ public abstract class Command extends klondike.utils.Command {
     @Override
     protected void execute() {
         Error error = this.move();
-        if (error!=null){
-            IO.writeError(klondike.Message.INVALID_MOVE, error.getMessage());
-        }else{
-            this.game.writeln();
+        if (error != null) {
+            IO.writeError(Message.INVALID_MOVE, error.getMessage());
+        } else {
+            new GameView(this.game).writeln();
         }
     }
 

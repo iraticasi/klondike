@@ -1,7 +1,7 @@
-package klondike.menu;
+package klondike.views.menu;
 
-import klondike.Error;
-import klondike.Game;
+import klondike.models.Error;
+import klondike.models.Game;
 
 public class MoveFromWasteToStockCommand extends Command {
 

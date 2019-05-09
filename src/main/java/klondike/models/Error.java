@@ -1,4 +1,4 @@
-package klondike;
+package klondike.models;
 
 public enum Error {
 

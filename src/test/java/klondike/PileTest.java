@@ -1,5 +1,9 @@
 package klondike;
 
+import klondike.models.Card;
+import klondike.models.Number;
+import klondike.models.Pile;
+import klondike.models.Suit;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

@@ -1,6 +1,4 @@
-package klondike;
-
-import klondike.utils.IO;
+package klondike.models;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,14 +21,6 @@ public class Stock extends CardStack {
         List<Card> cardsToReturn = new ArrayList<>(this.cards.subList(0, quantity));
         this.cards.removeAll(cardsToReturn);
         return cardsToReturn;
-    }
-
-    public void writeln() {
-        IO.write(Message.STOCK_TITLE);
-        if (this.empty())
-            IO.writeln(Message.EMPTY);
-        else
-            IO.writeln(Message.NOT_EMPTY);
     }
 
 }

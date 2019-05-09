@@ -1,13 +1,10 @@
-package klondike;
-
-import klondike.utils.ClosedInterval;
-import klondike.utils.IO;
+package klondike.models;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class Pile extends CardStack{
+public class Pile extends CardStack {
 
     private int numberOfFaceUpCards;
 
@@ -19,13 +16,8 @@ public class Pile extends CardStack{
         }
     }
 
-    public static int readIndex(boolean isOrigin) {
-        String pileTitle = isOrigin ? Message.ORIGIN : Message.DESTINATION;
-        return IO.readInt(Message.READ_PILE_INDEX.replace(Message.PILE_TAG, pileTitle), new ClosedInterval(1, 7)) - 1;
-    }
-
     private void flipFirstCard() {
-        assert !this.cards.empty() && this.numberOfFaceUpCards==0 && this.cards.peek().isFacedUp();
+        assert !this.cards.empty() && this.numberOfFaceUpCards == 0 && this.cards.peek().isFacedUp();
         this.cards.peek().flip();
         numberOfFaceUpCards++;
     }
@@ -44,7 +36,7 @@ public class Pile extends CardStack{
     public void addToTop(List<Card> cards) {
         assert cards != null;
         this.cards.addAll(cards);
-        numberOfFaceUpCards+= cards.size();
+        numberOfFaceUpCards += cards.size();
     }
 
     public void removeTop(int numberOfCards) {
@@ -53,7 +45,7 @@ public class Pile extends CardStack{
             this.cards.pop();
             numberOfFaceUpCards--;
         }
-        if (this.numberOfFaceUpCards==0 && !this.cards.empty()) {
+        if (this.numberOfFaceUpCards == 0 && !this.cards.empty()) {
             flipFirstCard();
         }
     }
@@ -66,15 +58,7 @@ public class Pile extends CardStack{
         return this.cards.empty();
     }
 
-    public void writeln() {
-        if (this.cards.empty()) {
-            IO.writeln(Message.EMPTY);
-        } else {
-            IO.writeln();
-            for (Card card : this.cards) {
-                IO.writetab();
-                card.writeln();
-            }
-        }
+    public Stack<Card> getCards() {
+        return this.cards;
     }
 }

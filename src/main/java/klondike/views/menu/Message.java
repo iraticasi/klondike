@@ -1,4 +1,4 @@
-package klondike.menu;
+package klondike.views.menu;
 
 public enum Message {
 

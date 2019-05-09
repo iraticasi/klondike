@@ -1,6 +1,4 @@
-package klondike;
-
-import klondike.utils.IO;
+package klondike.models;
 
 public class Foundation extends CardStack {
 
@@ -22,14 +20,7 @@ public class Foundation extends CardStack {
                         (!this.empty() && card.isNextTo(this.peek())));
     }
 
-    public void writeln() {
-        IO.writetab();
-        IO.write(this.suit.toString().toLowerCase() + ": ");
-        if (this.empty()) {
-            IO.write(Message.EMPTY);
-        } else {
-            IO.write(Message.FOUNDATION_FORMAT.replace(Message.NUMBER_TAG, this.peek().getNumber().toString().toLowerCase()));
-        }
-        IO.writeln();
+    public Suit getSuit() {
+        return this.suit;
     }
 }
