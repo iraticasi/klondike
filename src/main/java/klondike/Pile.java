@@ -9,9 +9,12 @@ import java.util.Stack;
 
 public class Pile extends CardStack{
 
+    private final int number;
+
     private int numberOfFaceUpCards;
 
-    public Pile(List<Card> cards) {
+    public Pile(int number, List<Card> cards) {
+        this.number = number;
         this.numberOfFaceUpCards = 0;
         this.cards.addAll(cards);
         if (!this.cards.empty()) {
@@ -62,6 +65,7 @@ public class Pile extends CardStack{
     }
 
     public void writeln() {
+        IO.write(Message.PILE_TITLE.replace(Message.PILE_TAG, Integer.toString(number)));
         if (this.cards.empty()) {
             IO.writeln(Message.EMPTY);
         } else {

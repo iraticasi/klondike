@@ -4,17 +4,17 @@ import klondike.utils.IO;
 
 public enum Suit {
 
-    HEARTS(Color.RED),
-    DIAMONDS(Color.RED),
-    CLOVERS(Color.BLACK),
-    PIKES(Color.BLACK);
-
-    private static final char[] initials = new char[]{'H', 'D', 'C', 'P'};
+    HEARTS(Color.RED, 'H'),
+    DIAMONDS(Color.RED, 'D'),
+    CLOVERS(Color.BLACK, 'C'),
+    PIKES(Color.BLACK, 'P');
 
     private final Color color;
+    private final char initial;
 
-    Suit(Color color) {
+    Suit(Color color, char initial) {
         this.color = color;
+        this.initial = initial;
     }
 
     public Color getColor() {
@@ -22,14 +22,22 @@ public enum Suit {
     }
 
     public static Suit read() {
-        char initial = IO.readChar(Message.READ_SUIT, Suit.initials);
+        char initial = IO.readChar(Message.READ_SUIT, Suit.initials());
         return Suit.find(initial);
     }
 
+    private static char[] initials(){
+        char[] initials = new char[Suit.values().length];
+        for (Suit suit :Suit.values()){
+            initials[suit.ordinal()] = suit.initial;
+        }
+        return initials;
+    }
+
     private static Suit find(char initial) {
-        for (int i = 0; i < Suit.initials.length; i++)
-            if (initial==Suit.initials[i]) {
-                return Suit.values()[i];
+        for (Suit suit :Suit.values())
+            if (initial==suit.initial) {
+                return suit;
             }
         return null;
     }

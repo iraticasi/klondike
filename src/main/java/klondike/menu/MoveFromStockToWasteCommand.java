@@ -6,7 +6,7 @@ import klondike.Game;
 public class MoveFromStockToWasteCommand extends Command {
 
     public MoveFromStockToWasteCommand(Game game) {
-        super(Message.STOCK2WASTE_COMMAND.getMessage(), game);
+        super(CommandTitle.STOCK2WASTE_COMMAND.getTitle(), game);
     }
 
     @Override

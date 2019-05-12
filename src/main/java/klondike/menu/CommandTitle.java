@@ -1,6 +1,6 @@
 package klondike.menu;
 
-public enum Message {
+public enum CommandTitle {
 
     STOCK2WASTE_COMMAND("Move from stock to waste"),
     WASTE2STOCK_COMMAND("Move from waste to stock"),
@@ -10,14 +10,14 @@ public enum Message {
     PILE2FOUNDATION_COMMAND("Move from pile to foundation"),
     PILE2PILE_COMMAND("Move from pile to pile");
 
-    private String message;
+    private String title;
 
-    Message(String message) {
-        this.message = message;
+    CommandTitle(String title) {
+        this.title = title;
     }
 
-    public String getMessage() {
-        return this.message;
+    public String getTitle() {
+        return this.title;
     }
 
 }

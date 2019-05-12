@@ -29,7 +29,7 @@ public class Game {
         }
         this.piles = new ArrayList<>();
         for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
-            this.piles.add(new Pile(this.stock.takeTop(i + 1)));
+            this.piles.add(new Pile(i+1, this.stock.takeTop(i + 1)));
         }
     }
 
@@ -155,7 +155,6 @@ public class Game {
             this.foundations.get(suit).writeln();
         }
         for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
-            IO.write(Message.PILE_TITLE.replace(Message.PILE_TAG, Integer.toString(i+1)));
             this.piles.get(i).writeln();
         }
     }
