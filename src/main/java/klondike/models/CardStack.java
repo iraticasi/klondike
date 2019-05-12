@@ -2,7 +2,7 @@ package klondike.models;
 
 import java.util.Stack;
 
-public class CardStack {
+public abstract class CardStack {
 
     protected Stack<Card> cards;
 
