@@ -9,7 +9,7 @@ import klondike.views.SuitView;
 public class MoveFromPileToFoundationCommand extends Command {
 
     public MoveFromPileToFoundationCommand(Game game) {
-        super(Message.PILE2FOUNDATION_COMMAND.getMessage(), game);
+        super(CommandTitle.PILE2FOUNDATION_COMMAND.getTitle(), game);
     }
 
     @Override

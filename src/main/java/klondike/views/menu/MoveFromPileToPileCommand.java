@@ -9,7 +9,7 @@ import klondike.views.PileView;
 public class MoveFromPileToPileCommand extends Command {
 
     public MoveFromPileToPileCommand(Game game) {
-        super(Message.PILE2PILE_COMMAND.getMessage(), game);
+        super(CommandTitle.PILE2PILE_COMMAND.getTitle(), game);
     }
 
     @Override

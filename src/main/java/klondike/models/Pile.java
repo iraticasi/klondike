@@ -6,9 +6,12 @@ import java.util.Stack;
 
 public class Pile extends CardStack {
 
+    private final int number;
+
     private int numberOfFaceUpCards;
 
-    public Pile(List<Card> cards) {
+    public Pile(int number, List<Card> cards) {
+        this.number = number;
         this.numberOfFaceUpCards = 0;
         this.cards.addAll(cards);
         if (!this.cards.empty()) {
@@ -60,5 +63,9 @@ public class Pile extends CardStack {
 
     public Stack<Card> getCards() {
         return this.cards;
+    }
+
+    public int getNumber(){
+        return this.number;
     }
 }

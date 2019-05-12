@@ -8,7 +8,7 @@ import klondike.views.SuitView;
 public class MoveFromWasteToFoundationCommand extends Command {
 
     public MoveFromWasteToFoundationCommand(Game game) {
-        super(Message.WASTE2FOUNDATION_COMMAND.getMessage(), game);
+        super(CommandTitle.WASTE2FOUNDATION_COMMAND.getTitle(), game);
     }
 
     @Override

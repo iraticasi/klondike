@@ -22,7 +22,6 @@ public class GameView {
             new FoundationView(this.game.getFoundations().get(suit)).writeln();
         }
         for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
-            IO.write(Message.PILE_TITLE.replace(Message.PILE_TAG, Integer.toString(i + 1)));
             new PileView(this.game.getPiles().get(i)).writeln();
         }
     }

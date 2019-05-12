@@ -7,7 +7,7 @@ import klondike.views.PileView;
 public class MoveFromWasteToPileCommand extends Command {
 
     public MoveFromWasteToPileCommand(Game game) {
-        super(Message.WASTE2PILE_COMMAND.getMessage(), game);
+        super(CommandTitle.WASTE2PILE_COMMAND.getTitle(), game);
     }
 
     @Override
