@@ -1,4 +1,4 @@
-package klondike.views;
+package klondike.views.console;
 
 public class Message {
 

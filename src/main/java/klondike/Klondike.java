@@ -2,6 +2,7 @@ package klondike;
 
 import klondike.models.Game;
 import klondike.views.View;
+import klondike.views.console.ConsoleView;
 
 public class Klondike {
 
@@ -10,7 +11,7 @@ public class Klondike {
 
     private Klondike() {
         this.game = new Game();
-        this.view = new View(this.game);
+        this.view = new ConsoleView(this.game);
     }
 
     public static void main(String[] args) {

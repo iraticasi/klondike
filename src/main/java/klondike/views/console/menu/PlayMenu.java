@@ -1,13 +1,11 @@
-package klondike.views.menu;
+package klondike.views.console.menu;
 
 import klondike.models.Game;
 import klondike.utils.Menu;
-import klondike.views.GameView;
 
 public class PlayMenu extends Menu {
 
     public PlayMenu(Game game) {
-        new GameView(game).writeln();
         this.addCommand(new MoveFromStockToWasteCommand(game));
         this.addCommand(new MoveFromWasteToStockCommand(game));
         this.addCommand(new MoveFromWasteToFoundationCommand(game));

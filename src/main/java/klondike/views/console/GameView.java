@@ -1,4 +1,4 @@
-package klondike.views;
+package klondike.views.console;
 
 import klondike.models.Game;
 import klondike.models.Suit;

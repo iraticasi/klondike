@@ -1,8 +1,8 @@
-package klondike.views.menu;
+package klondike.views.console.menu;
 
 import klondike.models.Error;
 import klondike.models.Game;
-import klondike.views.PileView;
+import klondike.views.console.PileView;
 
 public class MoveFromWasteToPileCommand extends Command {
 

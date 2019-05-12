@@ -15,24 +15,24 @@ public enum Suit {
         this.initial = initial;
     }
 
-    public Color getColor() {
-        return this.color;
-    }
-
-    public static char[] initials(){
+    public static char[] initials() {
         char[] initials = new char[Suit.values().length];
-        for (Suit suit :Suit.values()){
+        for (Suit suit : Suit.values()) {
             initials[suit.ordinal()] = suit.initial;
         }
         return initials;
     }
 
     public static Suit find(char initial) {
-        for (Suit suit :Suit.values())
-            if (initial==suit.initial) {
+        for (Suit suit : Suit.values())
+            if (initial == suit.initial) {
                 return suit;
             }
         return null;
+    }
+
+    public Color getColor() {
+        return this.color;
     }
 
 }

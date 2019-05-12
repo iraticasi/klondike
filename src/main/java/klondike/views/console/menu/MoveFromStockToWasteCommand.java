@@ -1,4 +1,4 @@
-package klondike.views.menu;
+package klondike.views.console.menu;
 
 import klondike.models.Error;
 import klondike.models.Game;

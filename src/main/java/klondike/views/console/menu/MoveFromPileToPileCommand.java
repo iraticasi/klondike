@@ -1,10 +1,11 @@
-package klondike.views.menu;
+package klondike.views.console.menu;
 
 import klondike.models.Error;
 import klondike.models.Game;
 import klondike.utils.ClosedInterval;
 import klondike.utils.IO;
-import klondike.views.PileView;
+import klondike.views.console.Message;
+import klondike.views.console.PileView;
 
 public class MoveFromPileToPileCommand extends Command {
 
@@ -16,7 +17,7 @@ public class MoveFromPileToPileCommand extends Command {
     protected Error move() {
         int originIndex = PileView.readIndex(true);
         int destinationIndex = PileView.readIndex(false);
-        int numberOfCards = IO.readInt(klondike.views.Message.READ_NUMBER_OF_CARDS, new ClosedInterval(1, 13));
+        int numberOfCards = IO.readInt(Message.READ_NUMBER_OF_CARDS, new ClosedInterval(1, 13));
         return this.game.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
     }
 }

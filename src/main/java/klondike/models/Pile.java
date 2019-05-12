@@ -65,7 +65,7 @@ public class Pile extends CardStack {
         return this.cards;
     }
 
-    public int getNumber(){
+    public int getNumber() {
         return this.number;
     }
 }

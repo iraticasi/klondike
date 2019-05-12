@@ -1,4 +1,4 @@
-package klondike.views;
+package klondike.views.console;
 
 import klondike.models.Card;
 import klondike.models.Pile;

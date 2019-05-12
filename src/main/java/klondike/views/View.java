@@ -1,10 +1,8 @@
 package klondike.views;
 
 import klondike.models.Game;
-import klondike.utils.YesNoDialog;
-import klondike.views.menu.PlayMenu;
 
-public class View {
+public abstract class View {
 
     protected Game game;
 
@@ -13,19 +11,24 @@ public class View {
     }
 
     public void interact() {
-        PlayMenu playMenu = new PlayMenu(this.game);
         boolean resume;
         do {
+            this.start();
             boolean finished;
             do {
-                playMenu.execute();
+                this.move();
                 finished = this.game.isFinished();
             } while (!finished);
-            resume = new YesNoDialog().read(Message.RESUME);
+            resume = this.resume();
             if (resume) {
                 this.game.clear();
             }
         } while (resume);
     }
 
+    protected abstract void start();
+
+    protected abstract void move();
+
+    protected abstract boolean resume();
 }

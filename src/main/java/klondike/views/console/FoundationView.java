@@ -1,4 +1,4 @@
-package klondike.views;
+package klondike.views.console;
 
 import klondike.models.Foundation;
 import klondike.utils.IO;
