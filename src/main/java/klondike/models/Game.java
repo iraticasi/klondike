@@ -152,11 +152,11 @@ public class Game {
         return this.waste;
     }
 
-    public Map<Suit, Foundation> getFoundations() {
-        return foundations;
+    public Foundation getFoundation(Suit suit) {
+        return this.foundations.get(suit);
     }
 
-    public List<Pile> getPiles() {
-        return piles;
+    public Pile getPile(int pileIndex) {
+        return this.piles.get(pileIndex);
     }
 }

@@ -5,12 +5,16 @@ import klondike.models.Pile;
 import klondike.utils.ClosedInterval;
 import klondike.utils.IO;
 
+import java.util.Stack;
+
 public class PileView {
 
-    private final Pile pile;
+    private final int index;
+    private final Stack<Card> cards;
 
-    PileView(Pile pile) {
-        this.pile = pile;
+    PileView(int index, Stack<Card> cards) {
+        this.index = index;
+        this.cards = cards;
     }
 
     public static int readIndex(boolean isOrigin) {
@@ -19,12 +23,12 @@ public class PileView {
     }
 
     public void writeln() {
-        IO.write(Message.PILE_TITLE.replace(Message.PILE_TAG, Integer.toString(this.pile.getNumber())));
-        if (this.pile.empty()) {
+        IO.write(Message.PILE_TITLE.replace(Message.PILE_TAG, Integer.toString(this.index)));
+        if (this.cards.empty()) {
             IO.writeln(Message.EMPTY);
         } else {
             IO.writeln();
-            for (Card card : this.pile.getCards()) {
+            for (Card card : this.cards) {
                 IO.writetab();
                 new CardView(card).writeln();
             }

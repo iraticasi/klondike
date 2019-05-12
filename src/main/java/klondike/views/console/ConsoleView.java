@@ -1,22 +1,27 @@
 package klondike.views.console;
 
-import klondike.models.Game;
+import klondike.controllers.MoveController;
+import klondike.controllers.ResumeController;
+import klondike.controllers.StartController;
 import klondike.utils.YesNoDialog;
 import klondike.views.View;
 import klondike.views.console.menu.PlayMenu;
 
 public class ConsoleView extends View {
 
-    PlayMenu playMenu;
+    private PlayMenu playMenu;
+    private GameView gameView;
 
-    public ConsoleView(Game game) {
-        super(game);
-        this.playMenu = new PlayMenu(this.game);
+    public ConsoleView(StartController startController, MoveController moveController, ResumeController resumeController) {
+        super(startController, moveController, resumeController);
+        this.playMenu = new PlayMenu(this.moveController);
+        this.gameView = new GameView();
+
     }
 
     @Override
     protected void start() {
-        new GameView(this.game).writeln();
+        this.gameView.writeln(startController);
     }
 
     @Override

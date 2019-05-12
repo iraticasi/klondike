@@ -1,21 +1,22 @@
 package klondike.views.console;
 
+import klondike.models.Card;
 import klondike.models.Stock;
 import klondike.utils.IO;
 
 public class StockView {
 
-    private final Stock stock;
+    private final Card card;
 
-    StockView(Stock stock) {
-        this.stock = stock;
+    StockView(Card card) {
+        this.card = card;
     }
 
     public void writeln() {
         IO.write(Message.STOCK_TITLE);
-        if (this.stock.empty())
+        if (this.card==null)
             IO.writeln(Message.EMPTY);
         else
-            new CardView(this.stock.peek()).writeln();
+            new CardView(this.card).writeln();
     }
 }

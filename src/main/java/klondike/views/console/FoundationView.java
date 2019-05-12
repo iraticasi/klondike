@@ -1,24 +1,28 @@
 package klondike.views.console;
 
+import klondike.models.Card;
 import klondike.models.Foundation;
+import klondike.models.Suit;
 import klondike.utils.IO;
 
 public class FoundationView {
 
-    private final Foundation foundation;
+    private final Card card;
+    private final Suit suit;
 
-    FoundationView(Foundation foundation) {
-        this.foundation = foundation;
+    FoundationView(Suit suit, Card card) {
+        this.suit = suit;
+        this.card = card;
     }
 
 
     public void writeln() {
         IO.writetab();
-        IO.write(this.foundation.getSuit().toString().toLowerCase() + ": ");
-        if (this.foundation.empty()) {
+        IO.write(this.suit.toString().toLowerCase() + ": ");
+        if (this.card==null) {
             IO.write(Message.EMPTY);
         } else {
-            IO.write(Message.FOUNDATION_FORMAT.replace(Message.NUMBER_TAG, this.foundation.peek().getNumber().toString().toLowerCase()));
+            IO.write(Message.FOUNDATION_FORMAT.replace(Message.NUMBER_TAG, card.getNumber().toString().toLowerCase()));
         }
         IO.writeln();
     }

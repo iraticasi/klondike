@@ -1,13 +1,21 @@
 package klondike.views;
 
-import klondike.models.Game;
+import klondike.controllers.MoveController;
+import klondike.controllers.ResumeController;
+import klondike.controllers.StartController;
 
 public abstract class View {
 
-    protected Game game;
+    protected StartController startController;
 
-    public View(Game game) {
-        this.game = game;
+    protected MoveController moveController;
+
+    protected ResumeController resumeController;
+
+    public View(StartController startController, MoveController moveController, ResumeController resumeController) {
+        this.startController = startController;
+        this.moveController = moveController;
+        this.resumeController = resumeController;
     }
 
     public void interact() {
@@ -17,12 +25,10 @@ public abstract class View {
             boolean finished;
             do {
                 this.move();
-                finished = this.game.isFinished();
+                finished = moveController.isGameFinished();
             } while (!finished);
             resume = this.resume();
-            if (resume) {
-                this.game.clear();
-            }
+            if (resume) resumeController.resume();
         } while (resume);
     }
 
