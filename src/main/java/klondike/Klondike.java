@@ -11,7 +11,8 @@ public class Klondike {
 
     private final StartController startController;
     private final MoveController moveController;
-    private final ResumeController resumeController;    private View view;
+    private final ResumeController resumeController;
+    private View view;
     private Game game;
 
     private Klondike() {

@@ -1,7 +1,6 @@
 package klondike.views.console;
 
 import klondike.models.Card;
-import klondike.models.Foundation;
 import klondike.models.Suit;
 import klondike.utils.IO;
 
@@ -19,7 +18,7 @@ public class FoundationView {
     public void writeln() {
         IO.writetab();
         IO.write(this.suit.toString().toLowerCase() + ": ");
-        if (this.card==null) {
+        if (this.card == null) {
             IO.write(Message.EMPTY);
         } else {
             IO.write(Message.FOUNDATION_FORMAT.replace(Message.NUMBER_TAG, card.getNumber().toString().toLowerCase()));

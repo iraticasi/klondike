@@ -1,7 +1,6 @@
 package klondike.views.console.menu;
 
 import klondike.controllers.MoveController;
-import klondike.models.Game;
 import klondike.utils.Menu;
 
 public class PlayMenu extends Menu {

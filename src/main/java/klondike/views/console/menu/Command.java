@@ -2,7 +2,6 @@ package klondike.views.console.menu;
 
 import klondike.controllers.MoveController;
 import klondike.models.Error;
-import klondike.models.Game;
 import klondike.utils.IO;
 import klondike.views.console.GameView;
 import klondike.views.console.Message;

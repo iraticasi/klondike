@@ -1,7 +1,6 @@
 package klondike.views.console;
 
 import klondike.models.Card;
-import klondike.models.Stock;
 import klondike.utils.IO;
 
 public class StockView {
@@ -14,7 +13,7 @@ public class StockView {
 
     public void writeln() {
         IO.write(Message.STOCK_TITLE);
-        if (this.card==null)
+        if (this.card == null)
             IO.writeln(Message.EMPTY);
         else
             new CardView(this.card).writeln();

@@ -1,7 +1,6 @@
 package klondike.views.console;
 
 import klondike.models.Card;
-import klondike.models.Waste;
 import klondike.utils.IO;
 
 public class WasteView {
@@ -14,7 +13,7 @@ public class WasteView {
 
     public void writeln() {
         IO.write(Message.WASTE_TITLE);
-        if (this.card==null) {
+        if (this.card == null) {
             IO.writeln(Message.EMPTY);
         } else {
             new CardView(this.card).writeln();

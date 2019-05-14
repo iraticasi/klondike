@@ -8,7 +8,7 @@ public abstract class Controller {
 
     final Game game;
 
-    Controller(Game game){
+    Controller(Game game) {
         this.game = game;
     }
 
@@ -27,15 +27,15 @@ public abstract class Controller {
         return peekIfNotEmpty(foundation);
     }
 
-    private Card peekIfNotEmpty(CardStack cardStack){
-        if (cardStack.empty()){
+    private Card peekIfNotEmpty(CardStack cardStack) {
+        if (cardStack.empty()) {
             return null;
-        }else{
+        } else {
             return cardStack.peek();
         }
     }
 
-    public Stack<Card> getPileCards(int pileIndex){
+    public Stack<Card> getPileCards(int pileIndex) {
         return this.game.getPile(pileIndex).getCards();
     }
 }
