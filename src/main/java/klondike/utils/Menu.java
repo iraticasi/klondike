@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Menu {
 
-    private static final String OPTION = "------Choose an option-----";
+    private static final String OPTION = "Choose an option: ";
     private ArrayList<Command> commandList;
 
     public Menu() {
@@ -20,15 +20,15 @@ public abstract class Menu {
         int option;
         do {
             error = false;
-            IO.writeln();
-            IO.writeln(OPTION);
             for (int i = 0; i < commands.size(); i++) {
                 IO.writeln((i + 1) + ") " + commands.get(i).getTitle());
             }
+            IO.write(OPTION);
             option = IO.readInt("") - 1;
             if (!new ClosedInterval(0, commands.size() - 1).includes(option)) {
                 error = true;
             }
+            IO.writeln();
         } while (error);
         commands.get(option).execute();
     }

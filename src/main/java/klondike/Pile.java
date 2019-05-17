@@ -5,9 +5,8 @@ import klondike.utils.IO;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
-public class Pile extends CardStack{
+public class Pile extends CardStack {
 
     private final int number;
 
@@ -18,14 +17,18 @@ public class Pile extends CardStack{
         this.numberOfFaceUpCards = 0;
         this.cards.addAll(cards);
         if (!this.cards.empty()) {
-            flipFirstCard();
+            this.flipFirstCard();
         }
     }
 
+    public static int readIndex(String title) {
+        return IO.readInt(Message.READ_PILE_INDEX.replace(Message.PILE_TAG, title), new ClosedInterval(1, 7)) - 1;
+    }
+
     private void flipFirstCard() {
-        assert !this.cards.empty() && this.numberOfFaceUpCards==0 && this.cards.peek().isFacedUp();
+        assert !this.cards.empty() && this.numberOfFaceUpCards == 0 && this.cards.peek().isFacedUp();
         this.cards.peek().flip();
-        numberOfFaceUpCards++;
+        this.numberOfFaceUpCards++;
     }
 
     public boolean fitsIn(Card card) {
@@ -42,17 +45,17 @@ public class Pile extends CardStack{
     public void addToTop(List<Card> cards) {
         assert cards != null;
         this.cards.addAll(cards);
-        numberOfFaceUpCards+= cards.size();
+        this.numberOfFaceUpCards += cards.size();
     }
 
     public void removeTop(int numberOfCards) {
         assert numberOfCards <= this.numberOfFaceUpCards;
         for (int i = 0; i < numberOfCards; i++) {
             this.cards.pop();
-            numberOfFaceUpCards--;
+            this.numberOfFaceUpCards--;
         }
-        if (this.numberOfFaceUpCards==0 && !this.cards.empty()) {
-            flipFirstCard();
+        if (this.numberOfFaceUpCards == 0 && !this.cards.empty()) {
+            this.flipFirstCard();
         }
     }
 
@@ -60,25 +63,32 @@ public class Pile extends CardStack{
         return this.numberOfFaceUpCards;
     }
 
+    private int numberOfFaceDownCards() {
+        return this.cards.size() - this.numberOfFaceUpCards;
+    }
+
     public boolean empty() {
         return this.cards.empty();
     }
 
     public void writeln() {
-        IO.write(Message.PILE_TITLE.replace(Message.PILE_TAG, Integer.toString(number)));
+        IO.writetab();
+        IO.write(this.number + ": ");
         if (this.cards.empty()) {
-            IO.writeln(Message.EMPTY);
+            IO.write(Message.EMPTY);
         } else {
-            IO.writeln();
-            for (Card card : this.cards) {
-                IO.writetab();
-                card.writeln();
+            if (this.numberOfFaceDownCards() > 0) {
+                this.cards.get(0).write();
+                IO.write(" (x" + this.numberOfFaceDownCards() + "), ");
+            }
+            for (int i = 0; i < this.numberOfFaceUpCards; i++) {
+                Card card = this.cards.get(numberOfFaceDownCards() + i);
+                card.write();
+                if (i < this.numberOfFaceUpCards - 1) {
+                    IO.write(", ");
+                }
             }
         }
-    }
-
-    public static int readIndex(boolean isOrigin) {
-        String pileTitle = isOrigin ? Message.ORIGIN : Message.DESTINATION;
-        return IO.readInt(Message.READ_PILE_INDEX.replace(Message.PILE_TAG, pileTitle), new ClosedInterval(1, 7)) - 1;
+        IO.writeln();
     }
 }

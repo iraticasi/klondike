@@ -29,7 +29,7 @@ public class Stock extends CardStack {
         IO.write(Message.STOCK_TITLE);
         if (this.empty()) {
             IO.writeln(Message.EMPTY);
-        }else{
+        } else {
             this.peek().writeln();
         }
 

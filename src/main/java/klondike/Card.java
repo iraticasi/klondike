@@ -24,7 +24,7 @@ public class Card {
     }
 
     public boolean isFacedUp() {
-        return facedUp;
+        return this.facedUp;
     }
 
     public boolean isNextTo(Card card) {
@@ -43,10 +43,15 @@ public class Card {
         return this.suit.getColor();
     }
 
-    public void writeln() {
-        String number = this.facedUp? this.number.toString().toLowerCase() : Message.FACE_DOWN;
-        String suit = this.facedUp? this.suit.toString().toLowerCase() : Message.FACE_DOWN;
+    public void write() {
+        String number = this.facedUp ? this.number.toString().toLowerCase() : Message.FACE_DOWN;
+        String suit = this.facedUp ? this.suit.toString().toLowerCase() : Message.FACE_DOWN;
         String output = Message.CARD_FORMAT.replace(Message.NUMBER_TAG, number).replace(Message.SUIT_TAG, suit);
-        IO.writeln(output);
+        IO.write(output);
+    }
+
+    public void writeln() {
+        this.write();
+        IO.writeln();
     }
 }

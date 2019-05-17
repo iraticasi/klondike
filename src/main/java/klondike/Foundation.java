@@ -28,7 +28,7 @@ public class Foundation extends CardStack {
         if (this.empty()) {
             IO.write(Message.EMPTY);
         } else {
-            IO.write(Message.FOUNDATION_FORMAT.replace(Message.NUMBER_TAG, this.peek().getNumber().toString().toLowerCase()));
+            this.peek().write();
         }
         IO.writeln();
     }

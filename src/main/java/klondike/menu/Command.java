@@ -16,9 +16,9 @@ public abstract class Command extends klondike.utils.Command {
     @Override
     protected void execute() {
         Error error = this.move();
-        if (error!=null){
+        if (error != null) {
             IO.writeError(klondike.Message.INVALID_MOVE, error.getMessage());
-        }else{
+        } else {
             this.game.writeln();
         }
     }
