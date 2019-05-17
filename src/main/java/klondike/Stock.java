@@ -5,16 +5,11 @@ import klondike.utils.IO;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Stack;
 
-public class Stock {
-
-    private Stack<Card> cards;
-
+public class Stock extends CardStack {
 
     public Stock() {
         super();
-        this.cards = new Stack<>();
         for (Suit suit : Suit.values()) {
             for (Number number : Number.values()) {
                 this.cards.add(new Card(suit, number));
@@ -30,24 +25,14 @@ public class Stock {
         return cardsToReturn;
     }
 
-
-    public boolean empty() {
-        return this.cards.empty();
-    }
-
-    public Card pop() {
-        return this.cards.pop();
-    }
-
-    public void push(Card card) {
-        this.cards.push(card);
-    }
-
     public void writeln() {
-        if (this.empty())
-            IO.writeln("empty");
-        else
-            IO.writeln("not empty");
+        IO.write(Message.STOCK_TITLE);
+        if (this.empty()) {
+            IO.writeln(Message.EMPTY);
+        } else {
+            this.peek().writeln();
+        }
+
     }
 
 }

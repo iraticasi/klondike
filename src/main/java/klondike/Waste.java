@@ -2,36 +2,12 @@ package klondike;
 
 import klondike.utils.IO;
 
-import java.util.Stack;
-
-public class Waste {
-
-    private Stack<Card> cards;
-
-    public Waste() {
-        super();
-        this.cards = new Stack<>();
-    }
-
-    public boolean empty() {
-        return this.cards.empty();
-    }
-
-    public Card peek() {
-        return this.cards.peek();
-    }
-
-    public Card pop() {
-        return this.cards.pop();
-    }
-
-    public void push(Card card) {
-        this.cards.push(card);
-    }
+public class Waste extends CardStack {
 
     public void writeln() {
+        IO.write(Message.WASTE_TITLE);
         if (this.empty()) {
-            IO.writeln("empty");
+            IO.writeln(Message.EMPTY);
         } else {
             this.peek().writeln();
         }

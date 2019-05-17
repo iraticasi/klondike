@@ -1,5 +1,6 @@
 package klondike;
 
+import klondike.utils.ClosedInterval;
 import klondike.utils.IO;
 import klondike.utils.YesNoDialog;
 
@@ -17,58 +18,55 @@ public class Klondike {
 
     public void play() {
         boolean finished;
+        game.writeln();
         do {
+            Error error = this.move();
             game.writeln();
-            this.move();
+            if (error != null) {
+                IO.writeError(klondike.Message.INVALID_MOVE, error.getMessage());
+            }
             finished = game.isFinished();
         } while (!finished);
-        boolean resume = new YesNoDialog().read("Do you want to resume?");
+        boolean resume = new YesNoDialog().read(Message.RESUME);
         if (resume) {
             new Klondike().play();
         }
     }
 
-    private void move() {
-        int chosenMove = this.readMove();
+    private Error move() {
+        int chosenMove = Klondike.readMove();
         Suit suit;
         int pileIndex;
         switch (chosenMove) {
             case 1:
-                this.game.moveFromStockToWaste();
-                break;
+                return this.game.moveFromStockToWaste();
             case 2:
-                this.game.moveFromWasteToStock();
-                break;
+                return this.game.moveFromWasteToStock();
             case 3:
-                suit = readSuit();
-                this.game.moveFromWasteToFoundation(suit);
-                break;
+                suit = Suit.read();
+                return this.game.moveFromWasteToFoundation(suit);
             case 4:
-                pileIndex = readPileIndex(false);
-                this.game.moveFromWasteToPile(pileIndex);
-                break;
+                pileIndex = Pile.readIndex(Message.DESTINATION);
+                return this.game.moveFromWasteToPile(pileIndex);
             case 5:
-                suit = readSuit();
-                pileIndex = readPileIndex(false);
-                this.game.moveFromFoundationToPile(suit, pileIndex);
-                break;
+                suit = Suit.read();
+                pileIndex = Pile.readIndex(Message.DESTINATION);
+                return this.game.moveFromFoundationToPile(suit, pileIndex);
             case 6:
-                pileIndex = readPileIndex(true);
-                suit = readSuit();
-                this.game.moveFromPileToFoundation(pileIndex, suit);
-                break;
+                pileIndex = Pile.readIndex(Message.ORIGIN);
+                suit = Suit.read();
+                return this.game.moveFromPileToFoundation(pileIndex, suit);
             case 7:
-                int originIndex = readPileIndex(true);
-                int destinationIndex = readPileIndex(false);
-                int numberOfCards = readNumberOfCards();
-                this.game.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
-                break;
+                int originIndex = Pile.readIndex(Message.ORIGIN);
+                int destinationIndex = Pile.readIndex(Message.DESTINATION);
+                int numberOfCards = Klondike.readNumberOfCards();
+                return this.game.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
             default:
-                break;
+                return null;
         }
     }
 
-    private int readMove() {
+    private static int readMove() {
         IO.writeln("1. Move from Stock to Waste");
         IO.writeln("2. Move from Waste to Stock");
         IO.writeln("3. Move from Waste to Foundation");
@@ -76,31 +74,11 @@ public class Klondike {
         IO.writeln("5. Move from Foundation to Pile");
         IO.writeln("6. Move from Pile to Foundation");
         IO.writeln("7. Move from Pile to Pile");
-        return IO.readPositiveInt("Choose an option: ");
+        return IO.readInt(Message.CHOOSE_OPTION, new ClosedInterval(1, 7));
     }
 
-    private int readNumberOfCards() {
-        return IO.readPositiveInt("How many cards do you want to move?: ");
-    }
-
-    private int readPileIndex(boolean isOrigin) {
-        String pileTitle = isOrigin ? "origin" : "destination";
-        return IO.readPositiveInt("Choose the " + pileTitle + " pile number(1-7): ", 7) - 1;
-    }
-
-    private Suit readSuit() {
-        char suitInitial = IO.readChar("Choose a suit (H/D/C/P): ", new char[]{'H', 'D', 'C', 'P'});
-        switch (suitInitial) {
-            case 'H':
-                return Suit.HEARTS;
-            case 'D':
-                return Suit.DIAMONDS;
-            case 'C':
-                return Suit.CLOVERS;
-            case 'P':
-                return Suit.PIKES;
-        }
-        return null;
+    private static int readNumberOfCards() {
+        return IO.readInt(Message.READ_NUMBER_OF_CARDS);
     }
 
 }

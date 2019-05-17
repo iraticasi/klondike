@@ -17,10 +17,10 @@ public class Game {
     private List<Pile> piles;
 
     public Game() {
-        this.distribute();
+        this.clear();
     }
 
-    private void distribute() {
+    public void clear() {
         this.stock = new Stock();
         this.waste = new Waste();
         this.foundations = new HashMap<>();
@@ -28,8 +28,8 @@ public class Game {
             this.foundations.put(suit, new Foundation(suit));
         }
         this.piles = new ArrayList<>();
-        for (int i = 0; i < NUMBER_OF_PILES; i++) {
-            this.piles.add(new Pile(this.stock.takeTop(i + 1)));
+        for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
+            this.piles.add(new Pile(i + 1, this.stock.takeTop(i + 1)));
         }
     }
 
@@ -42,107 +42,125 @@ public class Game {
         return true;
     }
 
-    public void moveFromStockToWaste() {
-        if (!this.stock.empty()) {
-            this.waste.push(this.stock.pop());
+    public Error moveFromStockToWaste() {
+        if (this.stock.empty()) {
+            return Error.EMPTY_STOCK;
         }
+        this.waste.push(this.stock.pop().flip());
+        return null;
     }
 
-    public void moveFromWasteToFoundation(Suit suit) {
+    public Error moveFromWasteToFoundation(Suit suit) {
         assert suit != null;
         if (this.waste.empty()) {
-            return;
+            return Error.EMPTY_WASTE;
         }
         Card card = this.waste.peek();
         Foundation foundation = this.foundations.get(suit);
-        if (foundation.fitsIn(card)) {
-            foundation.push(this.waste.pop());
+        if (!foundation.fitsIn(card)) {
+            return Error.NO_FIT_FOUNDATION;
         }
-
+        foundation.push(this.waste.pop());
+        return null;
     }
 
-    public void moveFromWasteToStock() {
+    public Error moveFromWasteToStock() {
         if (!this.stock.empty()) {
-            return;
+            return Error.NO_EMPTY_STOCK;
+        }
+        if (this.waste.empty()) {
+            return Error.EMPTY_WASTE;
         }
         while (!this.waste.empty()) {
-            this.stock.push(this.waste.pop());
+            this.stock.push(this.waste.pop().flip());
         }
+        return null;
     }
 
-    public void moveFromWasteToPile(int pileIndex) {
-        assert (0 <= pileIndex) && (pileIndex <= NUMBER_OF_PILES);
+    public Error moveFromWasteToPile(int pileIndex) {
+        assert (0 <= pileIndex) && (pileIndex <= Game.NUMBER_OF_PILES);
         if (this.waste.empty()) {
-            return;
+            return Error.EMPTY_WASTE;
         }
         Card card = this.waste.peek();
         Pile pile = this.piles.get(pileIndex);
-        if (pile.fitsIn(card)) {
-            pile.addToTop(Arrays.asList(this.waste.pop()));
+        if (!pile.fitsIn(card)) {
+            return Error.NO_FIT_PILE;
         }
+        pile.addToTop(Arrays.asList(this.waste.pop()));
+        return null;
     }
 
-    public void moveFromFoundationToPile(Suit suit, int pileIndex) {
+    public Error moveFromFoundationToPile(Suit suit, int pileIndex) {
         assert suit != null;
-        assert (0 <= pileIndex) && (pileIndex <= NUMBER_OF_PILES);
+        assert (0 <= pileIndex) && (pileIndex <= Game.NUMBER_OF_PILES);
         Foundation foundation = this.foundations.get(suit);
         Pile pile = this.piles.get(pileIndex);
         if (foundation.empty()) {
-            return;
+            return Error.EMPTY_FOUNDATION;
         }
         Card card = foundation.peek();
-        if (pile.fitsIn(card)) {
-            pile.addToTop(Arrays.asList(foundation.pop()));
+        if (!pile.fitsIn(card)) {
+            return Error.NO_FIT_PILE;
         }
+        pile.addToTop(Arrays.asList(foundation.pop()));
+        return null;
     }
 
-    public void moveFromPileToFoundation(int pileIndex, Suit suit) {
-        assert (0 <= pileIndex) && (pileIndex <= NUMBER_OF_PILES);
+    public Error moveFromPileToFoundation(int pileIndex, Suit suit) {
+        assert (0 <= pileIndex) && (pileIndex <= Game.NUMBER_OF_PILES);
         assert suit != null;
         Pile pile = this.piles.get(pileIndex);
         Foundation foundation = this.foundations.get(suit);
         if (pile.empty()) {
-            return;
+            return Error.EMPTY_PILE;
         }
         Card card = pile.getTop(1).get(0);
-        if (foundation.fitsIn(card)){
-            foundation.push(card);
-            pile.removeTop(1);
+        if (!foundation.fitsIn(card)) {
+            return Error.NO_FIT_FOUNDATION;
         }
+        foundation.push(card);
+        pile.removeTop(1);
+        return null;
     }
 
-    public void moveFromPileToPile(int originIndex, int destinationIndex, int numberOfCards) {
-        assert (0 <= originIndex) && (originIndex <= NUMBER_OF_PILES);
-        assert (0 <= destinationIndex) && (destinationIndex <= NUMBER_OF_PILES);
+    public Error moveFromPileToPile(int originIndex, int destinationIndex, int numberOfCards) {
+        assert (0 <= originIndex) && (originIndex <= Game.NUMBER_OF_PILES);
+        assert (0 <= destinationIndex) && (destinationIndex <= Game.NUMBER_OF_PILES);
         assert (0 <= numberOfCards);
         if (originIndex == destinationIndex) {
-            return;
+            return Error.SAME_PILE;
         }
         Pile originPile = this.piles.get(originIndex);
         Pile destinationPile = this.piles.get(destinationIndex);
         if (originPile.numberOfFaceUpCards() < numberOfCards) {
-            return;
+            return Error.NO_ENOUGH_CARDS_PILE;
         }
         List<Card> cards = originPile.getTop(numberOfCards);
-        if (destinationPile.fitsIn(cards.get(cards.size() - 1))) {
-            originPile.removeTop(numberOfCards);
-            destinationPile.addToTop(cards);
+        if (!destinationPile.fitsIn(cards.get(cards.size() - 1))) {
+            return Error.NO_FIT_PILE;
         }
+        originPile.removeTop(numberOfCards);
+        destinationPile.addToTop(cards);
+        return null;
     }
 
     public void writeln() {
-        IO.write("STOCK: ");
+        IO.writeln();
+        IO.writeln(Message.GAME_TITLE);
         this.stock.writeln();
-        IO.write("WASTE: ");
         this.waste.writeln();
-        IO.writeln("FOUNDATIONS: ");
+        IO.writeln(Message.FOUNDATIONS_TITLE);
         for (Suit suit : Suit.values()) {
             this.foundations.get(suit).writeln();
         }
-        for (int i = 0; i < NUMBER_OF_PILES; i++) {
-            IO.write("PILE #" + (i + 1) + ": ");
+
+        IO.writeln(Message.PILES_TITLE);
+        for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
             this.piles.get(i).writeln();
         }
+        IO.writeln(Message.GAME_END);
+        IO.writeln();
     }
 
 

@@ -1,2 +1,11 @@
+**/*.plantuml
+
+# idea
 .idea/
 target/
+
+# eclipse
+out/
+.classpath
+.project
+.settings
