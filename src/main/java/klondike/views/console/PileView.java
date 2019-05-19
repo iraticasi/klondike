@@ -19,7 +19,7 @@ public class PileView {
 
     public void writeln() {
         IO.writetab();
-        IO.write(this.pile.getNumber()+ ": ");
+        IO.write(this.pile.getNumber() + ": ");
         if (this.pile.getCards().empty()) {
             IO.write(Message.EMPTY);
         } else {
