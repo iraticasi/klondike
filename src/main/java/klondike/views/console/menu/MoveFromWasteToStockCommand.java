@@ -1,16 +1,16 @@
 package klondike.views.console.menu;
 
-import klondike.controllers.MoveController;
+import klondike.controllers.Logic;
 import klondike.models.Error;
 
 public class MoveFromWasteToStockCommand extends Command {
 
-    public MoveFromWasteToStockCommand(MoveController moveController) {
-        super(CommandTitle.WASTE2STOCK_COMMAND.getTitle(), moveController);
+    public MoveFromWasteToStockCommand(Logic logic) {
+        super(CommandTitle.WASTE2STOCK_COMMAND.getTitle(), logic);
     }
 
     @Override
     protected Error move() {
-        return this.moveController.moveFromWasteToStock();
+        return this.logic.moveFromWasteToStock();
     }
 }

@@ -1,20 +1,17 @@
 package klondike.views.console;
 
-import klondike.controllers.Controller;
-import klondike.models.Card;
-import klondike.models.CardStack;
-import klondike.utils.IO;
+import klondike.controllers.Logic;
 
 public class StockView extends CardStackView {
 
-    private final Controller controller;
+    private final Logic logic;
 
-    public StockView(Controller controller) {
+    public StockView(Logic logic) {
         super(Message.STOCK_TITLE);
-        this.controller = controller;
+        this.logic = logic;
     }
 
     public void writeln() {
-        super.writeln(this.controller.peekStock());
+        super.writeln(this.logic.peekStock());
     }
 }

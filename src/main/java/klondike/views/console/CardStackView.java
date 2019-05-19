@@ -7,7 +7,7 @@ public abstract class CardStackView {
 
     private final String title;
 
-    CardStackView(String title){
+    CardStackView(String title) {
         this.title = title;
     }
 

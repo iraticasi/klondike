@@ -13,7 +13,7 @@ public class Message {
     public static final String WASTE_TITLE = "WASTE: ";
     public static final String FOUNDATIONS_TITLE = "FOUNDATIONS: ";
     public static final String PILES_TITLE = "PILES:";
-    public static final String FOUNDATION_TITLE = FOUNDATION_TAG+": ";
+    public static final String FOUNDATION_TITLE = FOUNDATION_TAG + ": ";
 
 
     public static final String EMPTY = "empty";

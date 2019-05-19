@@ -1,19 +1,17 @@
 package klondike.views.console;
 
-import klondike.controllers.Controller;
-import klondike.models.Card;
-import klondike.utils.IO;
+import klondike.controllers.Logic;
 
-public class WasteView extends CardStackView{
+public class WasteView extends CardStackView {
 
-    private final Controller controller;
+    private final Logic logic;
 
-    public WasteView(Controller controller) {
+    public WasteView(Logic logic) {
         super(Message.WASTE_TITLE);
-        this.controller = controller;
+        this.logic = logic;
     }
 
     public void writeln() {
-        super.writeln(this.controller.peekWaste());
+        super.writeln(this.logic.peekWaste());
     }
 }

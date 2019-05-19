@@ -1,26 +1,17 @@
 package klondike;
 
-import klondike.controllers.MoveController;
-import klondike.controllers.ResumeController;
-import klondike.controllers.StartController;
-import klondike.models.Game;
+import klondike.controllers.Logic;
 import klondike.views.View;
 import klondike.views.console.ConsoleView;
 
 public class Klondike {
 
-    private final StartController startController;
-    private final MoveController moveController;
-    private final ResumeController resumeController;
+    private Logic logic;
     private View view;
-    private Game game;
 
     private Klondike() {
-        this.game = new Game();
-        this.startController = new StartController(this.game);
-        this.moveController = new MoveController(this.game);
-        this.resumeController = new ResumeController(this.game);
-        this.view = new ConsoleView(startController, moveController, resumeController);
+        this.logic = new Logic();
+        this.view = new ConsoleView(logic);
     }
 
     public static void main(String[] args) {
