@@ -57,6 +57,10 @@ public class Pile extends CardStack {
         return this.numberOfFaceUpCards;
     }
 
+    public int numberOfFaceDownCards() {
+        return this.cards.size() - this.numberOfFaceUpCards;
+    }
+
     public boolean empty() {
         return this.cards.empty();
     }
@@ -68,4 +72,5 @@ public class Pile extends CardStack {
     public int getNumber() {
         return this.number;
     }
+
 }

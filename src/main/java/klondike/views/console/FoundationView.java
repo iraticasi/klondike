@@ -18,7 +18,7 @@ public class FoundationView {
         if (this.foundation.empty()) {
             IO.write(Message.EMPTY);
         } else {
-            IO.write(Message.FOUNDATION_FORMAT.replace(Message.NUMBER_TAG, this.foundation.peek().getNumber().toString().toLowerCase()));
+            new CardView(this.foundation.peek()).write();
         }
         IO.writeln();
     }

@@ -98,9 +98,8 @@ public class IO {
     }
 
     public static void writeError(String title, String msg) {
-        writeln("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        writeln("! " + title.toUpperCase() + ": " + msg);
-        writeln("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        writeln("!!!! " + title.toUpperCase() + ": " + msg);
+        writeln();
     }
 
     private static void writeFormatError(String formato) {

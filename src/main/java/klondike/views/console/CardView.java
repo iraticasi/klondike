@@ -11,10 +11,15 @@ public class CardView {
         this.card = card;
     }
 
-    public void writeln() {
+    public void write() {
         String number = this.card.isFacedUp() ? this.card.getNumber().toString().toLowerCase() : Message.FACE_DOWN;
         String suit = this.card.isFacedUp() ? this.card.getSuit().toString().toLowerCase() : Message.FACE_DOWN;
         String output = Message.CARD_FORMAT.replace(Message.NUMBER_TAG, number).replace(Message.SUIT_TAG, suit);
-        IO.writeln(output);
+        IO.write(output);
+    }
+
+    public void writeln() {
+        this.write();
+        IO.writeln();
     }
 }

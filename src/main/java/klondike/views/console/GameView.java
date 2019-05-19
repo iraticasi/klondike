@@ -21,8 +21,11 @@ public class GameView {
         for (Suit suit : Suit.values()) {
             new FoundationView(this.game.getFoundations().get(suit)).writeln();
         }
+        IO.writeln(Message.PILES_TITLE);
         for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
             new PileView(this.game.getPiles().get(i)).writeln();
         }
+        IO.writeln(Message.GAME_END);
+        IO.writeln();
     }
 }
