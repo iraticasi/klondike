@@ -10,18 +10,15 @@ import klondike.views.console.menu.PlayMenu;
 public class ConsoleView extends View {
 
     private PlayMenu playMenu;
-    private GameView gameView;
 
     public ConsoleView(StartController startController, MoveController moveController, ResumeController resumeController) {
         super(startController, moveController, resumeController);
         this.playMenu = new PlayMenu(this.moveController);
-        this.gameView = new GameView();
-
     }
 
     @Override
     protected void start() {
-        this.gameView.writeln(startController);
+        new GameView(this.startController).writeln();
     }
 
     @Override

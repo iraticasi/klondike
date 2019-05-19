@@ -13,29 +13,24 @@ public abstract class Controller {
     }
 
     public Card peekStock() {
-        Stock stock = this.game.getStock();
-        return peekIfNotEmpty(stock);
+       return this.game.peekStock();
     }
 
     public Card peekWaste() {
-        Waste waste = this.game.getWaste();
-        return peekIfNotEmpty(waste);
+        return this.game.peekWaste();
     }
 
     public Card peekFoundation(Suit suit) {
-        Foundation foundation = this.game.getFoundation(suit);
-        return peekIfNotEmpty(foundation);
+        return this.game.peekFoundation(suit);
     }
 
-    private Card peekIfNotEmpty(CardStack cardStack) {
-        if (cardStack.empty()) {
-            return null;
-        } else {
-            return cardStack.peek();
-        }
+
+
+    public Stack<Card> getPileCards(int index) {
+        return this.game.getPileCards(index);
     }
 
-    public Stack<Card> getPileCards(int pileIndex) {
-        return this.game.getPile(pileIndex).getCards();
+    public int getNumberOfFaceUpCardsInPile(int index) {
+        return this.game.getNumberOfFaceUpCardsInPile(index);
     }
 }

@@ -15,8 +15,8 @@ public class MoveFromPileToPileCommand extends Command {
 
     @Override
     protected Error move() {
-        int originIndex = PileView.readIndex(true);
-        int destinationIndex = PileView.readIndex(false);
+        int originIndex = PileView.readIndex(Message.ORIGIN);
+        int destinationIndex = PileView.readIndex(Message.DESTINATION);
         int numberOfCards = IO.readInt(Message.READ_NUMBER_OF_CARDS, new ClosedInterval(1, 13));
         return this.moveController.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
     }

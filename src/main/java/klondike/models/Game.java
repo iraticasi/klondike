@@ -143,20 +143,31 @@ public class Game {
         return null;
     }
 
-
-    public Stock getStock() {
-        return this.stock;
+    public Card peekStock() {
+        return this.peekIfNotEmpty(this.stock);
     }
 
-    public Waste getWaste() {
-        return this.waste;
+    public Card peekWaste() {
+        return this.peekIfNotEmpty(this.waste);
     }
 
-    public Foundation getFoundation(Suit suit) {
-        return this.foundations.get(suit);
+    public Card peekFoundation(Suit suit) {
+        return this.peekIfNotEmpty(this.foundations.get(suit));
     }
 
-    public Pile getPile(int pileIndex) {
-        return this.piles.get(pileIndex);
+    private Card peekIfNotEmpty(CardStack cardStack) {
+        if (cardStack.empty()) {
+            return null;
+        } else {
+            return cardStack.peek();
+        }
+    }
+
+    public Stack<Card> getPileCards(int index) {
+        return this.piles.get(index).getCards();
+    }
+
+    public int getNumberOfFaceUpCardsInPile(int index) {
+        return this.piles.get(index).numberOfFaceUpCards();
     }
 }

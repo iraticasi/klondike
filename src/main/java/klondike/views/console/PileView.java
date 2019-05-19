@@ -1,5 +1,6 @@
 package klondike.views.console;
 
+import klondike.controllers.Controller;
 import klondike.models.Card;
 import klondike.utils.ClosedInterval;
 import klondike.utils.IO;
@@ -8,29 +9,40 @@ import java.util.Stack;
 
 public class PileView {
 
-    private final int index;
-    private final Stack<Card> cards;
+    private final Controller controller;
 
-    PileView(int index, Stack<Card> cards) {
+    private final int index;
+
+    public PileView(Controller controller, int index) {
+        this.controller = controller;
         this.index = index;
-        this.cards = cards;
     }
 
-    public static int readIndex(boolean isOrigin) {
-        String pileTitle = isOrigin ? Message.ORIGIN : Message.DESTINATION;
-        return IO.readInt(Message.READ_PILE_INDEX.replace(Message.PILE_TAG, pileTitle), new ClosedInterval(1, 7)) - 1;
+    public static int readIndex(String title) {
+        return IO.readInt(Message.READ_PILE_INDEX.replace(Message.PILE_TAG, title), new ClosedInterval(1, 7)) - 1;
     }
 
     public void writeln() {
-        IO.write(Message.PILE_TITLE.replace(Message.PILE_TAG, Integer.toString(this.index)));
-        if (this.cards.empty()) {
-            IO.writeln(Message.EMPTY);
+        Stack<Card> cards = this.controller.getPileCards(index);
+        int numberOfFaceUpCards = this.controller.getNumberOfFaceUpCardsInPile(index);
+        int numberOfFaceDownCards = cards.size() - numberOfFaceUpCards;
+        IO.writetab();
+        IO.write(this.index + ": ");
+        if (cards.empty()) {
+            IO.write(Message.EMPTY);
         } else {
-            IO.writeln();
-            for (Card card : this.cards) {
-                IO.writetab();
-                new CardView(card).writeln();
+            if (numberOfFaceDownCards > 0) {
+                new CardView(cards.get(0)).write();
+                IO.write(" (x" + numberOfFaceDownCards + "), ");
+            }
+            for (int i = 0; i < numberOfFaceUpCards; i++) {
+                Card card = cards.get(numberOfFaceDownCards+ i);
+                new CardView(card).write();
+                if (i < numberOfFaceUpCards - 1) {
+                    IO.write(", ");
+                }
             }
         }
+        IO.writeln();
     }
 }
