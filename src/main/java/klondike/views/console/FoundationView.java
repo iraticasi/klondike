@@ -6,13 +6,10 @@ import klondike.utils.IO;
 
 public class FoundationView extends CardStackView {
 
-
-    private final Logic logic;
     private final Suit suit;
 
     public FoundationView(Logic logic, Suit suit) {
-        super(Message.FOUNDATION_TITLE.replace(Message.FOUNDATION_TAG, suit.toString().toLowerCase()));
-        this.logic = logic;
+        super(logic, Message.FOUNDATION_TITLE.replace(Message.FOUNDATION_TAG, suit.toString().toLowerCase()));
         this.suit = suit;
     }
 

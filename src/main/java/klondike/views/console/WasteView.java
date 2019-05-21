@@ -4,11 +4,8 @@ import klondike.controllers.Logic;
 
 public class WasteView extends CardStackView {
 
-    private final Logic logic;
-
     public WasteView(Logic logic) {
-        super(Message.WASTE_TITLE);
-        this.logic = logic;
+        super(logic, Message.WASTE_TITLE);
     }
 
     public void writeln() {

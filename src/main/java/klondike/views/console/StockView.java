@@ -4,11 +4,8 @@ import klondike.controllers.Logic;
 
 public class StockView extends CardStackView {
 
-    private final Logic logic;
-
     public StockView(Logic logic) {
-        super(Message.STOCK_TITLE);
-        this.logic = logic;
+        super(logic, Message.STOCK_TITLE);
     }
 
     public void writeln() {
