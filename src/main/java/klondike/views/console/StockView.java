@@ -7,11 +7,8 @@ import klondike.utils.IO;
 
 public class StockView extends CardStackView {
 
-    private final Controller controller;
-
     public StockView(Controller controller) {
-        super(Message.STOCK_TITLE);
-        this.controller = controller;
+        super(controller, Message.STOCK_TITLE);
     }
 
     public void writeln() {

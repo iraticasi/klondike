@@ -6,11 +6,9 @@ import klondike.utils.IO;
 
 public class WasteView extends CardStackView{
 
-    private final Controller controller;
 
     public WasteView(Controller controller) {
-        super(Message.WASTE_TITLE);
-        this.controller = controller;
+        super(controller, Message.WASTE_TITLE);
     }
 
     public void writeln() {

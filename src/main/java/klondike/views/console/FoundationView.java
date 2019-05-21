@@ -8,12 +8,10 @@ import klondike.utils.IO;
 public class FoundationView extends CardStackView{
 
 
-    private final Controller controller;
     private final Suit suit;
 
     public FoundationView(Controller controller, Suit suit) {
-        super(Message.FOUNDATION_TITLE.replace(Message.FOUNDATION_TAG, suit.toString().toLowerCase()));
-        this.controller = controller;
+        super(controller, Message.FOUNDATION_TITLE.replace(Message.FOUNDATION_TAG, suit.toString().toLowerCase()));
         this.suit = suit;
     }
 
