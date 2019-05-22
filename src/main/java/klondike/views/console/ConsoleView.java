@@ -9,29 +9,22 @@ public class ConsoleView extends View {
 
     @Override
     public void interact(Controller controller) {
-        if (controller instanceof StartController) {
-            this.start((StartController) controller);
-        } else {
-            if (controller instanceof MoveController) {
-                this.move((MoveController) controller);
-            } else {
-                this.resume((ResumeController) controller);
-            }
-        }
+        controller.accept(this);
     }
 
-    private void resume(ResumeController resumeController) {
-        resumeController.resume(new YesNoDialog().read(Message.RESUME));
-
-    }
-
-    private void move(MoveController moveController) {
-        new PlayMenu(moveController).execute();
-    }
-
-    private void start(StartController startController) {
+    @Override
+    public void visit(StartController startController) {
         startController.start();
         new GameView(startController).writeln();
     }
 
+    @Override
+    public void visit(MoveController moveController) {
+        new PlayMenu(moveController).execute();
+    }
+
+    @Override
+    public void visit(ResumeController resumeController) {
+        resumeController.resume(new YesNoDialog().read(Message.RESUME));
+    }
 }

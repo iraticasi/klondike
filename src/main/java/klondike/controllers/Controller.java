@@ -38,4 +38,7 @@ public abstract class Controller {
     public int getNumberOfFaceUpCardsInPile(int index) {
         return this.game.getNumberOfFaceUpCardsInPile(index);
     }
+
+    public abstract void accept(ControllerVisitor controllerVisitor);
+
 }
