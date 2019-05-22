@@ -2,16 +2,20 @@ package klondike.controllers;
 
 import klondike.models.Card;
 import klondike.models.Game;
+import klondike.models.State;
 import klondike.models.Suit;
 
 import java.util.Stack;
 
 public abstract class Controller {
 
-    final Game game;
+    protected Game game;
 
-    Controller(Game game) {
+    protected State state;
+
+    Controller(Game game, State state) {
         this.game = game;
+        this.state = state;
     }
 
     public Card peekStock() {

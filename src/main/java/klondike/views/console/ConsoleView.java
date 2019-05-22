@@ -1,31 +1,37 @@
 package klondike.views.console;
 
-import klondike.controllers.Logic;
+import klondike.controllers.*;
 import klondike.utils.YesNoDialog;
 import klondike.views.View;
 import klondike.views.console.menu.PlayMenu;
 
 public class ConsoleView extends View {
 
-    private PlayMenu playMenu;
-
-    public ConsoleView(Logic logic) {
-        super(logic);
-        this.playMenu = new PlayMenu(this.logic);
-    }
-
     @Override
-    protected void start() {
-        new GameView(this.logic).writeln();
+    public void interact(Controller controller) {
+        if (controller instanceof StartController) {
+            this.start((StartController) controller);
+        } else {
+            if (controller instanceof MoveController) {
+                this.move((MoveController) controller);
+            } else {
+                this.resume((ResumeController) controller);
+            }
+        }
     }
 
-    @Override
-    protected void move() {
-        this.playMenu.execute();
+    private void resume(ResumeController resumeController) {
+        resumeController.resume(new YesNoDialog().read(Message.RESUME));
+
     }
 
-    @Override
-    protected boolean resume() {
-        return new YesNoDialog().read(Message.RESUME);
+    private void move(MoveController moveController) {
+        new PlayMenu(moveController).execute();
     }
+
+    private void start(StartController startController) {
+        startController.start();
+        new GameView(startController).writeln();
+    }
+
 }

@@ -1,18 +1,18 @@
 package klondike.views.console.menu;
 
-import klondike.controllers.Logic;
+import klondike.controllers.MoveController;
 import klondike.utils.Menu;
 
 public class PlayMenu extends Menu {
 
-    public PlayMenu(Logic logic) {
-        this.addCommand(new MoveFromStockToWasteCommand(logic));
-        this.addCommand(new MoveFromWasteToStockCommand(logic));
-        this.addCommand(new MoveFromWasteToFoundationCommand(logic));
-        this.addCommand(new MoveFromWasteToPileCommand(logic));
-        this.addCommand(new MoveFromFoundationToPileCommand(logic));
-        this.addCommand(new MoveFromPileToFoundationCommand(logic));
-        this.addCommand(new MoveFromPileToPileCommand(logic));
+    public PlayMenu(MoveController moveController) {
+        this.addCommand(new MoveFromStockToWasteCommand(moveController));
+        this.addCommand(new MoveFromWasteToStockCommand(moveController));
+        this.addCommand(new MoveFromWasteToFoundationCommand(moveController));
+        this.addCommand(new MoveFromWasteToPileCommand(moveController));
+        this.addCommand(new MoveFromFoundationToPileCommand(moveController));
+        this.addCommand(new MoveFromPileToFoundationCommand(moveController));
+        this.addCommand(new MoveFromPileToPileCommand(moveController));
 
     }
 

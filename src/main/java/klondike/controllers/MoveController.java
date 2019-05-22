@@ -2,12 +2,13 @@ package klondike.controllers;
 
 import klondike.models.Error;
 import klondike.models.Game;
+import klondike.models.State;
 import klondike.models.Suit;
 
 public class MoveController extends Controller {
 
-    public MoveController(Game game) {
-        super(game);
+    public MoveController(Game game, State state) {
+        super(game, state);
     }
 
     public Error moveFromFoundationToPile(Suit suit, int pileIndex) {

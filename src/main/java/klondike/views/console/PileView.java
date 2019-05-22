@@ -1,5 +1,6 @@
 package klondike.views.console;
 
+import klondike.controllers.Controller;
 import klondike.controllers.Logic;
 import klondike.models.Card;
 import klondike.utils.ClosedInterval;
@@ -9,12 +10,12 @@ import java.util.Stack;
 
 public class PileView {
 
-    private final Logic logic;
+    private final Controller controller;
 
     private final int index;
 
-    public PileView(Logic logic, int index) {
-        this.logic = logic;
+    public PileView(Controller controller, int index) {
+        this.controller = controller;
         this.index = index;
     }
 
@@ -23,8 +24,8 @@ public class PileView {
     }
 
     public void writeln() {
-        Stack<Card> cards = this.logic.getPileCards(index);
-        int numberOfFaceUpCards = this.logic.getNumberOfFaceUpCardsInPile(index);
+        Stack<Card> cards = this.controller.getPileCards(index);
+        int numberOfFaceUpCards = this.controller.getNumberOfFaceUpCardsInPile(index);
         int numberOfFaceDownCards = cards.size() - numberOfFaceUpCards;
         IO.writetab();
         IO.write(this.index + ": ");

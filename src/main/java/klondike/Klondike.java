@@ -1,5 +1,6 @@
 package klondike;
 
+import klondike.controllers.Controller;
 import klondike.controllers.Logic;
 import klondike.views.View;
 import klondike.views.console.ConsoleView;
@@ -11,7 +12,7 @@ public class Klondike {
 
     private Klondike() {
         this.logic = new Logic();
-        this.view = new ConsoleView(logic);
+        this.view = new ConsoleView();
     }
 
     public static void main(String[] args) {
@@ -19,6 +20,10 @@ public class Klondike {
     }
 
     public void play() {
-        view.interact();
+        Controller controller;
+        do {
+            controller = this.logic.getController();
+            this.view.interact(controller);
+        } while (controller != null);
     }
 }

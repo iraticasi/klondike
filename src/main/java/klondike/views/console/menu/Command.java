@@ -1,6 +1,7 @@
 package klondike.views.console.menu;
 
 import klondike.controllers.Logic;
+import klondike.controllers.MoveController;
 import klondike.models.Error;
 import klondike.utils.IO;
 import klondike.views.console.GameView;
@@ -8,17 +9,17 @@ import klondike.views.console.Message;
 
 public abstract class Command extends klondike.utils.Command {
 
-    protected Logic logic;
+    protected MoveController moveController;
 
-    protected Command(String title, Logic logic) {
+    protected Command(String title, MoveController moveController) {
         super(title);
-        this.logic = logic;
+        this.moveController = moveController;
     }
 
     @Override
     protected void execute() {
         Error error = this.move();
-        new GameView(this.logic).writeln();
+        new GameView(this.moveController).writeln();
         if (error != null) {
             IO.writeError(Message.INVALID_MOVE, error.getMessage());
         }

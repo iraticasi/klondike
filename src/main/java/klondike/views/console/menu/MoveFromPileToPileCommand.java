@@ -1,6 +1,7 @@
 package klondike.views.console.menu;
 
 import klondike.controllers.Logic;
+import klondike.controllers.MoveController;
 import klondike.models.Error;
 import klondike.utils.ClosedInterval;
 import klondike.utils.IO;
@@ -9,8 +10,8 @@ import klondike.views.console.PileView;
 
 public class MoveFromPileToPileCommand extends Command {
 
-    public MoveFromPileToPileCommand(Logic logic) {
-        super(CommandTitle.PILE2PILE_COMMAND.getTitle(), logic);
+    public MoveFromPileToPileCommand(MoveController moveController) {
+        super(CommandTitle.PILE2PILE_COMMAND.getTitle(), moveController);
     }
 
     @Override
@@ -18,6 +19,6 @@ public class MoveFromPileToPileCommand extends Command {
         int originIndex = PileView.readIndex(Message.ORIGIN);
         int destinationIndex = PileView.readIndex(Message.DESTINATION);
         int numberOfCards = IO.readInt(Message.READ_NUMBER_OF_CARDS, new ClosedInterval(1, 13));
-        return this.logic.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
+        return this.moveController.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
     }
 }
