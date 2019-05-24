@@ -24,6 +24,7 @@ public class ConsoleView extends View {
     @Override
     protected void move() {
         this.playMenu.execute();
+        new GameView(this.moveController).writeln();
     }
 
     @Override
