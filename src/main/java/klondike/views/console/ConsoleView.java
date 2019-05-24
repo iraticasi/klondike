@@ -21,6 +21,7 @@ public class ConsoleView extends View {
     @Override
     public void visit(MoveController moveController) {
         new PlayMenu(moveController).execute();
+        new GameView(moveController).writeln();
     }
 
     @Override

@@ -1,6 +1,5 @@
 package klondike.views.console.menu;
 
-import klondike.controllers.Logic;
 import klondike.controllers.MoveController;
 import klondike.models.Error;
 
