@@ -27,6 +27,7 @@ public class ConsoleView extends View {
 
     private void move(MoveController moveController) {
         new PlayMenu(moveController).execute();
+        new GameView(moveController).writeln();
     }
 
     private void start(StartController startController) {
