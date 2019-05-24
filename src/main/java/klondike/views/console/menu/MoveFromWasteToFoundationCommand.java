@@ -3,7 +3,6 @@ package klondike.views.console.menu;
 import klondike.controllers.Logic;
 import klondike.models.Error;
 import klondike.models.Suit;
-import klondike.views.console.SuitView;
 
 public class MoveFromWasteToFoundationCommand extends Command {
 
@@ -13,7 +12,7 @@ public class MoveFromWasteToFoundationCommand extends Command {
 
     @Override
     protected Error move() {
-        Suit suit = SuitView.read();
+        Suit suit = SuitReader.read();
         return this.logic.moveFromWasteToFoundation(suit);
     }
 }

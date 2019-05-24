@@ -17,10 +17,10 @@ public abstract class View {
             boolean finished;
             do {
                 this.move();
-                finished = logic.isGameFinished();
+                finished = this.logic.isGameFinished();
             } while (!finished);
             resume = this.resume();
-            if (resume) logic.resume();
+            if (resume) this.logic.resume();
         } while (resume);
     }
 

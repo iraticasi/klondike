@@ -9,18 +9,22 @@ public class ConsoleView extends View {
 
     private PlayMenu playMenu;
 
+    private GameView gameView;
+
     public ConsoleView(Logic logic) {
         super(logic);
         this.playMenu = new PlayMenu(this.logic);
+        this.gameView = new GameView(this.logic);
     }
 
     @Override
     protected void start() {
-        new GameView(this.logic).writeln();
+        this.gameView.writeln();
     }
 
     @Override
     protected void move() {
+        this.gameView.writeln();
         this.playMenu.execute();
     }
 
