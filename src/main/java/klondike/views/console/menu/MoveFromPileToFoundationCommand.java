@@ -3,9 +3,6 @@ package klondike.views.console.menu;
 import klondike.models.Error;
 import klondike.models.Game;
 import klondike.models.Suit;
-import klondike.views.console.Message;
-import klondike.views.console.PileView;
-import klondike.views.console.SuitView;
 
 public class MoveFromPileToFoundationCommand extends Command {
 
@@ -15,8 +12,8 @@ public class MoveFromPileToFoundationCommand extends Command {
 
     @Override
     protected Error move() {
-        int pileIndex = PileView.readIndex(Message.ORIGIN);
-        Suit suit = SuitView.read();
+        int pileIndex = PileReader.readIndex(Message.ORIGIN);
+        Suit suit = SuitReader.read();
         return this.game.moveFromPileToFoundation(pileIndex, suit);
     }
 }

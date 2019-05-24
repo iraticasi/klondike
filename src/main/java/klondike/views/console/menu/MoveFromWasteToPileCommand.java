@@ -2,8 +2,6 @@ package klondike.views.console.menu;
 
 import klondike.models.Error;
 import klondike.models.Game;
-import klondike.views.console.Message;
-import klondike.views.console.PileView;
 
 public class MoveFromWasteToPileCommand extends Command {
 
@@ -13,7 +11,7 @@ public class MoveFromWasteToPileCommand extends Command {
 
     @Override
     protected Error move() {
-        int pileIndex = PileView.readIndex(Message.DESTINATION);
+        int pileIndex = PileReader.readIndex(Message.DESTINATION);
         return this.game.moveFromWasteToPile(pileIndex);
     }
 }
