@@ -25,5 +25,4 @@ public class Message {
     public static final String READ_PILE_INDEX = "Choose the " + PILE_TAG + " pile number(1-7): ";
     public static final String DESTINATION = "destination";
     public static final String ORIGIN = "origin";
-    public static final String CHOOSE_OPTION = "Choose an option: ";
 }

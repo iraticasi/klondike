@@ -1,7 +1,7 @@
 package klondike.menu;
 
-import klondike.*;
 import klondike.Error;
+import klondike.*;
 
 public class MoveFromPileToFoundationCommand extends Command {
 

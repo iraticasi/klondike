@@ -17,10 +17,6 @@ public enum Suit {
         this.initial = initial;
     }
 
-    public Color getColor() {
-        return this.color;
-    }
-
     public static Suit read() {
         char initial = IO.readChar(Message.READ_SUIT, Suit.initials());
         return Suit.find(initial);
@@ -40,5 +36,9 @@ public enum Suit {
                 return suit;
             }
         return null;
+    }
+
+    public Color getColor() {
+        return this.color;
     }
 }
