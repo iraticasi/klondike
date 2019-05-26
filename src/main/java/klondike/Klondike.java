@@ -7,8 +7,11 @@ public class Klondike {
 
     private Game game;
 
+    private PlayMenu playMenu;
+
     private Klondike() {
         this.game = new Game();
+        this.playMenu = new PlayMenu(this.game);
     }
 
     public static void main(String[] args) {
@@ -16,12 +19,11 @@ public class Klondike {
     }
 
     public void play() {
-        PlayMenu playMenu = new PlayMenu(this.game);
         boolean resume;
         do {
             boolean finished;
             do {
-                playMenu.execute();
+                this.playMenu.execute();
                 finished = this.game.isFinished();
             } while (!finished);
             resume = new YesNoDialog().read(Message.RESUME);
