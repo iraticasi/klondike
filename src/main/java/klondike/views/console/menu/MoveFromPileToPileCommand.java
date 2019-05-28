@@ -1,15 +1,15 @@
 package klondike.views.console.menu;
 
 
-import klondike.controllers.MoveController;
+import klondike.controllers.PlayController;
 import klondike.models.Error;
 import klondike.utils.ClosedInterval;
 import klondike.utils.IO;
 
-public class MoveFromPileToPileCommand extends Command {
+public class MoveFromPileToPileCommand extends MoveCommand {
 
-    public MoveFromPileToPileCommand(MoveController moveController) {
-        super(CommandTitle.PILE2PILE_COMMAND.getTitle(), moveController);
+    public MoveFromPileToPileCommand(PlayController playController) {
+        super(CommandTitle.PILE2PILE_COMMAND.getTitle(), playController);
     }
 
     @Override
@@ -17,6 +17,11 @@ public class MoveFromPileToPileCommand extends Command {
         int originIndex = PileReader.readIndex(Message.ORIGIN);
         int destinationIndex = PileReader.readIndex(Message.DESTINATION);
         int numberOfCards = IO.readInt(Message.READ_NUMBER_OF_CARDS, new ClosedInterval(1, 13));
-        return this.moveController.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
+        return this.playController.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
+    }
+
+    @Override
+    public boolean isActive() {
+        return true;
     }
 }

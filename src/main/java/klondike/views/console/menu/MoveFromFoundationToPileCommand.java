@@ -1,19 +1,24 @@
 package klondike.views.console.menu;
 
-import klondike.controllers.MoveController;
+import klondike.controllers.PlayController;
 import klondike.models.Error;
 import klondike.models.Suit;
 
-public class MoveFromFoundationToPileCommand extends Command {
+public class MoveFromFoundationToPileCommand extends MoveCommand {
 
-    public MoveFromFoundationToPileCommand(MoveController moveController) {
-        super(CommandTitle.FOUNDATION2PILE_COMMAND.getTitle(), moveController);
+    public MoveFromFoundationToPileCommand(PlayController playController) {
+        super(CommandTitle.FOUNDATION2PILE_COMMAND.getTitle(), playController);
     }
 
     @Override
     protected Error move() {
         Suit suit = SuitReader.read();
         int pileIndex = PileReader.readIndex(Message.DESTINATION);
-        return this.moveController.moveFromFoundationToPile(suit, pileIndex);
+        return this.playController.moveFromFoundationToPile(suit, pileIndex);
+    }
+
+    @Override
+    public boolean isActive() {
+        return true;
     }
 }

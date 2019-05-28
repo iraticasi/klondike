@@ -1,5 +1,7 @@
 package klondike.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public abstract class CardStack {
@@ -26,4 +28,11 @@ public abstract class CardStack {
         this.cards.push(card);
     }
 
+    protected void copyCardsFrom(CardStack cardStack) {
+        List<Card> copiedCards = new ArrayList<>();
+        for (Card card : cardStack.cards) {
+            copiedCards.add(card.copy());
+        }
+        this.cards.addAll(copiedCards);
+    }
 }

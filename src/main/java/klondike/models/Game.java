@@ -20,6 +20,7 @@ public class Game {
 
     public void clear() {
         this.stock = new Stock();
+        this.stock.generateCards();
         this.waste = new Waste();
         this.foundations = new HashMap<>();
         for (Suit suit : Suit.values()) {
@@ -169,5 +170,31 @@ public class Game {
 
     public int getNumberOfFaceUpCardsInPile(int index) {
         return this.piles.get(index).numberOfFaceUpCards();
+    }
+
+    public Memento createMemento() {
+        Memento memento = new Memento();
+        memento.setStock(this.stock.copy());
+        memento.setWaste(this.waste.copy());
+        for (Suit suit : Suit.values()) {
+            memento.addFoundation(this.foundations.get(suit).copy());
+        }
+        for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
+            memento.addPile(this.piles.get(i).copy());
+        }
+        return memento;
+    }
+
+    public void restore(Memento memento) {
+        this.stock = memento.getStock().copy();
+        this.waste = memento.getWaste().copy();
+        this.foundations = new HashMap<>();
+        for (Suit suit : Suit.values()) {
+            this.foundations.put(suit, memento.getFoundation(suit).copy());
+        }
+        this.piles = new ArrayList<>();
+        for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
+            this.piles.add(memento.getPile(i).copy());
+        }
     }
 }

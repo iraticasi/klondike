@@ -6,8 +6,7 @@ import java.util.List;
 
 public class Stock extends CardStack {
 
-    public Stock() {
-        super();
+    public void generateCards() {
         for (Suit suit : Suit.values()) {
             for (Number number : Number.values()) {
                 this.cards.add(new Card(suit, number));
@@ -21,6 +20,12 @@ public class Stock extends CardStack {
         List<Card> cardsToReturn = new ArrayList<>(this.cards.subList(0, quantity));
         this.cards.removeAll(cardsToReturn);
         return cardsToReturn;
+    }
+
+    public Stock copy() {
+        Stock copy = new Stock();
+        copy.copyCardsFrom(this);
+        return copy;
     }
 
 }

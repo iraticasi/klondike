@@ -1,6 +1,9 @@
 package klondike.views.console;
 
-import klondike.controllers.*;
+import klondike.controllers.AcceptorController;
+import klondike.controllers.PlayController;
+import klondike.controllers.ResumeController;
+import klondike.controllers.StartController;
 import klondike.utils.YesNoDialog;
 import klondike.views.View;
 import klondike.views.console.menu.PlayMenu;
@@ -8,8 +11,8 @@ import klondike.views.console.menu.PlayMenu;
 public class ConsoleView extends View {
 
     @Override
-    public void interact(Controller controller) {
-        controller.accept(this);
+    public void interact(AcceptorController acceptorController) {
+        acceptorController.accept(this);
     }
 
     @Override
@@ -19,9 +22,9 @@ public class ConsoleView extends View {
     }
 
     @Override
-    public void visit(MoveController moveController) {
-        new PlayMenu(moveController).execute();
-        new GameView(moveController).writeln();
+    public void visit(PlayController playController) {
+        new PlayMenu(playController).execute();
+        new GameView(playController).writeln();
     }
 
     @Override

@@ -1,31 +1,27 @@
 package klondike.controllers;
 
-import klondike.models.*;
-import klondike.models.Error;
+import klondike.models.Session;
+import klondike.models.StateValue;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack;
 
 public class Logic {
 
-    private final State state;
+    private Session session;
 
-    private Game game;
-
-    private Map<StateValue, Controller> controllers;
+    private Map<StateValue, AcceptorController> controllers;
 
     public Logic() {
-        this.state = new State();
-        this.game = new Game();
+        this.session = new Session();
         this.controllers = new HashMap<>();
-        this.controllers.put(StateValue.INITIAL, new StartController(this.game, this.state));
-        this.controllers.put(StateValue.IN_GAME, new MoveController(this.game, this.state));
-        this.controllers.put(StateValue.FINAL, new ResumeController(this.game, this.state));
-        this.controllers.put(StateValue.EXIT,null);
+        this.controllers.put(StateValue.INITIAL, new StartController(this.session));
+        this.controllers.put(StateValue.IN_GAME, new PlayController(this.session));
+        this.controllers.put(StateValue.FINAL, new ResumeController(this.session));
+        this.controllers.put(StateValue.EXIT, null);
     }
 
-    public Controller getController(){
-        return this.controllers.get(this.state.getValueState());
+    public AcceptorController getController() {
+        return this.controllers.get(this.session.getValueState());
     }
 }

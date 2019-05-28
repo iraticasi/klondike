@@ -16,6 +16,9 @@ public class Pile extends CardStack {
         }
     }
 
+    private Pile() {
+    }
+
     private void flipFirstCard() {
         assert !this.cards.empty() && this.numberOfFaceUpCards == 0 && this.cards.peek().isFacedUp();
         this.cards.peek().flip();
@@ -60,5 +63,12 @@ public class Pile extends CardStack {
 
     public Stack<Card> getCards() {
         return this.cards;
+    }
+
+    public Pile copy() {
+        Pile copy = new Pile();
+        copy.copyCardsFrom(this);
+        copy.numberOfFaceUpCards = this.numberOfFaceUpCards;
+        return copy;
     }
 }

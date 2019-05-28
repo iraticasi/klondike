@@ -1,16 +1,15 @@
 package klondike.controllers;
 
-import klondike.models.Game;
-import klondike.models.State;
+import klondike.models.Session;
 
-public class StartController extends Controller {
+public class StartController extends AcceptorController {
 
-    public StartController(Game game, State state) {
-        super(game, state);
+    public StartController(Session session) {
+        super(session);
     }
 
     public void start() {
-        this.state.next();
+        this.session.next();
     }
 
     @Override

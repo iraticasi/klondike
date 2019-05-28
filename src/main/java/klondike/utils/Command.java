@@ -14,4 +14,5 @@ public abstract class Command {
         return this.title;
     }
 
+    public abstract boolean isActive();
 }

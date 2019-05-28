@@ -1,7 +1,6 @@
 package klondike.views.console;
 
 import klondike.controllers.Controller;
-import klondike.controllers.Logic;
 
 public class WasteView extends CardStackView {
 

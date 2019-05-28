@@ -1,11 +1,10 @@
 package klondike.views;
 
-import klondike.controllers.Controller;
+import klondike.controllers.AcceptorController;
 import klondike.controllers.ControllerVisitor;
-import klondike.controllers.StartController;
 
 public abstract class View implements ControllerVisitor {
 
-    public abstract void interact(Controller controller);
+    public abstract void interact(AcceptorController acceptorController);
 
 }

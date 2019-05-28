@@ -8,7 +8,9 @@ public enum CommandTitle {
     WASTE2PILE_COMMAND("Move from waste to pile"),
     FOUNDATION2PILE_COMMAND("Move from foundation to pile"),
     PILE2FOUNDATION_COMMAND("Move from pile to foundation"),
-    PILE2PILE_COMMAND("Move from pile to pile");
+    PILE2PILE_COMMAND("Move from pile to pile"),
+    UNDO_COMMAND("Undo move"),
+    REDO_COMMAND("Redo move");
 
     private String title;
 

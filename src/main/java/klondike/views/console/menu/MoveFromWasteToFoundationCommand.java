@@ -1,18 +1,23 @@
 package klondike.views.console.menu;
 
-import klondike.controllers.MoveController;
+import klondike.controllers.PlayController;
 import klondike.models.Error;
 import klondike.models.Suit;
 
-public class MoveFromWasteToFoundationCommand extends Command {
+public class MoveFromWasteToFoundationCommand extends MoveCommand {
 
-    public MoveFromWasteToFoundationCommand(MoveController moveController) {
-        super(CommandTitle.WASTE2FOUNDATION_COMMAND.getTitle(), moveController);
+    public MoveFromWasteToFoundationCommand(PlayController playController) {
+        super(CommandTitle.WASTE2FOUNDATION_COMMAND.getTitle(), playController);
     }
 
     @Override
     protected Error move() {
         Suit suit = SuitReader.read();
-        return this.moveController.moveFromWasteToFoundation(suit);
+        return this.playController.moveFromWasteToFoundation(suit);
+    }
+
+    @Override
+    public boolean isActive() {
+        return true;
     }
 }

@@ -14,7 +14,9 @@ public abstract class Menu {
     public void execute() {
         ArrayList<Command> commands = new ArrayList<Command>();
         for (int i = 0; i < this.commandList.size(); i++) {
-            commands.add(this.commandList.get(i));
+            if (this.commandList.get(i).isActive()) {
+                commands.add(this.commandList.get(i));
+            }
         }
         boolean error;
         int option;

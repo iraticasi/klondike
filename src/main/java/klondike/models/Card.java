@@ -41,4 +41,11 @@ public class Card {
         return this.suit.getColor();
     }
 
+    public Card copy() {
+        Card copy = new Card(this.suit, this.number);
+        if (this.facedUp) {
+            copy.flip();
+        }
+        return copy;
+    }
 }

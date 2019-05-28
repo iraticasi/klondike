@@ -1,25 +1,14 @@
 package klondike.views.console.menu;
 
-import klondike.controllers.MoveController;
-import klondike.models.Error;
-import klondike.utils.IO;
+import klondike.controllers.PlayController;
 
 public abstract class Command extends klondike.utils.Command {
 
-    protected MoveController moveController;
+    protected PlayController playController;
 
-    protected Command(String title, MoveController moveController) {
+    protected Command(String title, PlayController playController) {
         super(title);
-        this.moveController = moveController;
+        this.playController = playController;
     }
 
-    @Override
-    protected void execute() {
-        Error error = this.move();
-        if (error != null) {
-            IO.writeError(Message.INVALID_MOVE, error.getMessage());
-        }
-    }
-
-    protected abstract Error move();
 }

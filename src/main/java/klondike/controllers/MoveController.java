@@ -1,54 +1,49 @@
 package klondike.controllers;
 
 import klondike.models.Error;
-import klondike.models.Game;
-import klondike.models.State;
+import klondike.models.Session;
 import klondike.models.Suit;
 
 public class MoveController extends Controller {
 
-    public MoveController(Game game, State state) {
-        super(game, state);
+    public MoveController(Session session) {
+        super(session);
     }
 
     public Error moveFromFoundationToPile(Suit suit, int pileIndex) {
-        return this.game.moveFromFoundationToPile(suit, pileIndex);
+        return this.session.moveFromFoundationToPile(suit, pileIndex);
     }
 
     public Error moveFromPileToFoundation(int pileIndex, Suit suit) {
-        Error error = this.game.moveFromPileToFoundation(pileIndex, suit);
-        if (error== null && this.game.isFinished()) {
-            this.state.next();
+        Error error = this.session.moveFromPileToFoundation(pileIndex, suit);
+        if (error == null && this.session.isGameFinished()) {
+            this.session.next();
         }
         return error;
     }
 
     public Error moveFromPileToPile(int originIndex, int destinationIndex, int numberOfCards) {
-        return this.game.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
+        return this.session.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
     }
 
     public Error moveFromStockToWaste() {
-        return this.game.moveFromStockToWaste();
+        return this.session.moveFromStockToWaste();
     }
 
     public Error moveFromWasteToFoundation(Suit suit) {
-        Error error = this.game.moveFromWasteToFoundation(suit);
-        if (error== null && this.game.isFinished()) {
-            this.state.next();
+        Error error = this.session.moveFromWasteToFoundation(suit);
+        if (error == null && this.session.isGameFinished()) {
+            this.session.next();
         }
         return error;
     }
 
     public Error moveFromWasteToPile(int pileIndex) {
-        return this.game.moveFromWasteToPile(pileIndex);
+        return this.session.moveFromWasteToPile(pileIndex);
     }
 
     public Error moveFromWasteToStock() {
-        return this.game.moveFromWasteToStock();
+        return this.session.moveFromWasteToStock();
     }
 
-    @Override
-    public void accept(ControllerVisitor controllerVisitor) {
-        controllerVisitor.visit(this);
-    }
 }

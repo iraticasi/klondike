@@ -1,20 +1,18 @@
 package klondike.controllers;
 
-import klondike.models.Game;
-import klondike.models.State;
+import klondike.models.Session;
 
-public class ResumeController extends Controller {
+public class ResumeController extends AcceptorController {
 
-    public ResumeController(Game game, State state) {
-        super(game, state);
+    public ResumeController(Session session) {
+        super(session);
     }
 
     public void resume(boolean newGame) {
         if (newGame) {
-            this.game.clear();
-            this.state.reset();
+            this.session.resume();
         } else {
-            this.state.next();
+            this.session.next();
         }
     }
 

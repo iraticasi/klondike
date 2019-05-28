@@ -1,44 +1,38 @@
 package klondike.controllers;
 
 import klondike.models.Card;
-import klondike.models.Game;
-import klondike.models.State;
+import klondike.models.Session;
 import klondike.models.Suit;
 
 import java.util.Stack;
 
 public abstract class Controller {
 
-    protected Game game;
+    protected Session session;
 
-    protected State state;
-
-    Controller(Game game, State state) {
-        this.game = game;
-        this.state = state;
+    Controller(Session session) {
+        this.session = session;
     }
 
     public Card peekStock() {
-        return this.game.peekStock();
+        return this.session.peekStock();
     }
 
     public Card peekWaste() {
-        return this.game.peekWaste();
+        return this.session.peekWaste();
     }
 
     public Card peekFoundation(Suit suit) {
-        return this.game.peekFoundation(suit);
+        return this.session.peekFoundation(suit);
     }
 
 
     public Stack<Card> getPileCards(int index) {
-        return this.game.getPileCards(index);
+        return this.session.getPileCards(index);
     }
 
     public int getNumberOfFaceUpCardsInPile(int index) {
-        return this.game.getNumberOfFaceUpCardsInPile(index);
+        return this.session.getNumberOfFaceUpCardsInPile(index);
     }
-
-    public abstract void accept(ControllerVisitor controllerVisitor);
 
 }

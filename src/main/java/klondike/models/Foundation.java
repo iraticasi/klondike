@@ -5,7 +5,6 @@ public class Foundation extends CardStack {
     private Suit suit;
 
     public Foundation(Suit suit) {
-        super();
         this.suit = suit;
     }
 
@@ -22,5 +21,11 @@ public class Foundation extends CardStack {
 
     public Suit getSuit() {
         return this.suit;
+    }
+
+    public Foundation copy() {
+        Foundation copy = new Foundation(this.suit);
+        copy.copyCardsFrom(this);
+        return copy;
     }
 }
