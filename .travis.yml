@@ -1,5 +1,1 @@
-mvn sonar:sonar \
--Dsonar.projectKey=iraticasi_klondike \
--Dsonar.organization=iraticasi-github \
--Dsonar.host.url=https://sonarcloud.io \
--Dsonar.login=$SONAR
+- mvn sonar:sonar -Dsonar.projectKey=iraticasi_klondike -Dsonar.organization=iraticasi-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR
