@@ -7,7 +7,7 @@ public class Message {
     public static final String PILE_TAG = "#pile";
 
     public static final String GAME_TITLE = "*********************KLONDIKE*********************";
-    public static final String GAME_END   = "**************************************************";
+    public static final String GAME_END = "**************************************************";
     public static final String STOCK_TITLE = "STOCK: ";
     public static final String WASTE_TITLE = "WASTE: ";
     public static final String FOUNDATIONS_TITLE = "FOUNDATIONS: ";

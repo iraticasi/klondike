@@ -49,7 +49,7 @@ public class Card {
         IO.write(output);
     }
 
-    public void writeln(){
+    public void writeln() {
         this.write();
         IO.writeln();
     }

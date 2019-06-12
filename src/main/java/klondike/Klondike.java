@@ -16,6 +16,21 @@ public class Klondike {
         new Klondike().play();
     }
 
+    private static int readMove() {
+        IO.writeln("1. Move from Stock to Waste");
+        IO.writeln("2. Move from Waste to Stock");
+        IO.writeln("3. Move from Waste to Foundation");
+        IO.writeln("4. Move from Waste to Pile");
+        IO.writeln("5. Move from Foundation to Pile");
+        IO.writeln("6. Move from Pile to Foundation");
+        IO.writeln("7. Move from Pile to Pile");
+        return IO.readInt(Message.CHOOSE_OPTION, new ClosedInterval(1, 7));
+    }
+
+    private static int readNumberOfCards() {
+        return IO.readInt(Message.READ_NUMBER_OF_CARDS);
+    }
+
     public void play() {
         boolean finished;
         game.writeln();
@@ -64,21 +79,6 @@ public class Klondike {
             default:
                 return null;
         }
-    }
-
-    private static int readMove() {
-        IO.writeln("1. Move from Stock to Waste");
-        IO.writeln("2. Move from Waste to Stock");
-        IO.writeln("3. Move from Waste to Foundation");
-        IO.writeln("4. Move from Waste to Pile");
-        IO.writeln("5. Move from Foundation to Pile");
-        IO.writeln("6. Move from Pile to Foundation");
-        IO.writeln("7. Move from Pile to Pile");
-        return IO.readInt(Message.CHOOSE_OPTION, new ClosedInterval(1, 7));
-    }
-
-    private static int readNumberOfCards() {
-        return IO.readInt(Message.READ_NUMBER_OF_CARDS);
     }
 
 }

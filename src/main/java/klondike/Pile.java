@@ -63,7 +63,7 @@ public class Pile extends CardStack {
         return this.numberOfFaceUpCards;
     }
 
-    private int numberOfFaceDownCards(){
+    private int numberOfFaceDownCards() {
         return this.cards.size() - this.numberOfFaceUpCards;
     }
 
@@ -77,14 +77,14 @@ public class Pile extends CardStack {
         if (this.cards.empty()) {
             IO.write(Message.EMPTY);
         } else {
-            if (this.numberOfFaceDownCards()>0) {
+            if (this.numberOfFaceDownCards() > 0) {
                 this.cards.get(0).write();
                 IO.write(" (x" + this.numberOfFaceDownCards() + "), ");
             }
-            for (int i = 0; i<this.numberOfFaceUpCards; i++){
+            for (int i = 0; i < this.numberOfFaceUpCards; i++) {
                 Card card = this.cards.get(numberOfFaceDownCards() + i);
                 card.write();
-                if (i<this.numberOfFaceUpCards-1){
+                if (i < this.numberOfFaceUpCards - 1) {
                     IO.write(", ");
                 }
             }
