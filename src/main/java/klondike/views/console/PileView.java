@@ -2,7 +2,6 @@ package klondike.views.console;
 
 import klondike.controllers.Logic;
 import klondike.models.Card;
-import klondike.utils.ClosedInterval;
 import klondike.utils.IO;
 
 import java.util.Stack;
