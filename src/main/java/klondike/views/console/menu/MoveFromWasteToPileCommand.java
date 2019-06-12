@@ -14,9 +14,4 @@ public class MoveFromWasteToPileCommand extends MoveCommand {
         int pileIndex = PileReader.readIndex(Message.DESTINATION);
         return this.playController.moveFromWasteToPile(pileIndex);
     }
-
-    @Override
-    public boolean isActive() {
-        return true;
-    }
 }

@@ -16,9 +16,4 @@ public class MoveFromFoundationToPileCommand extends MoveCommand {
         int pileIndex = PileReader.readIndex(Message.DESTINATION);
         return this.playController.moveFromFoundationToPile(suit, pileIndex);
     }
-
-    @Override
-    public boolean isActive() {
-        return true;
-    }
 }

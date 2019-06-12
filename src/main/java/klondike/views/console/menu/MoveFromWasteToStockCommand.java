@@ -13,9 +13,4 @@ public class MoveFromWasteToStockCommand extends MoveCommand {
     protected Error move() {
         return this.playController.moveFromWasteToStock();
     }
-
-    @Override
-    public boolean isActive() {
-        return true;
-    }
 }

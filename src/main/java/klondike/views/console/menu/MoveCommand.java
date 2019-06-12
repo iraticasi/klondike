@@ -19,4 +19,9 @@ public abstract class MoveCommand extends Command {
     }
 
     protected abstract Error move();
+
+    @Override
+    public boolean isActive() {
+        return true;
+    }
 }

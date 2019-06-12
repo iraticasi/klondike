@@ -15,9 +15,4 @@ public class MoveFromWasteToFoundationCommand extends MoveCommand {
         Suit suit = SuitReader.read();
         return this.playController.moveFromWasteToFoundation(suit);
     }
-
-    @Override
-    public boolean isActive() {
-        return true;
-    }
 }
