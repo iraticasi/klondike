@@ -1,6 +1,9 @@
 package klondike.views.console;
 
-import klondike.controllers.*;
+import klondike.controllers.Controller;
+import klondike.controllers.MoveController;
+import klondike.controllers.ResumeController;
+import klondike.controllers.StartController;
 import klondike.utils.YesNoDialog;
 import klondike.views.View;
 import klondike.views.console.menu.PlayMenu;
