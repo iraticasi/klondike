@@ -15,6 +15,10 @@ public class Card {
         this.number = number;
         this.facedUp = false;
     }
+    public Card(Suit suit, Number number, boolean facedUp) {
+        this(suit,number);
+        this.facedUp = facedUp;
+    }
 
     public Card flip() {
         this.facedUp = !this.facedUp;
@@ -42,10 +46,7 @@ public class Card {
     }
 
     public Card copy() {
-        Card copy = new Card(this.suit, this.number);
-        if (this.facedUp) {
-            copy.flip();
-        }
+        Card copy = new Card(this.suit, this.number, this.facedUp);
         return copy;
     }
 }

@@ -5,25 +5,27 @@ import klondike.controllers.Logic;
 import klondike.views.View;
 import klondike.views.console.ConsoleView;
 
-public class Klondike {
+public abstract class Klondike {
 
     private Logic logic;
     private View view;
 
-    private Klondike() {
-        this.logic = new Logic();
+    protected Klondike() {
+        this.logic = new Logic(this.isStandalone());
         this.view = new ConsoleView();
     }
 
-    public static void main(String[] args) {
-        new Klondike().play();
-    }
-
-    public void play() {
+    protected void play() {
         AcceptorController acceptorController;
         do {
             acceptorController = this.logic.getController();
             this.view.interact(acceptorController);
         } while (acceptorController != null);
+        if (!this.isStandalone()) {
+            this.logic.close();
+        }
     }
+
+    protected abstract Boolean isStandalone();
+
 }

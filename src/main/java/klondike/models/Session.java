@@ -1,5 +1,8 @@
 package klondike.models;
 
+import klondike.distributed.dispatchers.FrameType;
+import klondike.distributed.dispatchers.TCPIP;
+
 import java.util.Stack;
 
 public class Session {
@@ -10,10 +13,13 @@ public class Session {
 
     private Registry registry;
 
-    public Session() {
+    private TCPIP tcpip;
+
+    public Session(TCPIP tcpip) {
         this.state = new State();
         this.game = new Game();
         this.registry = new Registry(this.game);
+        this.tcpip = tcpip;
     }
 
     public void resume() {
@@ -24,10 +30,6 @@ public class Session {
 
     public void next() {
         this.state.next();
-    }
-
-    public StateValue getValueState() {
-        return this.state.getValueState();
     }
 
     public boolean undoable() {
@@ -103,26 +105,62 @@ public class Session {
     }
 
     public Card peekStock() {
-        return this.game.peekStock();
+        if (this.tcpip == null) {
+            return this.game.peekStock();
+        }
+        this.tcpip.send(FrameType.PEEKSTOCK.name());
+        return this.tcpip.receiveCard();
     }
 
     public Card peekWaste() {
-        return this.game.peekWaste();
+        if (this.tcpip == null) {
+            return this.game.peekWaste();
+        }
+        this.tcpip.send(FrameType.PEEKWASTE.name());
+        return this.tcpip.receiveCard();
     }
 
     public Card peekFoundation(Suit suit) {
-        return this.game.peekFoundation(suit);
+        if (this.tcpip == null) {
+            return this.game.peekFoundation(suit);
+        }
+        this.tcpip.send(FrameType.PEEKFOUNDATION.name());
+        this.tcpip.send(suit);
+        return this.tcpip.receiveCard();
     }
 
     public Stack<Card> getPileCards(int index) {
-        return this.game.getPileCards(index);
+        if (this.tcpip == null) {
+            return this.game.getPileCards(index);
+        }
+        this.tcpip.send(FrameType.GETPILECARDS.name());
+        this.tcpip.send(index);
+        int numberOfCards = this.tcpip.receiveInt();
+        Stack<Card> cards = new Stack<>();
+        for (int i=0; i<numberOfCards; i++){
+            cards.add(this.tcpip.receiveCard());
+        }
+        return cards;
     }
 
     public int getNumberOfFaceUpCardsInPile(int index) {
-        return this.game.getNumberOfFaceUpCardsInPile(index);
+        if (this.tcpip == null) {
+            return this.game.getNumberOfFaceUpCardsInPile(index);
+        }
+        this.tcpip.send(FrameType.GETNUMBEROFFACEDUPCARDSINPILE.name());
+        this.tcpip.send(index);
+        return this.tcpip.receiveInt();
     }
 
     public boolean isGameFinished() {
         return this.game.isFinished();
+    }
+
+    public StateValue getValueState() {
+        if (this.tcpip == null) {
+            return this.state.getValueState();
+        }
+        this.tcpip.send(FrameType.STATE.name());
+        return StateValue.values()[this.tcpip.receiveInt()];
     }
 }

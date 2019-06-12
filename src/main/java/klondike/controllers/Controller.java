@@ -2,6 +2,7 @@ package klondike.controllers;
 
 import klondike.models.Card;
 import klondike.models.Session;
+import klondike.models.StateValue;
 import klondike.models.Suit;
 
 import java.util.Stack;
@@ -33,6 +34,10 @@ public abstract class Controller {
 
     public int getNumberOfFaceUpCardsInPile(int index) {
         return this.session.getNumberOfFaceUpCardsInPile(index);
+    }
+
+    public StateValue getValueState() {
+        return this.session.getValueState();
     }
 
 }
