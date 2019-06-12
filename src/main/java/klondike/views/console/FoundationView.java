@@ -1,11 +1,10 @@
 package klondike.views.console;
 
 import klondike.controllers.Controller;
-import klondike.models.Card;
 import klondike.models.Suit;
 import klondike.utils.IO;
 
-public class FoundationView extends CardStackView{
+public class FoundationView extends CardStackView {
 
 
     private final Suit suit;

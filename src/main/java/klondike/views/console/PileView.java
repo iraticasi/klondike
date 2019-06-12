@@ -2,7 +2,6 @@ package klondike.views.console;
 
 import klondike.controllers.Controller;
 import klondike.models.Card;
-import klondike.utils.ClosedInterval;
 import klondike.utils.IO;
 
 import java.util.Stack;
@@ -32,7 +31,7 @@ public class PileView {
                 IO.write(" (x" + numberOfFaceDownCards + "), ");
             }
             for (int i = 0; i < numberOfFaceUpCards; i++) {
-                Card card = cards.get(numberOfFaceDownCards+ i);
+                Card card = cards.get(numberOfFaceDownCards + i);
                 new CardView(card).write();
                 if (i < numberOfFaceUpCards - 1) {
                     IO.write(", ");

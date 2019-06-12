@@ -10,7 +10,7 @@ public abstract class CardStackView {
 
     private final String title;
 
-    CardStackView(Controller controller, String title){
+    CardStackView(Controller controller, String title) {
         this.controller = controller;
         this.title = title;
     }

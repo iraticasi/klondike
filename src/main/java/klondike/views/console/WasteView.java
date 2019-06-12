@@ -1,10 +1,8 @@
 package klondike.views.console;
 
 import klondike.controllers.Controller;
-import klondike.models.Card;
-import klondike.utils.IO;
 
-public class WasteView extends CardStackView{
+public class WasteView extends CardStackView {
 
 
     public WasteView(Controller controller) {

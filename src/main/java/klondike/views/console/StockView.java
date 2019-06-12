@@ -1,9 +1,6 @@
 package klondike.views.console;
 
 import klondike.controllers.Controller;
-import klondike.models.Card;
-import klondike.models.CardStack;
-import klondike.utils.IO;
 
 public class StockView extends CardStackView {
 
