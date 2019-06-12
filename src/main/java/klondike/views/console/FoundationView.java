@@ -1,7 +1,6 @@
 package klondike.views.console;
 
 import klondike.controllers.Controller;
-import klondike.controllers.Logic;
 import klondike.models.Suit;
 import klondike.utils.IO;
 

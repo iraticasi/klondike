@@ -17,10 +17,11 @@ public class MoveController extends Controller {
 
     public Error moveFromPileToFoundation(int pileIndex, Suit suit) {
         Error error = this.game.moveFromPileToFoundation(pileIndex, suit);
-        if (error== null && this.game.isFinished()) {
+        if (error == null && this.game.isFinished()) {
             this.state.next();
         }
-        return error;    }
+        return error;
+    }
 
     public Error moveFromPileToPile(int originIndex, int destinationIndex, int numberOfCards) {
         return this.game.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
@@ -32,7 +33,7 @@ public class MoveController extends Controller {
 
     public Error moveFromWasteToFoundation(Suit suit) {
         Error error = this.game.moveFromWasteToFoundation(suit);
-        if (error== null && this.game.isFinished()) {
+        if (error == null && this.game.isFinished()) {
             this.state.next();
         }
         return error;
