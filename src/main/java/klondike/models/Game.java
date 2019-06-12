@@ -1,8 +1,11 @@
 package klondike.models;
 
+import klondike.utils.Memento;
+import klondike.utils.Originator;
+
 import java.util.*;
 
-public class Game {
+public class Game implements Originator {
 
     public static final int NUMBER_OF_PILES = 7;
 
@@ -172,29 +175,33 @@ public class Game {
         return this.piles.get(index).numberOfFaceUpCards();
     }
 
-    public Memento createMemento() {
-        Memento memento = new Memento();
-        memento.setStock(this.stock.copy());
-        memento.setWaste(this.waste.copy());
+    @Override
+    public GameMemento createMemento() {
+        GameMemento gameMemento = new GameMemento();
+        gameMemento.setStock(this.stock.copy());
+        gameMemento.setWaste(this.waste.copy());
         for (Suit suit : Suit.values()) {
-            memento.addFoundation(this.foundations.get(suit).copy());
+            gameMemento.addFoundation(this.foundations.get(suit).copy());
         }
         for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
-            memento.addPile(this.piles.get(i).copy());
+            gameMemento.addPile(this.piles.get(i).copy());
         }
-        return memento;
+        return gameMemento;
     }
 
+    @Override
     public void restore(Memento memento) {
-        this.stock = memento.getStock().copy();
-        this.waste = memento.getWaste().copy();
+        GameMemento gameMemento = (GameMemento) memento;
+        this.stock = gameMemento.getStock().copy();
+        this.waste = gameMemento.getWaste().copy();
         this.foundations = new HashMap<>();
         for (Suit suit : Suit.values()) {
-            this.foundations.put(suit, memento.getFoundation(suit).copy());
+            this.foundations.put(suit, gameMemento.getFoundation(suit).copy());
         }
         this.piles = new ArrayList<>();
         for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
-            this.piles.add(memento.getPile(i).copy());
+            this.piles.add(gameMemento.getPile(i).copy());
         }
     }
+
 }
