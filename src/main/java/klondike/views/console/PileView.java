@@ -2,7 +2,6 @@ package klondike.views.console;
 
 import klondike.models.Card;
 import klondike.models.Pile;
-import klondike.utils.ClosedInterval;
 import klondike.utils.IO;
 
 public class PileView {
@@ -12,6 +11,7 @@ public class PileView {
     PileView(Pile pile) {
         this.pile = pile;
     }
+
     public void writeln() {
         IO.writetab();
         IO.write(this.pile.getNumber() + ": ");
