@@ -11,9 +11,10 @@ public abstract class Klondike {
     private View view;
 
     protected Klondike() {
-        this.logic = new Logic(this.isStandalone());
+        this.logic = this.createLogic();
         this.view = new ConsoleView();
     }
+
 
     protected void play() {
         AcceptorController acceptorController;
@@ -21,11 +22,8 @@ public abstract class Klondike {
             acceptorController = this.logic.getController();
             this.view.interact(acceptorController);
         } while (acceptorController != null);
-        if (!this.isStandalone()) {
-            this.logic.close();
-        }
     }
 
-    protected abstract Boolean isStandalone();
+    protected abstract Logic createLogic();
 
 }

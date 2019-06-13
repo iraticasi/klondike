@@ -1,16 +1,17 @@
 package klondike.distributed.dispatchers;
 
 import klondike.controllers.PlayController;
+import klondike.controllers.implementation.PlayControllerImplementation;
 
 public class UndoDispatcher extends Dispatcher {
 
-    public UndoDispatcher(PlayController playController) {
-        super(playController);
+    public UndoDispatcher(PlayControllerImplementation playControllerImplementation) {
+        super(playControllerImplementation);
     }
 
     @Override
     public void dispatch() {
-        ((PlayController) this.acceptorController).undo();
+        ((PlayControllerImplementation) this.acceptorController).undo();
     }
 
 }

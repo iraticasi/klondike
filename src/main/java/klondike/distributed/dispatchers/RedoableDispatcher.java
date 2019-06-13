@@ -1,16 +1,17 @@
 package klondike.distributed.dispatchers;
 
 import klondike.controllers.PlayController;
+import klondike.controllers.implementation.PlayControllerImplementation;
 
 public class RedoableDispatcher extends Dispatcher {
 
-    public RedoableDispatcher(PlayController playController) {
-        super(playController);
+    public RedoableDispatcher(PlayControllerImplementation playControllerImplementation) {
+        super(playControllerImplementation);
     }
 
     @Override
     public void dispatch() {
-        this.tcpip.send(((PlayController) this.acceptorController).redoable());
+        this.tcpip.send(((PlayControllerImplementation) this.acceptorController).redoable());
     }
 
 }

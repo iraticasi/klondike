@@ -6,11 +6,11 @@ public class KlondikeServer {
 
     private DispatcherPrototype dispatcherPrototype;
 
-    private LogicServer logicServer;
+    private LogicImplementationServer logicServer;
 
     private KlondikeServer() {
         this.dispatcherPrototype = new DispatcherPrototype();
-        this.logicServer = new LogicServer(true);
+        this.logicServer = new LogicImplementationServer();
         this.logicServer.createDispatchers(this.dispatcherPrototype);
     }
 

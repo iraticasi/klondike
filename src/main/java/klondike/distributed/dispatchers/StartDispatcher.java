@@ -1,16 +1,17 @@
 package klondike.distributed.dispatchers;
 
 import klondike.controllers.StartController;
+import klondike.controllers.implementation.StartControllerImplementation;
 
 public class StartDispatcher extends Dispatcher {
 
-    public StartDispatcher(StartController startController) {
-        super(startController);
+    public StartDispatcher(StartControllerImplementation startControllerImplementation) {
+        super(startControllerImplementation);
     }
 
     @Override
     public void dispatch() {
-        ((StartController) this.acceptorController).start();
+        ((StartControllerImplementation) this.acceptorController).start();
     }
 
 }

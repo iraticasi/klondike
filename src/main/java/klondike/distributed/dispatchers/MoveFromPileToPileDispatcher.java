@@ -1,11 +1,12 @@
 package klondike.distributed.dispatchers;
 
 import klondike.controllers.PlayController;
+import klondike.controllers.implementation.PlayControllerImplementation;
 
 public class MoveFromPileToPileDispatcher extends Dispatcher {
 
-    public MoveFromPileToPileDispatcher(PlayController playController) {
-        super(playController);
+    public MoveFromPileToPileDispatcher(PlayControllerImplementation playControllerImplementation) {
+        super(playControllerImplementation);
     }
 
     @Override
@@ -13,7 +14,7 @@ public class MoveFromPileToPileDispatcher extends Dispatcher {
         int originIndex = this.tcpip.receiveInt();
         int destinationIndex = this.tcpip.receiveInt();
         int numberOfCards = this.tcpip.receiveInt();
-        this.tcpip.send(((PlayController) this.acceptorController).moveFromPileToPile(originIndex, destinationIndex, numberOfCards));
+        this.tcpip.send(((PlayControllerImplementation) this.acceptorController).moveFromPileToPile(originIndex, destinationIndex, numberOfCards));
     }
 
 }

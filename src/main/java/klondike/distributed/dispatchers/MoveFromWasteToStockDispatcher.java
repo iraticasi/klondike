@@ -1,16 +1,17 @@
 package klondike.distributed.dispatchers;
 
 import klondike.controllers.PlayController;
+import klondike.controllers.implementation.PlayControllerImplementation;
 
 public class MoveFromWasteToStockDispatcher extends Dispatcher {
 
-    public MoveFromWasteToStockDispatcher(PlayController playController) {
-        super(playController);
+    public MoveFromWasteToStockDispatcher(PlayControllerImplementation playControllerImplementation) {
+        super(playControllerImplementation);
     }
 
     @Override
     public void dispatch() {
-        this.tcpip.send(((PlayController) this.acceptorController).moveFromWasteToStock());
+        this.tcpip.send(((PlayControllerImplementation) this.acceptorController).moveFromWasteToStock());
     }
 
 }

@@ -2,6 +2,7 @@ package klondike.controllers;
 
 import klondike.models.Error;
 import klondike.models.Session;
+import klondike.models.SessionImplementation;
 import klondike.models.Suit;
 
 public class MoveController extends Controller {
@@ -11,39 +12,38 @@ public class MoveController extends Controller {
     }
 
     public Error moveFromFoundationToPile(Suit suit, int pileIndex) {
-        return this.session.moveFromFoundationToPile(suit, pileIndex);
+        return ((SessionImplementation) this.session).moveFromFoundationToPile(suit, pileIndex);
     }
 
     public Error moveFromPileToFoundation(int pileIndex, Suit suit) {
-        Error error = this.session.moveFromPileToFoundation(pileIndex, suit);
+        Error error = ((SessionImplementation) this.session).moveFromPileToFoundation(pileIndex, suit);
         if (error == null && this.session.isGameFinished()) {
-            this.session.next();
+            ((SessionImplementation) this.session).next();
         }
         return error;
     }
 
     public Error moveFromPileToPile(int originIndex, int destinationIndex, int numberOfCards) {
-        return this.session.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
+        return ((SessionImplementation) this.session).moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
     }
 
     public Error moveFromStockToWaste() {
-        return this.session.moveFromStockToWaste();
+        return ((SessionImplementation) this.session).moveFromStockToWaste();
     }
 
     public Error moveFromWasteToFoundation(Suit suit) {
-        Error error = this.session.moveFromWasteToFoundation(suit);
+        Error error = ((SessionImplementation) this.session).moveFromWasteToFoundation(suit);
         if (error == null && this.session.isGameFinished()) {
-            this.session.next();
+            ((SessionImplementation) this.session).next();
         }
         return error;
     }
 
     public Error moveFromWasteToPile(int pileIndex) {
-        return this.session.moveFromWasteToPile(pileIndex);
+        return ((SessionImplementation) this.session).moveFromWasteToPile(pileIndex);
     }
 
     public Error moveFromWasteToStock() {
-        return this.session.moveFromWasteToStock();
+        return ((SessionImplementation) this.session).moveFromWasteToStock();
     }
-
 }
