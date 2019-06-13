@@ -1,4 +1,4 @@
 package klondike.utils;
 
-public class Memento {
+public abstract class Memento {
 }

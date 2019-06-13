@@ -1,4 +1,9 @@
 package klondike.utils;
 
-public class Originator {
+public interface Originator {
+
+    void restore(Memento memento);
+
+    Memento createMemento();
+
 }

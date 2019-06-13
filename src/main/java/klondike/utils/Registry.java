@@ -1,52 +1,51 @@
-package klondike.models;
+package klondike.utils;
 
 import java.util.ArrayList;
 
-class Registry {
+public class Registry {
 
-    private Game game;
+    private final Originator originator;
 
     private int undoCount;
 
     private ArrayList<Memento> mementoList;
 
-    Registry(Game game) {
-        this.game = game;
+    public Registry(Originator originator) {
+        this.originator = originator;
         this.undoCount = 0;
         this.mementoList = new ArrayList<>();
-        this.mementoList.add(undoCount, this.game.createMemento());
+        this.mementoList.add(undoCount, this.originator.createMemento());
     }
 
-    void registry() {
+    public void registry() {
         for (int i = 0; i < this.undoCount; i++) {
             this.mementoList.remove(0);
         }
         this.undoCount = 0;
-        this.mementoList.add(this.undoCount, this.game.createMemento());
+        this.mementoList.add(this.undoCount, this.originator.createMemento());
     }
 
-    void undo(Game game) {
+    public void undo(Originator originator) {
         this.undoCount++;
-        game.restore(this.mementoList.get(this.undoCount));
+        originator.restore(this.mementoList.get(this.undoCount));
     }
 
-    void redo(Game game) {
+    public void redo(Originator originator) {
         this.undoCount--;
-        game.restore(this.mementoList.get(this.undoCount));
+        originator.restore(this.mementoList.get(this.undoCount));
     }
 
-    boolean undoable() {
+    public boolean undoable() {
         return this.undoCount < this.mementoList.size() - 1;
     }
 
-    boolean redoable() {
+    public boolean redoable() {
         return this.undoCount >= 1;
     }
 
-    void reset() {
-        this.mementoList = new ArrayList<Memento>();
-        this.mementoList.add(undoCount, this.game.createMemento());
+    public void reset() {
+        this.mementoList = new ArrayList<>();
+        this.mementoList.add(undoCount, this.originator.createMemento());
         this.undoCount = 0;
     }
-
 }

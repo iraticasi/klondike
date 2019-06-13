@@ -1,5 +1,7 @@
 package klondike.models;
 
+import klondike.utils.Registry;
+
 import java.util.Stack;
 
 public class SessionImplementation implements Session {
