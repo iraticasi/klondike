@@ -1,11 +1,13 @@
 package klondike.models;
 
+import klondike.utils.Memento;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Memento {
+public class GameMemento extends Memento {
 
     private Stock stock;
 
@@ -15,7 +17,7 @@ public class Memento {
 
     private List<Pile> piles;
 
-    public Memento() {
+    public GameMemento() {
         this.foundations = new HashMap<>();
         this.piles = new ArrayList<>();
     }

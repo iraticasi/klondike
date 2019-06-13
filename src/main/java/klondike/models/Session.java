@@ -2,6 +2,7 @@ package klondike.models;
 
 import klondike.distributed.dispatchers.FrameType;
 import klondike.distributed.dispatchers.TCPIP;
+import klondike.utils.Registry;
 
 import java.util.Stack;
 
