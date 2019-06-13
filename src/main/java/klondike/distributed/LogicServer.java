@@ -5,7 +5,7 @@ import klondike.distributed.dispatchers.*;
 
 public class LogicServer extends Logic {
 
-    public LogicServer(boolean isStandalone){
+    public LogicServer(boolean isStandalone) {
         super(isStandalone);
     }
 

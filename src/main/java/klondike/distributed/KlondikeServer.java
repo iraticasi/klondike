@@ -14,12 +14,12 @@ public class KlondikeServer {
         this.logicServer.createDispatchers(this.dispatcherPrototype);
     }
 
-    private void serve() {
-        this.dispatcherPrototype.serve();
-    }
-
     public static void main(String[] args) {
         new KlondikeServer().serve();
+    }
+
+    private void serve() {
+        this.dispatcherPrototype.serve();
     }
 
 }

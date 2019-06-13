@@ -10,7 +10,7 @@ public class RedoDispatcher extends Dispatcher {
 
     @Override
     public void dispatch() {
-        ((PlayController)this.acceptorController).redo();
+        ((PlayController) this.acceptorController).redo();
     }
 
 }

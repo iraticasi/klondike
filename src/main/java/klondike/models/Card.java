@@ -15,8 +15,9 @@ public class Card {
         this.number = number;
         this.facedUp = false;
     }
+
     public Card(Suit suit, Number number, boolean facedUp) {
-        this(suit,number);
+        this(suit, number);
         this.facedUp = facedUp;
     }
 

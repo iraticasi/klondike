@@ -10,7 +10,7 @@ public class RedoableDispatcher extends Dispatcher {
 
     @Override
     public void dispatch() {
-        this.tcpip.send(((PlayController)this.acceptorController).redoable());
+        this.tcpip.send(((PlayController) this.acceptorController).redoable());
     }
 
 }

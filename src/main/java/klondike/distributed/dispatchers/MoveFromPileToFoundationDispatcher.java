@@ -12,7 +12,7 @@ public class MoveFromPileToFoundationDispatcher extends Dispatcher {
     @Override
     public void dispatch() {
         int pileIndex = this.tcpip.receiveInt();
-        Suit suit= this.tcpip.receiveSuit();
-        this.tcpip.send(((PlayController) this.acceptorController).moveFromPileToFoundation(pileIndex,suit));
+        Suit suit = this.tcpip.receiveSuit();
+        this.tcpip.send(((PlayController) this.acceptorController).moveFromPileToFoundation(pileIndex, suit));
     }
 }

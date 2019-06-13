@@ -10,7 +10,7 @@ public class MoveFromWasteToPileDispatcher extends Dispatcher {
 
     @Override
     public void dispatch() {
-        int pileIndex =this.tcpip.receiveInt();
+        int pileIndex = this.tcpip.receiveInt();
         this.tcpip.send(((PlayController) this.acceptorController).moveFromWasteToPile(pileIndex));
     }
 

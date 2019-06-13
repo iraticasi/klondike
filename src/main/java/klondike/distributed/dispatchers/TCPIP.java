@@ -9,9 +9,17 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class TCPIP extends klondike.utils.TCPIP{
+public class TCPIP extends klondike.utils.TCPIP {
 
     private static final int PORT = 2020;
+
+    public TCPIP(Socket socket) {
+        super(socket);
+    }
+
+    public TCPIP(ServerSocket serverSocket, Socket socket) {
+        super(serverSocket, socket);
+    }
 
     public static TCPIP createClientSocket() {
         try {
@@ -37,18 +45,11 @@ public class TCPIP extends klondike.utils.TCPIP{
             return null;
         }
     }
-    public TCPIP(Socket socket) {
-        super(socket);
-    }
-
-    public TCPIP(ServerSocket serverSocket, Socket socket) {
-        super(serverSocket, socket);
-    }
 
     public void send(Error error) {
         if (error == null) {
             this.send("null");
-        }else {
+        } else {
             this.send(error.name());
         }
     }
@@ -64,7 +65,7 @@ public class TCPIP extends klondike.utils.TCPIP{
     public void send(Suit suit) {
         if (suit == null) {
             this.send("null");
-        }else {
+        } else {
             this.send(suit.name());
         }
     }
@@ -80,7 +81,7 @@ public class TCPIP extends klondike.utils.TCPIP{
     public void send(Number number) {
         if (number == null) {
             this.send("null");
-        }else {
+        } else {
             this.send(number.name());
         }
     }
@@ -96,7 +97,7 @@ public class TCPIP extends klondike.utils.TCPIP{
     public void send(Card card) {
         if (card == null) {
             this.send("null");
-        }else {
+        } else {
             this.send(card.getSuit());
             this.send(card.getNumber());
             this.send(card.isFacedUp());
@@ -105,11 +106,11 @@ public class TCPIP extends klondike.utils.TCPIP{
 
     public Card receiveCard() {
         Suit suit = this.receiveSuit();
-        if (suit==null) {
+        if (suit == null) {
             return null;
         }
-        Number number= this.receiveNumber();
+        Number number = this.receiveNumber();
         boolean facedUp = this.receiveBoolean();
-        return new Card(suit,number,facedUp);
+        return new Card(suit, number, facedUp);
     }
 }

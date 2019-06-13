@@ -8,7 +8,7 @@ public abstract class Dispatcher {
 
     protected TCPIP tcpip;
 
-    public Dispatcher (AcceptorController acceptorController) {
+    public Dispatcher(AcceptorController acceptorController) {
         this.acceptorController = acceptorController;
     }
 

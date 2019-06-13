@@ -6,8 +6,6 @@ import klondike.models.Error;
 import klondike.models.Session;
 import klondike.models.Suit;
 
-import java.util.List;
-
 public class PlayController extends AcceptorController {
 
     private MoveController moveController;

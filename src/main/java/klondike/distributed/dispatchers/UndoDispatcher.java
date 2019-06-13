@@ -10,7 +10,7 @@ public class UndoDispatcher extends Dispatcher {
 
     @Override
     public void dispatch() {
-        ((PlayController)this.acceptorController).undo();
+        ((PlayController) this.acceptorController).undo();
     }
 
 }

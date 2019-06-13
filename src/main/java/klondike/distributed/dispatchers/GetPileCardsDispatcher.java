@@ -16,7 +16,7 @@ public class GetPileCardsDispatcher extends Dispatcher {
         int index = this.tcpip.receiveInt();
         Stack<Card> cards = this.acceptorController.getPileCards(index);
         this.tcpip.send(cards.size());
-        for (int i=0; i<cards.size(); i++){
+        for (int i = 0; i < cards.size(); i++) {
             this.tcpip.send(cards.get(i));
         }
     }

@@ -14,7 +14,7 @@ public class DispatcherPrototype {
         this.dispatcherMap = new HashMap<FrameType, Dispatcher>();
     }
 
-    public void add (FrameType frameType, Dispatcher dispatcher) {
+    public void add(FrameType frameType, Dispatcher dispatcher) {
         this.dispatcherMap.put(frameType, dispatcher);
         dispatcher.associate(this.tcpip);
     }

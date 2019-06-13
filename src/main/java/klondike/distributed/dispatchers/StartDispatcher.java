@@ -1,7 +1,6 @@
 package klondike.distributed.dispatchers;
 
 import klondike.controllers.StartController;
-import klondike.distributed.dispatchers.Dispatcher;
 
 public class StartDispatcher extends Dispatcher {
 

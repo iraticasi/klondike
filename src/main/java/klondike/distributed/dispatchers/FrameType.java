@@ -1,7 +1,5 @@
 package klondike.distributed.dispatchers;
 
-import java.net.SocketOption;
-
 public enum FrameType {
     START,
     STATE,
@@ -26,7 +24,7 @@ public enum FrameType {
     ISGAMEFINISHED;
 
     public static FrameType parser(String string) {
-        for(FrameType frameType : FrameType.values()) {
+        for (FrameType frameType : FrameType.values()) {
             if (frameType.name().equals(string)) {
                 return frameType;
             }

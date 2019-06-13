@@ -1,27 +1,22 @@
 package klondike.controllers;
 
+import klondike.distributed.dispatchers.TCPIP;
 import klondike.models.Session;
 import klondike.models.StateValue;
-import klondike.distributed.dispatchers.TCPIP;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Logic {
 
-    private Session session;
-
-    private Map<StateValue, AcceptorController> controllers;
-
     protected StartController startController;
-
     protected PlayController playController;
-
     protected ResumeController resumeController;
-
+    private Session session;
+    private Map<StateValue, AcceptorController> controllers;
     private TCPIP tcpip;
 
-    public Logic (Boolean isStandalone) {
+    public Logic(Boolean isStandalone) {
         if (isStandalone) {
             this.tcpip = null;
         } else {
@@ -33,8 +28,8 @@ public class Logic {
         this.controllers.put(StateValue.INITIAL, this.startController);
         this.playController = new PlayController(this.session, this.tcpip);
         this.controllers.put(StateValue.IN_GAME, this.playController);
-        this.resumeController= new ResumeController(this.session, this.tcpip);
-        this.controllers.put(StateValue.FINAL,resumeController);
+        this.resumeController = new ResumeController(this.session, this.tcpip);
+        this.controllers.put(StateValue.FINAL, resumeController);
         this.controllers.put(StateValue.EXIT, null);
     }
 

@@ -137,7 +137,7 @@ public class Session {
         this.tcpip.send(index);
         int numberOfCards = this.tcpip.receiveInt();
         Stack<Card> cards = new Stack<>();
-        for (int i=0; i<numberOfCards; i++){
+        for (int i = 0; i < numberOfCards; i++) {
             cards.add(this.tcpip.receiveCard());
         }
         return cards;
