@@ -113,4 +113,10 @@ public class TCPIP extends klondike.utils.TCPIP {
         boolean facedUp = this.receiveBoolean();
         return new Card(suit, number, facedUp);
     }
+
+    @Override
+    public void close() {
+        this.send(FrameType.CLOSE.name());
+        super.close();
+    }
 }
