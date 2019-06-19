@@ -3,8 +3,6 @@ package klondike.models;
 import klondike.utils.Memento;
 import klondike.utils.Originator;
 
-import java.io.BufferedReader;
-import java.io.FileWriter;
 import java.util.*;
 
 public class Game implements Originator {
@@ -137,7 +135,7 @@ public class Game implements Originator {
         }
         Pile originPile = this.piles.get(originIndex);
         Pile destinationPile = this.piles.get(destinationIndex);
-        if (originPile.numberOfFaceUpCards() < numberOfCards) {
+        if (originPile.getNumberOfFaceUpCards() < numberOfCards) {
             return Error.NO_ENOUGH_CARDS_PILE;
         }
         List<Card> cards = originPile.getTop(numberOfCards);
@@ -174,7 +172,7 @@ public class Game implements Originator {
     }
 
     public int getNumberOfFaceUpCardsInPile(int index) {
-        return this.piles.get(index).numberOfFaceUpCards();
+        return this.piles.get(index).getNumberOfFaceUpCards();
     }
 
     @Override
@@ -206,26 +204,21 @@ public class Game implements Originator {
         }
     }
 
-    void save(FileWriter fileWriter) {
-        this.stock.save(fileWriter);
-        this.waste.save(fileWriter);
-        for (Suit suit : Suit.values()) {
-            this.foundations.get(suit).save(fileWriter);
-        }
-        for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
-            this.piles.get(i).save(fileWriter);
-        }
+    public Stock getStock() {
+        return this.stock;
     }
 
-    void load(BufferedReader bufferedReader) {
-        this.stock.load(bufferedReader);
-        this.waste.load(bufferedReader);
-        for (Suit suit : Suit.values()) {
-            this.foundations.get(suit).load(bufferedReader);
-        }
-        for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
-            this.piles.get(i).load(bufferedReader);
-        }
+    public  Waste getWaste(){
+        return this.waste;
     }
+
+    public  Foundation getFoundation(Suit suit){
+        return this.foundations.get(suit);
+    }
+
+    public  Pile getPile(int pileIndex){
+        return this.piles.get(pileIndex);
+    }
+
 
 }

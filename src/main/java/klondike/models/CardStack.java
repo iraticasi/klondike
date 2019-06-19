@@ -39,27 +39,7 @@ public abstract class CardStack {
         this.cards.addAll(copiedCards);
     }
 
-    void save(FileWriter fileWriter) {
-        try {
-            fileWriter.write(this.cards.size() + "\n");
-            for (int i = 0; i < this.cards.size(); i++) {
-                this.cards.get(i).save(fileWriter);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public Stack<Card> getCards(){
+        return this.cards;
     }
-
-    void load(BufferedReader bufferedReader) {
-        try {
-            this.cards.removeAllElements();
-            int numberOfCards = Integer.parseInt(bufferedReader.readLine());
-            for (int i = 0; i < numberOfCards; i++) {
-                this.cards.add(Card.load(bufferedReader));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

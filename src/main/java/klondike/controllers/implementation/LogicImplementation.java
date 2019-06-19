@@ -1,6 +1,7 @@
 package klondike.controllers.implementation;
 
 import klondike.controllers.Logic;
+import klondike.models.DAO.SessionImplementationDAO;
 import klondike.models.SessionImplementation;
 import klondike.models.StateValue;
 
@@ -16,9 +17,10 @@ public class LogicImplementation extends Logic {
 
     public LogicImplementation() {
         this.session = new SessionImplementation();
-        this.startControllerImplementation = new StartControllerImplementation(this.session);
+        SessionImplementationDAO sessionImplementationDAO = new SessionImplementationDAO((SessionImplementation) this.session);
+        this.startControllerImplementation = new StartControllerImplementation(this.session, sessionImplementationDAO);
         this.playControllerImplementation = new PlayControllerImplementation(this.session);
-        this.saveControllerImplementation = new SaveControllerImplementation(this.session);
+        this.saveControllerImplementation = new SaveControllerImplementation(this.session, sessionImplementationDAO);
         this.resumeControllerImplementation = new ResumeControllerImplementation(this.session);
         this.acceptorControllers.put(StateValue.INITIAL, this.startControllerImplementation);
         this.acceptorControllers.put(StateValue.IN_GAME, this.playControllerImplementation);

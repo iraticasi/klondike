@@ -32,24 +32,4 @@ public class Foundation extends CardStack {
         copy.copyCardsFrom(this);
         return copy;
     }
-
-    @Override
-    void save(FileWriter fileWriter) {
-        try {
-            fileWriter.write(this.suit.toString() + "\n");
-            super.save(fileWriter);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    void load(BufferedReader bufferedReader) {
-        try {
-            this.suit = Suit.valueOf(bufferedReader.readLine());
-            super.load(bufferedReader);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

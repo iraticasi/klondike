@@ -12,6 +12,8 @@ public class Card {
 
     private boolean facedUp;
 
+    public Card(){}
+
     public Card(Suit suit, Number number) {
         assert suit != null;
         assert number != null;
@@ -23,18 +25,6 @@ public class Card {
     public Card(Suit suit, Number number, boolean facedUp) {
         this(suit, number);
         this.facedUp = facedUp;
-    }
-
-    public static Card load(BufferedReader bufferedReader) {
-        try {
-            Suit suit = Suit.valueOf(bufferedReader.readLine());
-            Number number = Number.valueOf(bufferedReader.readLine());
-            boolean faceUp = Boolean.parseBoolean(bufferedReader.readLine());
-            return new Card(suit, number, faceUp);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
     public Card flip() {
@@ -62,18 +52,16 @@ public class Card {
         return this.suit.getColor();
     }
 
+    public void setSuit(Suit suit) {
+        this.suit = suit;
+    }
+
+    public void setNumber(Number number){
+        this.number = number;
+    }
+
     public Card copy() {
         Card copy = new Card(this.suit, this.number, this.facedUp);
         return copy;
-    }
-
-    void save(FileWriter fileWriter) {
-        try {
-            fileWriter.write(this.suit.toString() + "\n");
-            fileWriter.write(this.number.toString() + "\n");
-            fileWriter.write(this.facedUp + "\n");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

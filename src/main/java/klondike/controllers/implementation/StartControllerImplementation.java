@@ -1,13 +1,17 @@
 package klondike.controllers.implementation;
 
 import klondike.controllers.StartController;
+import klondike.models.DAO.SessionImplementationDAO;
 import klondike.models.Session;
 import klondike.models.SessionImplementation;
 
 public class StartControllerImplementation extends StartController {
 
-    public StartControllerImplementation(Session session) {
+    private final SessionImplementationDAO sessionImplementationDAO;
+
+    public StartControllerImplementation(Session session, SessionImplementationDAO sessionImplementationDAO) {
         super(session);
+        this.sessionImplementationDAO = sessionImplementationDAO;
     }
 
     @Override
@@ -17,12 +21,12 @@ public class StartControllerImplementation extends StartController {
 
     @Override
     public void start(String name) {
-        ((SessionImplementation) this.session).load(name);
+        this.sessionImplementationDAO.load(name);
     }
 
     @Override
     public String[] getGamesNames() {
-        return ((SessionImplementation) this.session).getGamesNames();
+        return this.sessionImplementationDAO.getGamesNames();
     }
 
 }

@@ -56,10 +56,13 @@ public class Pile extends CardStack {
         }
     }
 
-    public int numberOfFaceUpCards() {
+    public int getNumberOfFaceUpCards() {
         return this.numberOfFaceUpCards;
     }
 
+    public void setNumberOfFaceUpCards(int value) {
+        this.numberOfFaceUpCards = value;
+    }
     public boolean empty() {
         return this.cards.empty();
     }
@@ -73,25 +76,5 @@ public class Pile extends CardStack {
         copy.copyCardsFrom(this);
         copy.numberOfFaceUpCards = this.numberOfFaceUpCards;
         return copy;
-    }
-
-    @Override
-    void save(FileWriter fileWriter) {
-        try {
-            fileWriter.write(this.numberOfFaceUpCards + "\n");
-            super.save(fileWriter);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    void load(BufferedReader bufferedReader) {
-        try {
-            this.numberOfFaceUpCards = Integer.parseInt(bufferedReader.readLine());
-            super.load(bufferedReader);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
