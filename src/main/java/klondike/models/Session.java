@@ -17,4 +17,8 @@ public interface Session {
     boolean isGameFinished();
 
     StateValue getValueState();
+
+    String getName();
+
+    void setName(String title);
 }

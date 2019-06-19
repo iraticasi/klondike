@@ -1,9 +1,6 @@
 package klondike.controllers.implementation;
 
-import klondike.controllers.MoveController;
-import klondike.controllers.PlayController;
-import klondike.controllers.RedoController;
-import klondike.controllers.UndoController;
+import klondike.controllers.*;
 import klondike.models.Error;
 import klondike.models.Session;
 import klondike.models.Suit;
@@ -16,11 +13,14 @@ public class PlayControllerImplementation extends PlayController {
 
     private RedoController redoController;
 
+    private ExitController exitController;
+
     PlayControllerImplementation(Session session) {
         super(session);
         this.moveController = new MoveController(this.session);
         this.undoController = new UndoController(this.session);
         this.redoController = new RedoController(this.session);
+        this.exitController = new ExitController(this.session);
     }
 
     @Override
@@ -78,5 +78,9 @@ public class PlayControllerImplementation extends PlayController {
         return this.redoController.redoable();
     }
 
+    @Override
+    public void next() {
+        this.exitController.next();
+    }
 
 }

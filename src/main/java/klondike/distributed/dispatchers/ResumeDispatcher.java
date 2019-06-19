@@ -1,6 +1,5 @@
 package klondike.distributed.dispatchers;
 
-import klondike.controllers.ResumeController;
 import klondike.controllers.implementation.ResumeControllerImplementation;
 
 public class ResumeDispatcher extends Dispatcher {

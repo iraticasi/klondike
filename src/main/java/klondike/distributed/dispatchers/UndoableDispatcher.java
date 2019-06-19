@@ -1,6 +1,5 @@
 package klondike.distributed.dispatchers;
 
-import klondike.controllers.PlayController;
 import klondike.controllers.implementation.PlayControllerImplementation;
 
 public class UndoableDispatcher extends Dispatcher {

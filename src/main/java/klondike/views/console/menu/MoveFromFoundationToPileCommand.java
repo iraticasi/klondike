@@ -14,6 +14,6 @@ public class MoveFromFoundationToPileCommand extends MoveCommand {
     protected Error move() {
         Suit suit = SuitReader.read();
         int pileIndex = PileReader.readIndex(Message.DESTINATION);
-        return this.playController.moveFromFoundationToPile(suit, pileIndex);
+        return ((PlayController) this.acceptorController).moveFromFoundationToPile(suit, pileIndex);
     }
 }

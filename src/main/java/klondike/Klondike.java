@@ -20,7 +20,9 @@ public abstract class Klondike {
         AcceptorController acceptorController;
         do {
             acceptorController = this.logic.getController();
-            this.view.interact(acceptorController);
+            if (acceptorController != null) {
+                this.view.interact(acceptorController);
+            }
         } while (acceptorController != null);
     }
 

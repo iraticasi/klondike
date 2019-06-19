@@ -11,6 +11,6 @@ public class MoveFromWasteToStockCommand extends MoveCommand {
 
     @Override
     protected Error move() {
-        return this.playController.moveFromWasteToStock();
+        return ((PlayController) this.acceptorController).moveFromWasteToStock();
     }
 }

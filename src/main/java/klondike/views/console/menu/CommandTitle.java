@@ -10,7 +10,11 @@ public enum CommandTitle {
     PILE2FOUNDATION_COMMAND("Move from pile to foundation"),
     PILE2PILE_COMMAND("Move from pile to pile"),
     UNDO_COMMAND("Undo move"),
-    REDO_COMMAND("Redo move");
+    REDO_COMMAND("Redo move"),
+
+    NEWGAME_COMMAND("Start a new game"),
+    OPENGAME_COMMAND("Open a new game"),
+    EXIT_COMMAND("Exit game");
 
     private String title;
 

@@ -17,6 +17,6 @@ public class MoveFromPileToPileCommand extends MoveCommand {
         int originIndex = PileReader.readIndex(Message.ORIGIN);
         int destinationIndex = PileReader.readIndex(Message.DESTINATION);
         int numberOfCards = IO.readInt(Message.READ_NUMBER_OF_CARDS, new ClosedInterval(1, 13));
-        return this.playController.moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
+        return ((PlayController) this.acceptorController).moveFromPileToPile(originIndex, destinationIndex, numberOfCards);
     }
 }

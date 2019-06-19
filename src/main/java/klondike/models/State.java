@@ -20,4 +20,7 @@ public class State {
         return this.stateValue;
     }
 
+    void setStateValue(StateValue stateValue) {
+        this.stateValue = stateValue;
+    }
 }

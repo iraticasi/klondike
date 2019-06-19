@@ -1,5 +1,8 @@
 package klondike.models;
 
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -70,5 +73,25 @@ public class Pile extends CardStack {
         copy.copyCardsFrom(this);
         copy.numberOfFaceUpCards = this.numberOfFaceUpCards;
         return copy;
+    }
+
+    @Override
+    void save(FileWriter fileWriter) {
+        try {
+            fileWriter.write(this.numberOfFaceUpCards + "\n");
+            super.save(fileWriter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    void load(BufferedReader bufferedReader) {
+        try {
+            this.numberOfFaceUpCards = Integer.parseInt(bufferedReader.readLine());
+            super.load(bufferedReader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

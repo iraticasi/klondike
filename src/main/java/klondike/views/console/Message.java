@@ -20,4 +20,8 @@ public class Message {
     public static final String CARD_FORMAT = NUMBER_TAG + " of " + SUIT_TAG;
 
     public static final String RESUME = "Do you want to resume?";
+
+    public static final String SAVE = "Do you want to save the game?";
+    public static final String NAME = "Name: ";
+    public static final String NAME_EXISTS = "The proposed name already exists";
 }

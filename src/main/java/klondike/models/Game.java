@@ -3,6 +3,8 @@ package klondike.models;
 import klondike.utils.Memento;
 import klondike.utils.Originator;
 
+import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.util.*;
 
 public class Game implements Originator {
@@ -201,6 +203,28 @@ public class Game implements Originator {
         this.piles = new ArrayList<>();
         for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
             this.piles.add(gameMemento.getPile(i).copy());
+        }
+    }
+
+    void save(FileWriter fileWriter) {
+        this.stock.save(fileWriter);
+        this.waste.save(fileWriter);
+        for (Suit suit : Suit.values()) {
+            this.foundations.get(suit).save(fileWriter);
+        }
+        for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
+            this.piles.get(i).save(fileWriter);
+        }
+    }
+
+    void load(BufferedReader bufferedReader) {
+        this.stock.load(bufferedReader);
+        this.waste.load(bufferedReader);
+        for (Suit suit : Suit.values()) {
+            this.foundations.get(suit).load(bufferedReader);
+        }
+        for (int i = 0; i < Game.NUMBER_OF_PILES; i++) {
+            this.piles.get(i).load(bufferedReader);
         }
     }
 

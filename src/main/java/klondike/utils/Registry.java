@@ -45,7 +45,7 @@ public class Registry {
 
     public void reset() {
         this.mementoList = new ArrayList<>();
-        this.mementoList.add(undoCount, this.originator.createMemento());
         this.undoCount = 0;
+        this.mementoList.add(undoCount, this.originator.createMemento());
     }
 }

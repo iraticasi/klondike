@@ -21,7 +21,17 @@ public enum FrameType {
     PEEKFOUNDATION,
     GETPILECARDS,
     GETNUMBEROFFACEDUPCARDSINPILE,
-    ISGAMEFINISHED;
+    ISGAMEFINISHED,
+    GETTITLE,
+    SETTITLE,
+    STARTNAME,
+    TITLES,
+    SAVE,
+    SAVENAMED,
+    NEXT,
+    HASNAME,
+    EXISTS;
+
 
     public static FrameType parser(String string) {
         for (FrameType frameType : FrameType.values()) {

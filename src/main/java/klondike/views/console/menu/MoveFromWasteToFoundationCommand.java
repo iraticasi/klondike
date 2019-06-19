@@ -13,6 +13,6 @@ public class MoveFromWasteToFoundationCommand extends MoveCommand {
     @Override
     protected Error move() {
         Suit suit = SuitReader.read();
-        return this.playController.moveFromWasteToFoundation(suit);
+        return ((PlayController) this.acceptorController).moveFromWasteToFoundation(suit);
     }
 }

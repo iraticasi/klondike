@@ -12,6 +12,6 @@ public class MoveFromWasteToPileCommand extends MoveCommand {
     @Override
     protected Error move() {
         int pileIndex = PileReader.readIndex(Message.DESTINATION);
-        return this.playController.moveFromWasteToPile(pileIndex);
+        return ((PlayController) this.acceptorController).moveFromWasteToPile(pileIndex);
     }
 }
