@@ -55,7 +55,9 @@ public abstract class CardStack {
             this.cards.removeAllElements();
             int numberOfCards = Integer.parseInt(bufferedReader.readLine());
             for (int i = 0; i < numberOfCards; i++) {
-                this.cards.add(Card.load(bufferedReader));
+                Card card = new Card();
+                card.load(bufferedReader);
+                this.cards.add(card);
             }
         } catch (IOException e) {
             e.printStackTrace();

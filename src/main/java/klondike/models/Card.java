@@ -12,6 +12,9 @@ public class Card {
 
     private boolean facedUp;
 
+    public Card() {
+    }
+
     public Card(Suit suit, Number number) {
         assert suit != null;
         assert number != null;
@@ -23,18 +26,6 @@ public class Card {
     public Card(Suit suit, Number number, boolean facedUp) {
         this(suit, number);
         this.facedUp = facedUp;
-    }
-
-    public static Card load(BufferedReader bufferedReader) {
-        try {
-            Suit suit = Suit.valueOf(bufferedReader.readLine());
-            Number number = Number.valueOf(bufferedReader.readLine());
-            boolean faceUp = Boolean.parseBoolean(bufferedReader.readLine());
-            return new Card(suit, number, faceUp);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
     public Card flip() {
@@ -72,6 +63,16 @@ public class Card {
             fileWriter.write(this.suit.toString() + "\n");
             fileWriter.write(this.number.toString() + "\n");
             fileWriter.write(this.facedUp + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void load(BufferedReader bufferedReader) {
+        try {
+            this.suit = Suit.valueOf(bufferedReader.readLine());
+            this.number = Number.valueOf(bufferedReader.readLine());
+            this.facedUp = Boolean.parseBoolean(bufferedReader.readLine());
         } catch (IOException e) {
             e.printStackTrace();
         }

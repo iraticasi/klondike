@@ -1,6 +1,5 @@
 package klondike.models;
 
-import klondike.utils.IO;
 import klondike.utils.Registry;
 
 import java.io.*;
@@ -71,7 +70,6 @@ public class SessionImplementation implements Session {
     }
 
     public String[] getGamesNames() {
-        IO.writeln(directory.toString());
         return SessionImplementation.directory.list();
     }
 
