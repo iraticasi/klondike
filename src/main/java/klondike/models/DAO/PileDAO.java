@@ -16,7 +16,7 @@ public class PileDAO extends CardStackDAO{
     }
 
     @Override
-    void save(FileWriter fileWriter) {
+    public void save(FileWriter fileWriter) {
         try {
             fileWriter.write(this.numberOfFaceUpCards + "\n");
             super.save(fileWriter);
@@ -26,7 +26,7 @@ public class PileDAO extends CardStackDAO{
     }
 
     @Override
-    void load(BufferedReader bufferedReader) {
+    public void load(BufferedReader bufferedReader) {
         try {
             ((Pile)this.cardStack).setNumberOfFaceUpCards(Integer.parseInt(bufferedReader.readLine()));
             super.load(bufferedReader);

@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class CardStackDAO {
+public class CardStackDAO implements DAO{
 
     protected final CardStack cardStack;
 
@@ -15,7 +15,7 @@ public class CardStackDAO {
         this.cardStack = cardStack;
     }
 
-    void save(FileWriter fileWriter) {
+    public void save(FileWriter fileWriter) {
         try {
             fileWriter.write(this.cardStack.getCards().size() + "\n");
             for (int i = 0; i < this.cardStack.getCards().size(); i++) {
@@ -26,7 +26,7 @@ public class CardStackDAO {
         }
     }
 
-    void load(BufferedReader bufferedReader) {
+    public void load(BufferedReader bufferedReader) {
         try {
             this.cardStack.getCards().removeAllElements();
             int numberOfCards = Integer.parseInt(bufferedReader.readLine());

@@ -6,7 +6,7 @@ import klondike.models.Suit;
 import java.io.BufferedReader;
 import java.io.FileWriter;
 
-public class GameDAO {
+public class GameDAO implements DAO{
 
     private final Game game;
 
@@ -14,7 +14,7 @@ public class GameDAO {
         this.game = game;
     }
 
-    void save(FileWriter fileWriter) {
+    public void save(FileWriter fileWriter) {
         new CardStackDAO(this.game.getStock()).save(fileWriter);
         new CardStackDAO(this.game.getWaste()).save(fileWriter);
         for (Suit suit : Suit.values()) {
@@ -25,7 +25,7 @@ public class GameDAO {
         }
     }
 
-    void load(BufferedReader bufferedReader) {
+    public void load(BufferedReader bufferedReader) {
         new CardStackDAO(this.game.getStock()).load(bufferedReader);
         new CardStackDAO(this.game.getWaste()).load(bufferedReader);
         for (Suit suit : Suit.values()) {
