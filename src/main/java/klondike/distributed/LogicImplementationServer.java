@@ -2,8 +2,6 @@ package klondike.distributed;
 
 import klondike.controllers.implementation.LogicImplementation;
 import klondike.distributed.dispatchers.*;
-import klondike.models.DAO.SessionImplementationDAO;
-import klondike.models.SessionImplementation;
 
 public class LogicImplementationServer extends LogicImplementation {
 

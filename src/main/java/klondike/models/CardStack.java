@@ -1,8 +1,5 @@
 package klondike.models;
 
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -39,7 +36,7 @@ public abstract class CardStack {
         this.cards.addAll(copiedCards);
     }
 
-    public Stack<Card> getCards(){
+    public Stack<Card> getCards() {
         return this.cards;
     }
 }

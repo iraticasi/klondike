@@ -1,9 +1,5 @@
 package klondike.models;
 
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
 public class Card {
 
     private Suit suit;
@@ -12,7 +8,8 @@ public class Card {
 
     private boolean facedUp;
 
-    public Card(){}
+    public Card() {
+    }
 
     public Card(Suit suit, Number number) {
         assert suit != null;
@@ -44,20 +41,20 @@ public class Card {
         return this.number;
     }
 
-    public Suit getSuit() {
-        return this.suit;
+    public void setNumber(Number number) {
+        this.number = number;
     }
 
-    public Color getColor() {
-        return this.suit.getColor();
+    public Suit getSuit() {
+        return this.suit;
     }
 
     public void setSuit(Suit suit) {
         this.suit = suit;
     }
 
-    public void setNumber(Number number){
-        this.number = number;
+    public Color getColor() {
+        return this.suit.getColor();
     }
 
     public Card copy() {

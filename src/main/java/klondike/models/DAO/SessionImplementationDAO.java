@@ -5,7 +5,7 @@ import klondike.models.StateValue;
 
 import java.io.*;
 
-public class SessionImplementationDAO{
+public class SessionImplementationDAO {
 
     public static final String EXTENSION = ".klond";
 
@@ -24,7 +24,7 @@ public class SessionImplementationDAO{
 
     private final GameDAO gameDAO;
 
-    public SessionImplementationDAO(SessionImplementation sessionImplementation){
+    public SessionImplementationDAO(SessionImplementation sessionImplementation) {
         this.sessionImplementation = sessionImplementation;
         this.gameDAO = new GameDAO(sessionImplementation.getGame());
     }
@@ -46,6 +46,7 @@ public class SessionImplementationDAO{
             e.printStackTrace();
         }
     }
+
     public void load(String name) {
         this.sessionImplementation.setName(name);
         File file = new File(SessionImplementationDAO.directory, name);

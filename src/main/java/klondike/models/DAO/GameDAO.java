@@ -6,7 +6,7 @@ import klondike.models.Suit;
 import java.io.BufferedReader;
 import java.io.FileWriter;
 
-public class GameDAO implements DAO{
+public class GameDAO implements DAO {
 
     private final Game game;
 

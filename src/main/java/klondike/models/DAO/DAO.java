@@ -5,8 +5,8 @@ import java.io.FileWriter;
 
 interface DAO {
 
-    void save (FileWriter fileWriter);
+    void save(FileWriter fileWriter);
 
-    void load (BufferedReader bufferedReader);
+    void load(BufferedReader bufferedReader);
 
 }

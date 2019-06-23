@@ -1,8 +1,5 @@
 package klondike.models;
 
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -63,6 +60,7 @@ public class Pile extends CardStack {
     public void setNumberOfFaceUpCards(int value) {
         this.numberOfFaceUpCards = value;
     }
+
     public boolean empty() {
         return this.cards.empty();
     }

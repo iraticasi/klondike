@@ -1,9 +1,7 @@
 package klondike.models;
 
-import klondike.utils.IO;
 import klondike.utils.Registry;
 
-import java.io.*;
 import java.util.Stack;
 
 public class SessionImplementation implements Session {
@@ -22,7 +20,7 @@ public class SessionImplementation implements Session {
         this.registry = new Registry(this.game);
     }
 
-    public Game getGame(){
+    public Game getGame() {
         return this.game;
     }
 

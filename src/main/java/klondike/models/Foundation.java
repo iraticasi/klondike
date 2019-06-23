@@ -1,9 +1,5 @@
 package klondike.models;
 
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
 public class Foundation extends CardStack {
 
     private Suit suit;

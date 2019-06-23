@@ -8,7 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class CardDAO implements DAO{
+public class CardDAO implements DAO {
 
     private final Card card;
 
@@ -31,7 +31,7 @@ public class CardDAO implements DAO{
             this.card.setSuit(Suit.valueOf(bufferedReader.readLine()));
             this.card.setNumber(Number.valueOf(bufferedReader.readLine()));
             boolean facedUp = Boolean.parseBoolean(bufferedReader.readLine());
-            if (facedUp != this.card.isFacedUp()){
+            if (facedUp != this.card.isFacedUp()) {
                 this.card.flip();
             }
         } catch (IOException e) {

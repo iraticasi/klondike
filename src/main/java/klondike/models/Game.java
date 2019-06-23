@@ -208,15 +208,15 @@ public class Game implements Originator {
         return this.stock;
     }
 
-    public  Waste getWaste(){
+    public Waste getWaste() {
         return this.waste;
     }
 
-    public  Foundation getFoundation(Suit suit){
+    public Foundation getFoundation(Suit suit) {
         return this.foundations.get(suit);
     }
 
-    public  Pile getPile(int pileIndex){
+    public Pile getPile(int pileIndex) {
         return this.piles.get(pileIndex);
     }
 

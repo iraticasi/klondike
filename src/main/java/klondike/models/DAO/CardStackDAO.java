@@ -7,11 +7,11 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class CardStackDAO implements DAO{
+public class CardStackDAO implements DAO {
 
     protected final CardStack cardStack;
 
-    CardStackDAO(CardStack cardStack){
+    CardStackDAO(CardStack cardStack) {
         this.cardStack = cardStack;
     }
 

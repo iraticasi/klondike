@@ -6,13 +6,13 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class PileDAO extends CardStackDAO{
+public class PileDAO extends CardStackDAO {
 
     private final int numberOfFaceUpCards;
 
     PileDAO(Pile pile) {
         super(pile);
-        this.numberOfFaceUpCards= pile.getNumberOfFaceUpCards();
+        this.numberOfFaceUpCards = pile.getNumberOfFaceUpCards();
     }
 
     @Override
@@ -28,7 +28,7 @@ public class PileDAO extends CardStackDAO{
     @Override
     public void load(BufferedReader bufferedReader) {
         try {
-            ((Pile)this.cardStack).setNumberOfFaceUpCards(Integer.parseInt(bufferedReader.readLine()));
+            ((Pile) this.cardStack).setNumberOfFaceUpCards(Integer.parseInt(bufferedReader.readLine()));
             super.load(bufferedReader);
         } catch (IOException e) {
             e.printStackTrace();
